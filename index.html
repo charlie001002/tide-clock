@@ -1,0 +1,2181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Tide Clock" />
+    <meta name="theme-color" content="#0b0f14" />
+    <title>Two Hand Tide Clock — Gullane</title>
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAANBklEQVR42u1dTWxcVxWePakSNQQrVoIt13F+p3Hj2nJTkpnIxDFjy3bi2m4zduzWNg5Tx/mxiB0nETEQA44UIpK0iyJQuwI2IDYtG1aV2LBASGxQq0oF0RRRiZ8FO+BzDnp68cx43sy7793z3vukbzH2zLx377nf3HPOd+89L/W5rZ8niJJI0QQEyUGQHATJQZAcBMlBkBwEyUGQHATJQZAcBEFyECQHQXIQJAdBchAkB0FyECQHQXIQJEd8sXX7zsaWdGtn9vip073DkyOvXZiYuzb79W/O31hbWLl39fb9xdWHAF7gT/wTb+ED+Bg+jK/gi/g6LkJyxAFbtu3Yc6jtWPfA0LkCRnrpO28YAS6FC+KyuDhuQXJECfh944een13AHOAe1Ku3H3x1YWV06lJuZCqTG2nP5A61Z5vTnQ17j9Q3pesa9n/hi/sAvMCf+CfewgfwMXwYX8EX8XVc5Mlr3seNcDvclOTQC/yOe86Mf23x2+7Bm778jf6zs0dPnt773Jdk7P0Dl8IFcVlc3H0v3BoNQDNIDi2ob2w50Tvs9hqvL393cOx8R7Zvd0urKUKUA26BG+F2uKnb76BJaBjJYQ0H215EtOgMSWFpFZM/HEHQhCgH3BoNQDOcJqF5aCTJESraj3VPXbrpjMHQxFzr0ZO2OFEMNAZNcpqHpqLBJEfg6Mj0OB4Ev9Gu/nwIvqNmj4PmORMJmo3GkxyBoLUz6wSAeIGQUCcnioGmuluOjpAcxtC07/ArM5fFuEgmX+gaiAot3ECz0XjpBbqDTpEcflWs7sG8GPTizTuZ3EgUaeEGuoCOSI/QNeUaWkpzMuKEF32j0/VN6agzQ4COoDtOIKI5nVFKjp4z42K+yQvLFrPTQPNedE36iM6SHF7F71fnr4vVTg6OxY8WbqCD0lN0WaEAn9ImYCyuPpSoPpYTRskpRHIZdFybHKKIHE7sOTh2Pgm0cANddqJUkuMJPPV03UuT/5cUY5CS1JzIiAVgChiE5FhH3a6miblrkqyqUsGt6O6S6MIgMEvSybH7mQOSr8LvNqc7k8wMAYwgIQjMAuMklxyIz+cer3SPFxZ3NT9LZghgChgEZoFx7KYwKYvMmL+xBhO8PHOFhCgGzALjwEQW+ZGy5U1kzhidukQelAOMI/OHLf+SshKBSpzBOQO498aPPvz4EwAvys0fMJeV+DQVftYquQncKpnxw3d++uizfzooyQ+JP2C08PPbsMkhegYCckagdx+85WYGgPmjZHwq+QtMF2dyiAaKVJ5Z663VuxuYUY4ckt+K/hGyfpoKc91EFMCEK13AlaVbxcwo51YcfUysF+b6Syq0xFVW1BKrjjuYfn2hJDN+9ot3vejrMGNoyW1I5JBV+ASuqG3AyPhMSWa89+v3d+857HF9DsaMDzlk5w6iqoQz49TA6J8efVbMjN/89vcH27weyJPgNJz9QYGT42Dbi+IsE7I/o+wG4xO5P/zxo2Jm4J94q6r9H2LPEPYXBkuOLdt2iN4V+z1dmwMTA6aHYmZgIsF0Utv+MRg26P3JqRBy18kLy0lmBoIJhBQlQw2EILVdU/afBp3ZBkiOpn2H6VAApCElmYG0xc/mQrFtoOdfAiSHnETqG52mQF6MK0u3fF5ZzjfAyNEjR2tnVsTQ2Jw3MSKQC26t3jVy/kVk0+DOVwZFDsm4kix5lRTIATDG7LZTmDpK5OjI9Mi5VgrkGwAvY/ZGcv42oPP7gZBD0teInni2KJDXdj5b0tpokEMW2BKrh/oUyGvh4mMPHsSCnHlySM2dCNXP0CaQ11D/Q+oHaSeHiOWFpVUK5DUL5DVA6gcZF9QNk0MquHX15ymQ+xHIqwUMLvXp9JKjvrFFZDu1dboiJJBXW39MLG+2vqVJcpzoHZbafhTI/Qvk1ULqF2IIlJJDMtik7QIMTiCv9pyt8ZzWGDn2HGpLYCgaqEBeW1hqsL52yux2r9zIFAVygwJ5VYDxzW4SM0YOqUhvd3U+/+XW2/nnAbyIjUBe7To+BkIXORpb0lKR3iItPriT+e+Puxzgz+AoEqZAXhWkPr+p7elmyHH81GmLm8tBAjct3Fg71x4Dgbza8lEYDkXkyM8urK8NZvusWGTDnLEBv1o6mj5wINICuXdgCDAQGA4t5NiybYc8E8mK9rXJtOHgkx9kjbgYiwJ5VWoYhsPI3uOUqSTW1jIsws+K5DDiYuwK5NUu0hpJaA2Q41j3+paC/rOzysnhx8VYF8i9AwOB4cCgqCDH0LmCxTV6L27Fv4vRIJBXtYKPQVFBDlHNDT5hz2xA6t/FKBHIPQIDYUpH90uOrdt3ylM57Wpf1ZLDu4tRJZB7hDzf1P/zkVNG5C/re4nBD/iLavlR0cVoE8ir2nXsXwrzSw45n6KhKCCmAUwGNUwh5VyMQoG8qjKE/s+zpIxoo3rW2zDSRlyMWoHc+wqcf53ULzl6hye1HV7y72I0C+TeDzthaCyTQzaNtmdyqqxTrYv5z9tf+fd7N/71/pvvvvP9699a0yyQewGGw8iWUr/kkKKiOs/Re3Qx4MSjT//6BBX+9g+1Arn3tXsMjWVyiMihtnRkRRfz99/9sqQH0SyQVwSGw4jU4ZccUty+Ye8RtZbaxMWszxmVmKFQIK8IDIcU1bdMjoWVe+s74tXXWSh2MYgzNnqTUjh/MXpluDEcGBQMjWVyyGJ9XcN+/Sbb4GIQgXqZNvKvFSJHDgyHLNxbJoeUno2K1dwuxqNPWV75XhQ3P0s5W5KjRhdDctCtlHcxP1+mW2FAWhptrc/95VGFgPSjP38aCUlUaUCqP5XdBHAZsfQpWlJZ5SJYRbz19k/KMQNvRbRTWkQwzfK59/kD7mODN4nonKFLPte58FbD/mEEniAEgBdRjDM0LrwpXLIntCzZa9vsQyja7KNnmyChbpugkg3GhMYNxhqOJhBKjyZoONREKD3UZP04JKH6OKTdg9SE6oPUdkswEKpLMNgt3kKoLt5ivewTobfsk/WCcYQDjQXjrJeaJAQaS00qKVKbcCgtUpvM8tY619s0lrdOZmF8VdBbGD+xj9RQAtWP1Ejyw3g0QPvDeBL7GC8l2pfqx3gl+QGAdhGBBwAm/NGh1kNR7Y8OTfhDhy2u0UfgocN8XLmtZdhoPK7cyWlf6BrgyAUNGNl4BhssOToyPdx1HOZeYhg8MuQAZK7jYacQDi/B1AENYlDkkPMsF2/eiWJ1hqjUWYB5jZxPCZscwCszl9H0vtFpDmQQgGFhXhg5uBEMkBxN+w6LbMd1/IBW5wEYOZLkALoH15W7yQvLHE6zgElhWJg30OELlhxbtu2QtPbk4BhH1BRgTElfjewitkYOR1CnczHuUIyL5RbI4WwSo2ZqUA81uN3LMjmAV+evc3u6qc3lMGY4oxYSORpb0lLOlrKYT8kLZjS1uVwLOZwFOe4j9LMLMKAFNvvkcDLbizfvRLc0pRXAXCKGBp272iQH8NLknASnu5qf5ah7AQwlQShMF/JghU2Op56uk9Kl44VFDrwXwFBSVBSmizk5gLpdTaKMvTxzhWO/OWAi0btgtPBHygI5gN3PHJh7fKqTZQg3gRQFhKFgLivDZIccktxKUX3OH5vMGTBRaImrInIIP2T+gFtlfOqOQCXOgHEsMsMyOcS/SPyBgJz5rWStkpvALLa8iRZySHwq+QtS+YTrY+i+6BkwiJUIVB05JL8V/SPJ+rqo46JnhJ+16iWHWz9N5vqcrKiFr4FGhhyy/iLrc/C7Cdn/gW5KkIGOh7luEj1ySAoj6/tJ2D8me7pkFd5uYhINcrj3B8n+01hOIeiU7AMNbedOfMgh+wsly5XzDbE5/4KOyKkCyVdD2O0XQ3LI/mQnSkWOF4NEBl2QZFViz6B3CMeZHM75FzkfJedvI3o+G82Wc61yEinQ8yYJIodzvlKiesllIlT/A011tzy404vJJYdzft8JRApLq139ebX1x9AwNE9q7kh4EdBZeJJjoxwi9YMEQxNzqnR3NEZq+wnQVG0CRpzJ4aQzUp/OmUhyI1MW817cGg1wpgqp4KY5GYkzOZz6lid6hx1fI/X5B8fOd2T7QvA4uAVuhNtJRXrHg6BJZqs+khx+62v3nBmX+vwOEAD2n51FSGjw+YS4FC6IyzphpgC3RgMMVpcmOQIR4I+fOp2fXZDnRzm4evsBksnRqUuY/DO5kfZMDo6gOd3ZsPdIfVO6rmG/jD1e4E/8E2/hA/gYPoyv4Iv4ujyV03XN+7gRbqdQ/CY5Kmho+B0f6x4YOldw+x2fwKVwQVwWF1euYpEcXrF1+078vls7s/ih9w5PIlqcmLuGkZ6/sbawcg9zwOLqQwAv8Cf+ibfwAXwMH8ZX8EV83f+TfEkOguQgSA6C5CAIkoMgOQiSgyA5CJKDIDkIkoMgOQiSgyA5CILkIEgOguQgSA6C5CBIDoLkIKKI/wGzOT2cvEcSewAAAABJRU5ErkJggg==" />
+    <style>
+      :root {
+        --bg: #0b0f14; --panel: #131a22; --line: #2a3542; --line-2: #1d2630;
+        --tx: #e8edf2; --tx-2: #a3b0bd; --sun: #ffa24a; --tide: #6cc9f5;
+        --red: #ff7a6b; --green: #5fd38a;
+        --font: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --st: env(safe-area-inset-top, 0px); --sr: env(safe-area-inset-right, 0px);
+        --sb: env(safe-area-inset-bottom, 0px); --sl: env(safe-area-inset-left, 0px);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+      body {
+        background: var(--bg); color: var(--tx); font: 14px/1.35 var(--font);
+        -webkit-user-select: none; user-select: none;
+        -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none;
+        -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+        font-variant-numeric: tabular-nums;
+      }
+      button { font: inherit; color: inherit; }
+      button:focus { outline: none; }
+      button:focus-visible, input:focus-visible { outline: 2px solid var(--tide); outline-offset: 2px; }
+
+      .x-app {
+        position: fixed; left: 0; top: 0; width: 100%;
+        height: 100vh; height: calc(var(--vh, 1vh) * 100); min-height: 320px;
+        padding: max(12px, var(--st)) max(14px, var(--sr)) max(12px, var(--sb)) max(14px, var(--sl));
+        display: flex; flex-direction: row; align-items: stretch; gap: 14px; overflow: hidden;
+      }
+      .x-left, .x-right { height: 100%; min-height: 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+      .x-left { flex: 1 1 0%; }
+      .x-right { flex: 2 1 0%; }
+      .x-left > *, .x-right > * { flex-shrink: 0; }
+      .x-panel { background: var(--panel); border: 1px solid var(--line-2); border-radius: 14px; padding: 10px 14px; min-width: 0; }
+
+      .x-seg { display: flex; gap: 6px; }
+      .x-opt {
+        flex: 1; min-height: 44px; padding: 6px 12px; border-radius: 12px; border: 1px solid var(--line);
+        background: var(--panel); color: var(--tx); font-size: 15px; font-weight: 500; cursor: pointer;
+      }
+      .x-opt[aria-pressed="true"] { background: var(--tx); color: var(--bg); border-color: var(--tx); }
+
+      .x-left > .x-dialbox { flex: 1 1 160px; height: 160px; min-height: 140px; position: relative; overflow: hidden; }
+      .x-dialbox canvas { position: absolute; left: 0; top: 0; }
+      .x-phase { text-align: center; font-size: 13px; color: var(--tx-2); }
+
+      .x-h { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--tx-2); margin-bottom: 2px; }
+      .x-rows { display: block; }
+      .x-row { display: flex; align-items: baseline; gap: 8px; padding: 2px 0; border-top: 1px solid var(--line-2); font-size: 13px; }
+      .x-row:first-child { border-top: 0; }
+      .x-row dt { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .x-row dt.x-wrap { white-space: normal; overflow: visible; }
+      .x-row dt small { color: var(--tx-2); font-size: 12px; margin-left: 4px; }
+      .x-row dd { flex: 0 0 auto; font-weight: 600; white-space: nowrap; }
+      .x-row--total { border-top: 1px solid var(--line); padding-top: 5px; font-size: 15px; }
+      .x-row--total dd { font-size: 17px; }
+      .x-row--total dt { font-weight: 600; }
+      .x-offs p { font-size: 12px; line-height: 1.3; color: var(--tx-2); }
+      .x-offs p + p { margin-top: 3px; }
+      .x-offs b { color: var(--tx); font-weight: 600; }
+      .x-offs .x-src { padding-top: 3px; border-top: 1px solid var(--line-2); margin-top: 5px; }
+
+      .x-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+      .x-now { min-width: 0; }
+      .x-big { font-size: 34px; font-weight: 600; line-height: 1.1; letter-spacing: -.01em; }
+      .x-big span { font-size: 18px; font-weight: 500; color: var(--tx-2); margin-left: 8px; letter-spacing: 0; }
+      .x-next { font-size: 15px; line-height: 1.3; color: var(--tx); margin-top: 2px; }
+      .x-next span { display: block; }
+      .x-clock { text-align: right; flex: 0 0 auto; display: flex; gap: 12px; align-items: flex-start; }
+      .x-clock p { font-size: 28px; font-weight: 500; line-height: 1.1; }
+      .x-clock small { display: block; font-size: 12px; color: var(--tx-2); margin-top: 2px; }
+      .x-info { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line); background: var(--panel); font-size: 22px; line-height: 1; cursor: pointer; }
+
+      .x-right > .x-wave { flex: 1 1 260px; height: 260px; min-height: 220px; display: flex; flex-direction: column; padding: 10px 12px; }
+      .x-cap { font-size: 13px; color: var(--tx-2); flex-shrink: 0; }
+      .x-cap b { color: var(--tx); font-weight: 600; }
+      .x-wavebox { flex: 1 1 180px; height: 180px; min-height: 160px; position: relative; margin-top: 6px; overflow: hidden; }
+      .x-wavebox canvas { position: absolute; left: 0; top: 0; }
+
+      .x-foot { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--tx-2); }
+      .x-foot p { min-width: 0; }
+      .x-press[data-state="offline"] { color: var(--red); }
+      .x-press[data-state="manual"] { color: var(--sun); }
+      .x-beat { white-space: nowrap; }
+      .x-beat i { display: inline-block; width: 7px; height: 7px; border-radius: 4px; background: var(--green); margin-right: 5px; font-style: normal; }
+
+      .x-err {
+        position: fixed; z-index: 2147483647; left: max(8px, var(--sl)); right: max(8px, var(--sr)); bottom: max(8px, var(--sb));
+        max-height: 30vh; overflow: hidden; padding: 6px 10px; border-radius: 8px;
+        background: #b3261e; color: #fff; font: 12px/1.35 var(--font); white-space: pre-wrap; word-break: break-word;
+      }
+      .x-err[hidden] { display: none; }
+      .x-ov { position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: calc(var(--vh, 1vh) * 100); background: rgba(5, 8, 11, .82); z-index: 10;
+        padding: max(16px, var(--st)) max(16px, var(--sr)) max(16px, var(--sb)) max(16px, var(--sl)); display: flex; justify-content: center; }
+      .x-ov[hidden] { display: none; }
+      .x-sheet { width: 100%; max-width: 820px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; overflow: hidden; }
+      .x-sheethead { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px 10px 20px; border-bottom: 1px solid var(--line-2); }
+      .x-sheethead h2 { font-size: 18px; font-weight: 600; }
+      .x-sheethead h2 small { font-size: 13px; font-weight: 500; color: var(--tx-2); margin-left: 8px; }
+      .x-tbl td.n { white-space: nowrap; }
+      .x-note { font-size: 12px; margin-top: 8px; }
+      .x-close { min-width: 88px; flex: 0 0 auto; }
+      .x-scroll { flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: 16px 20px 24px; }
+      .x-scroll section + section { margin-top: 22px; }
+      .x-scroll h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+      .x-scroll p { color: var(--tx-2); max-width: 68ch; }
+      .x-scroll p + p { margin-top: 6px; }
+      .x-scroll b { color: var(--tx); }
+      .x-figs { display: flex; gap: 10px; margin: 4px 0 10px; }
+      .x-figs div { flex: 1; border: 1px solid var(--line-2); border-radius: 12px; padding: 8px 12px; }
+      .x-figs strong { display: block; font-size: 22px; font-weight: 600; }
+      .x-figs span { font-size: 12px; color: var(--tx-2); }
+      .x-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .x-tbl th, .x-tbl td { text-align: left; padding: 6px 8px 6px 0; border-top: 1px solid var(--line-2); vertical-align: top; }
+      .x-tbl thead th { color: var(--tx-2); font-weight: 500; font-size: 12px; border-top: 0; }
+      .x-tbl tbody th { font-weight: 600; }
+      .x-tbl small { display: block; color: var(--tx-2); font-weight: 400; }
+      .x-tbl .m { color: var(--tx-2); }
+      .x-field label { display: flex; justify-content: space-between; font-weight: 500; }
+      .x-field output { color: var(--tx-2); }
+      .x-range { width: 100%; min-height: 44px; accent-color: var(--tide); }
+      .x-live { max-width: 260px; }
+      .x-live[hidden] { display: none; }
+      .x-warn { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+      .x-btns { display: flex; gap: 8px; align-items: flex-start; }
+      /* Settings page */
+      input, select { font: inherit; color: inherit; -webkit-user-select: text; user-select: text; }
+      select:focus-visible { outline: 2px solid var(--tide); outline-offset: 2px; }
+      .x-scroll h4 { font-size: 14px; font-weight: 600; margin: 14px 0 6px; color: var(--tx); }
+      .x-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px 14px; margin-top: 6px; }
+      .x-fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+      .x-fld > label { font-size: 13px; color: var(--tx-2); }
+      .x-in { width: 100%; min-height: 44px; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--tx); font-size: 16px; -webkit-appearance: none; appearance: none; }
+      select.x-in { padding-right: 30px; background-image: linear-gradient(45deg, transparent 50%, var(--tx-2) 50%), linear-gradient(135deg, var(--tx-2) 50%, transparent 50%); background-size: 6px 6px, 6px 6px; background-position: right 18px center, right 12px center; background-repeat: no-repeat; }
+      .x-in[hidden] { display: none; }
+      .x-in[aria-invalid="true"] { border-color: var(--red); }
+      .x-bad { color: var(--red); font-size: 12px; }
+      .x-bad[hidden] { display: none; }
+      .x-chks { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 6px 0 4px; }
+      .x-chk { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 10px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; font-size: 14px; }
+      .x-chk input { width: 22px; height: 22px; accent-color: var(--tide); }
+      .x-list { list-style: none; }
+      .x-list li { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line-2); font-size: 14px; }
+      .x-list li span { flex: 1 1 auto; min-width: 0; word-break: break-word; }
+      .x-list li.x-empty { color: var(--tx-2); padding: 10px 0; }
+      .x-addrow { display: flex; gap: 8px; margin-top: 6px; align-items: flex-start; }
+      .x-addrow .x-fld { flex: 1 1 auto; }
+      .x-sm { flex: 0 0 auto; min-width: 88px; }
+      .x-sm.x-xb { min-width: 44px; width: 44px; padding: 0; font-size: 16px; }
+      .x-primary { background: var(--tx); color: var(--bg); border-color: var(--tx); }
+      .x-tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .x-mk { min-width: 700px; }
+      .x-mk td { padding-right: 6px; }
+      .x-mk td .x-bad { display: block; }
+      .x-mk td .x-bad[hidden] { display: none; }
+      .x-sheetfoot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 12px 10px 20px; border-top: 1px solid var(--line-2); }
+      .x-sheetfoot .x-opt { flex: 0 0 auto; min-width: 100px; }
+      .x-msg { flex: 1 1 180px; font-size: 13px; color: var(--tx-2); }
+      .x-msg[data-bad="true"] { color: var(--red); }
+      .x-svnote { color: var(--sun); font-size: 13px; margin-bottom: 12px; }
+      .x-svnote[hidden] { display: none; }
+      /* Traffic lights: a 14 px dot in a 44 px tap area at the right end of each location button */
+      .x-locw { flex: 1 1 0%; position: relative; display: flex; min-width: 0; }
+      .x-locw .x-opt { flex: 1 1 auto; min-width: 0; padding-left: 8px; padding-right: 42px; }
+      /* narrow columns: the name wraps onto two lines instead of being clipped */
+      .x-locname { display: block; white-space: normal; overflow-wrap: break-word; line-height: 1.15; }
+      .x-light { position: absolute; right: 0; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+      .x-dot { position: relative; display: inline-block; flex: 0 0 auto; width: 14px; height: 14px; border-radius: 50%; background: #6b7280; color: #6b7280; }
+      .x-dot[data-c="red"] { background: #e5484d; color: #e5484d; box-shadow: 0 0 8px 2px rgba(229, 72, 77, .55); -webkit-animation: x-pulse 2s ease-in-out infinite; animation: x-pulse 2s ease-in-out infinite; }
+      .x-dot[data-c="amber"] { background: #f5a524; color: #f5a524; box-shadow: 0 0 8px 2px rgba(245, 165, 36, .5); }
+      .x-dot[data-c="green"] { background: #30a46c; color: #30a46c; }
+      .x-dot[data-ring="true"]::after { content: ""; position: absolute; left: -5px; top: -5px; right: -5px; bottom: -5px; border: 2px dashed currentColor; border-radius: 50%; }
+      .x-dot--big { width: 28px; height: 28px; }
+      .x-dot--big[data-ring="true"]::after { left: -7px; top: -7px; right: -7px; bottom: -7px; }
+      @-webkit-keyframes x-pulse { 0%, 100% { box-shadow: 0 0 5px 1px rgba(229, 72, 77, .4); } 50% { box-shadow: 0 0 14px 5px rgba(229, 72, 77, .8); } }
+      @keyframes x-pulse { 0%, 100% { box-shadow: 0 0 5px 1px rgba(229, 72, 77, .4); } 50% { box-shadow: 0 0 14px 5px rgba(229, 72, 77, .8); } }
+      @media (prefers-reduced-motion: reduce) { .x-dot[data-c] { -webkit-animation: none; animation: none; } }
+      .x-sea { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      /* Sea status detail page */
+      .x-dvh { display: flex; align-items: center; gap: 12px; min-width: 0; }
+      .x-dvh small { margin-left: 0; }
+      .x-reasons { list-style: none; }
+      .x-reasons li { padding: 5px 0; border-top: 1px solid var(--line-2); font-size: 14px; color: var(--tx); }
+      .x-reasons li:first-child { border-top: 0; }
+      .x-reasons li.x-dim { color: var(--tx-2); font-size: 13px; }
+      .x-of { min-width: 680px; }
+      .x-st[data-c="red"] { color: #e5484d; font-weight: 600; }
+      .x-st[data-c="amber"] { color: #f5a524; font-weight: 600; }
+      .x-st[data-c="green"] { color: #30a46c; }
+      .x-st[data-c="grey"] { color: var(--tx-2); }
+      .x-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-right: 6px; background: #6b7280; color: #fff; }
+      .x-badge[data-lv="yellow"] { background: #f5d90a; color: #1a1a1a; }
+      .x-badge[data-lv="amber"] { background: #f5a524; color: #1a1a1a; }
+      .x-badge[data-lv="red"] { background: #e5484d; color: #fff; }
+      .x-wl { list-style: none; }
+      .x-wl li { padding: 8px 0; border-top: 1px solid var(--line-2); font-size: 14px; }
+      .x-wl li:first-child { border-top: 0; }
+      .x-wl li small { display: block; color: var(--tx-2); font-size: 12px; margin-top: 2px; }
+      .x-wl li.x-dim { opacity: .55; }
+      .x-wl li.x-dim .x-badge { background: #6b7280; color: #fff; }
+      .x-scroll a { color: var(--tide); }
+      .x-scroll h3 small { font-size: 12px; font-weight: 500; color: var(--tx-2); margin-left: 6px; }
+      .x-dvrows { max-width: 620px; }
+      .x-dvrows .x-row dd { white-space: normal; text-align: right; font-weight: 500; word-break: break-word; }
+      .x-dvrows .x-row dt { white-space: normal; }
+      .x-dvmsg { font-size: 13px; color: var(--tx-2); margin-top: 6px; }
+      /* Narrow portrait screens only: stack the columns and let the app scroll. The landscape kiosk is unchanged. */
+      @media (max-width: 700px) {
+        .x-app { flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        .x-left, .x-right { height: auto; flex: 0 0 auto; }
+        .x-left > .x-dialbox { flex: 0 0 auto; height: 240px; }
+        .x-right > .x-wave { flex: 0 0 auto; height: 280px; }
+        .x-top { flex-wrap: wrap; }
+        .x-foot { flex-wrap: wrap; padding-bottom: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="x-err" id="errBar" role="alert" hidden></div>
+    <script>
+      (function () {
+        var seen = {}, list = [];
+        function show(msg) {
+          try {
+            if (seen[msg]) return;
+            seen[msg] = 1;
+            list.push(msg);
+            if (list.length > 4) list.shift();
+            var bar = document.getElementById("errBar");
+            if (!bar) return;
+            bar.textContent = list.join("\n");
+            bar.hidden = false;
+          } catch (e) {}
+        }
+        /* Only our own failures reach the banner. Host-injected scripts (the Cloudflare challenge loader and
+           its sandboxed iframe), cross-origin "Script error.", fetch aborts and offline pressure are ignored. */
+        var CF = /cdn-cgi|challenge-platform|__CF\$cv\$params/, endLine = 0;
+        function base(u) { return String(u || "").split("#")[0]; }
+        function doc() { return base(location.href); }
+        function short(u) { var s = base(u).split("?")[0], i = s.lastIndexOf("/"); return (i >= 0 ? s.slice(i + 1) : s) || "index.html"; }
+        function where(file, line, col) { return " · " + short(file || doc()) + " " + (line || "?") + ":" + (col || "?"); }
+        function fromStack(e) {
+          var s = e && e.stack ? String(e.stack) : "", m = s.match(/(\S+?):(\d+):(\d+)\)?\s*(?:\n|$)/);
+          if (!m) return null;
+          return { file: m[1].replace(/^.*@/, "").replace(/^\(/, ""), line: +m[2], col: +m[3] };
+        }
+        window.harkErr = function (sec, e) {
+          var m = e && e.message ? e.message : String(e);
+          var f = { file: e && (e.sourceURL || e.fileName), line: e && (e.line || e.lineNumber), col: e && (e.column || e.columnNumber) };
+          if (!f.line) f = fromStack(e) || f;
+          show((sec || "script") + ": " + m + where(f.file, f.line, f.col));
+        };
+        // called by the last statement of our main script: anything reported below that line is not ours
+        window.harkEnd = function (e) { var f = fromStack(e); if (f && f.line) endLine = f.line; };
+        /* window.onerror: "Script error." with line 0 is the host's cross-origin challenge script, never ours */
+        window.onerror = function (message, source, lineno, colno, err) {
+          try {
+            var msg = String(message || ""), file = String(source || ""), line = lineno || 0;
+            var stack = err && err.stack ? String(err.stack) : "";
+            if (msg === "Script error." || msg === "Script error" || /^Script error\.?$/.test(msg)) return true;
+            if (!line) return true;
+            if (file && base(file) !== doc()) return true;
+            if (CF.test(msg + " " + file + " " + stack)) return true;
+            if (endLine && line > endLine) return true;
+            show("uncaught: " + msg + where(file, line, colno));
+          } catch (x) {}
+          return false;
+        };
+        window.addEventListener("unhandledrejection", function (ev) {
+          try {
+            var r = ev && ev.reason;
+            // only Error objects thrown by our own code reach the banner
+            if (!r || typeof r !== "object" || !(r instanceof Error)) return;
+            var name = r.name ? String(r.name) : "", m = r.message ? String(r.message) : String(r);
+            var stack = r.stack ? String(r.stack) : "";
+            if (name === "AbortError" || name === "TimeoutError" || /abort/i.test(m)) return;
+            if (/Load failed|Failed to fetch|NetworkError|network connection/i.test(m)) return;
+            if (CF.test(m + " " + stack)) return;
+            var f = fromStack(r);
+            if (!f || base(f.file) !== doc() || (endLine && f.line > endLine)) return;
+            show("unhandled rejection: " + m + where(f.file, f.line, f.col));
+          } catch (x) {}
+        });
+        document.addEventListener("click", function (e) {
+          if (e.target && e.target.id === "errBar") e.target.hidden = true;
+        });
+      })();
+    </script>
+    <div class="x-app" id="app">
+      <div class="x-left">
+        <div class="x-seg" role="group" aria-label="Location">
+          <div class="x-locw">
+            <button type="button" class="x-opt" data-loc="gullane" aria-pressed="true"><span class="x-locname">Gullane</span></button>
+            <button type="button" class="x-light" data-light="gullane" aria-label="Gullane status: loading. Open details" aria-haspopup="dialog"><span class="x-dot"></span></button>
+          </div>
+          <div class="x-locw">
+            <button type="button" class="x-opt" data-loc="nb" aria-pressed="false"><span class="x-locname">North Berwick</span></button>
+            <button type="button" class="x-light" data-light="nb" aria-label="North Berwick status: loading. Open details" aria-haspopup="dialog"><span class="x-dot"></span></button>
+          </div>
+        </div>
+        <p class="x-phase">Based on Leith standard port</p>
+        <div class="x-dialbox" id="dialBox"><canvas id="dial" role="img" aria-label="Tide clock dial, based on Leith standard port: a short Sun hand (S2) and a long Moon hand (M2) on a centre pivot. Straight up is each hand's high water."></canvas></div>
+        <p class="x-phase" id="phase">&nbsp;</p>
+        <div class="x-panel">
+          <p class="x-h">Offsets</p>
+          <div class="x-offs">
+            <p><b>Sun hand:</b> <span id="sunOff">HW at 03:11 and 15:11 GMT</span></p>
+            <p><b>Moon hand:</b> HW 1 h 42 m after the mean Moon crosses the meridian here.</p>
+            <p><b>Moon hand next up: <span id="moonUp">–</span></b></p>
+            <p class="x-src" id="secSrc">Leith constants (TICON-4), with Fidra secondary-port differences applied (<span id="secTxt">HW −1 min, high-water heights −0.2 m</span>).</p>
+          </div>
+        </div>
+        <div class="x-panel">
+          <p class="x-h">Height sum</p>
+          <dl class="x-rows">
+            <div class="x-row"><dt>Mean level <small>Z0</small></dt><dd>+3.29 m</dd></div>
+            <div class="x-row"><dt>Moon hand <small id="m2d">M2</small></dt><dd id="m2">–</dd></div>
+            <div class="x-row"><dt>Sun hand <small id="s2d">S2</small></dt><dd id="s2">–</dd></div>
+            <div class="x-row"><dt>Lunar distance <small>N2+2N2+NU2+L2</small></dt><dd id="n2">–</dd></div>
+            <div class="x-row"><dt>Diurnal <small>K1+O1+Q1+P1</small></dt><dd id="di">–</dd></div>
+            <div class="x-row"><dt>Shallow water <small>M4+MS4+MN4+M6+2MS6</small></dt><dd id="sw">–</dd></div>
+            <div class="x-row"><dt>Other <small>K2+T2+Sa</small></dt><dd id="ot">–</dd></div>
+            <div class="x-row"><dt id="fad" class="x-wrap">Gullane adjustment from Leith</dt><dd id="fa">–</dd></div>
+            <div class="x-row"><dt>Air pressure <small id="prd">1013 hPa</small></dt><dd id="pr">–</dd></div>
+            <div class="x-row x-row--total"><dt>Tide height now <small>above chart datum</small></dt><dd id="total">–</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="x-right">
+        <div class="x-top">
+          <div class="x-now">
+            <p class="x-big"><b id="bigH">–</b><span id="trend">&nbsp;</span></p>
+            <p class="x-next" id="nextTurns"><span id="next1">&nbsp;</span><span id="next2">&nbsp;</span></p>
+          </div>
+          <div class="x-clock">
+            <p><span id="now">--:--:--</span><small id="nowDate">Europe/London</small></p>
+            <div class="x-btns">
+              <button type="button" class="x-info" id="infoBtn" aria-label="About this clock, settings and caution" aria-haspopup="dialog">ⓘ</button>
+              <button type="button" class="x-info" id="gearBtn" aria-label="Settings" aria-haspopup="dialog">⚙</button>
+            </div>
+          </div>
+        </div>
+        <div class="x-panel x-wave">
+          <p class="x-cap"><b>Past ← now → future</b> · metres above chart datum · solid: full prediction · faint: two hands (M2+S2) · dotted: one hand only (M2)</p>
+          <div class="x-wavebox" id="waveBox"><canvas id="wave" role="img" aria-label="Predicted tide height over the six hours either side of now"></canvas></div>
+        </div>
+        <div class="x-foot">
+          <p><span class="x-press" id="press" data-state="loading">Air pressure: fetching live pressure, using 1013 hPa</span><span class="x-sea" id="seaLine">Sea status: loading</span>Approximate: check an official tide table before swimming or boating.</p>
+          <p class="x-beat"><i></i><span id="beat">running · --:--:--</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="x-ov" id="ov" hidden role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+      <div class="x-sheet">
+        <div class="x-sheethead">
+          <h2 id="ovTitle">Two Hand Tide Clock — Gullane <small>Leith-based</small></h2>
+          <button type="button" class="x-opt x-close" id="ovClose">Close</button>
+        </div>
+        <div class="x-scroll" id="ovScroll">
+          <section>
+            <h3>Why the second hand?</h3>
+            <p>The main reason for the second (Sun) hand is that it shows spring and neap tides. When the Sun and Moon hands line up, at new and full moon, their pulls add together and you get big spring tides: higher highs and lower lows. When the hands point in opposite directions, at the quarter moons, they partly cancel and you get small neap tides. (In the sky the Sun and Moon are then at right angles, 90° apart; the clock hands turn twice per day, so that 90° shows as 180° on the dial.) So at a glance the clock shows whether today's tide is a big one or a small one, which a one-hand clock can't do.</p>
+            <p>Better accuracy is a secondary, marginal benefit. Adding the Sun hand cuts the average high-water timing error only from about 27 to 23 minutes, and the average height error from about 0.39 to 0.22 m (Leith, 18.6-year simulation, details below).</p>
+          </section>
+          <section>
+            <h3>Air pressure</h3>
+            <div class="x-field">
+              <label for="baro">Manual pressure <output id="baroOut">1013 hPa</output></label>
+              <input class="x-range" type="range" id="baro" min="950" max="1050" step="1" value="1013" />
+              <button type="button" class="x-opt x-live" id="useLive" hidden>Use live pressure</button>
+            </div>
+            <p>Live pressure comes from Open-Meteo every <span id="pEveryTxt">30</span> minutes. 1 cm of tide per hPa from <span id="pBaseTxt">1013</span> hPa.</p>
+          </section>
+          <section>
+            <h3>Caution</h3>
+            <div class="x-warn">
+              <p><b>Predictions are approximate; check an official tide table before swimming or boating.</b></p>
+              <p>Both places use the Admiralty Fidra secondary-port differences on Leith. Wind surge is not included.</p>
+            </div>
+          </section>
+          <section>
+            <h3>How accurate is each clock?</h3>
+            <p>Most tide clocks rely on one hand, following the Moon's gravitational pull, but this leads to errors of up to 2 h 11 min and 1.5 m (34 min and 0.42 m on average). This clock takes account of the impact of the Sun's gravitational pull, and reduces the error to up to 2 h 1 min and 0.9 m (24 min and 0.24 m on average). The online version of the clock takes account of N2 lunar distance, K1/O1 diurnal inequality, M4 shallow-water distortion and live air pressure, and this reduces the error to up to 31 min and 0.17 m (4 min and 3.5 cm on average).</p>
+            <p>The largest time errors come at neap low waters, when the tide is nearly flat. 95% of high and low waters fall within 84 min (one hand), 59 min (two hands) and 11 min (online).</p>
+          </section>
+          <section>
+            <h3>How the figures were worked out</h3>
+            <table class="x-tbl">
+              <thead><tr><th>Clock</th><th>Max time</th><th>95% time</th><th>Average time</th><th>Max height</th><th>95% height</th><th>Average height</th></tr></thead>
+              <tbody>
+                <tr><th>One hand <small>M2</small></th><td class="n">131 min</td><td class="n">84 min</td><td class="n">34 min</td><td class="n">1.53 m</td><td class="n">0.94 m</td><td class="n">0.42 m</td></tr>
+                <tr><th>Two hands <small>M2+S2</small></th><td class="n">121 min</td><td class="n">59 min</td><td class="n">24 min</td><td class="n">0.92 m</td><td class="n">0.57 m</td><td class="n">0.24 m</td></tr>
+                <tr><th>Online <small>18 constituents</small></th><td class="n">31 min</td><td class="n">11 min</td><td class="n">4 min</td><td class="n">0.17 m</td><td class="n">0.09 m</td><td class="n">0.035 m</td></tr>
+              </tbody>
+            </table>
+            <p class="x-note">Truth = the full 47-constituent Leith prediction (TICON-4 constants), simulated from 1 Jan 2026 for 18.61 years (one full nodal cycle) at 1-minute steps: 26,268 high and low waters. Each clock gets one fixed time setting (its mean error removed). High waters only: one hand max 107 min, two hands max 80 min. The chart's dotted line is the one-hand clock with the same setting used here.</p>
+          </section>
+          <section>
+            <h3>Check against the official tables</h3>
+            <p>Compared with the NTSLF Leith predictions for 22 Oct – 18 Nov 2026 (108 high and low waters), the online clock averages 7.9 min and 5 cm of difference (worst 33 min, 0.19 m). The mean timing bias is −1.5 min, so there is no time-zone or phase error.</p>
+          </section>
+          <section>
+            <h3>Weather (not included above)</h3>
+            <p>Air pressure moves the sea about 1 cm per hPa, roughly ±0.3 m from 980 to 1040 hPa, and the live pressure feed corrects for this. Wind surge isn't modelled. Whatever difference is left on the day is weather.</p>
+          </section>
+          <section>
+            <h3>How it works</h3>
+            <div class="x-figs">
+              <div><strong>14.77 d</strong><span>Springs to springs</span></div>
+              <div><strong>4.8 m</strong><span>Spring range, 2×(1.80+0.61)</span></div>
+              <div><strong>2.4 m</strong><span>Neap range, 2×(1.80−0.61)</span></div>
+            </div>
+            <p>Two centred hands: the Moon hand is M2, with Leith's real amplitude of 1.80 m, turning once every 12 h 25 m 14 s; the Sun hand is S2, amplitude 0.61 m, turning once every 12 h. The Sun hand slowly gains, so the hands line up every 14.77 days (springs) and point opposite ways in between (neaps).</p>
+            <p>Each hand's height is its amplitude times the cosine of its angle from straight up. Add the two to the 3.29 m mean level and you read the tide; the height sum table does the adding, plus the smaller terms.</p>
+          </section>
+          <section>
+            <h3>The physical prototype</h3>
+            <p><b>Moon hand (M2):</b> a commercial "time and tide" quartz movement, one turn per 12 h 25 m.</p>
+            <p><b>Sun hand (S2):</b> an ordinary 12 h hand.</p>
+            <p><b>Assembly:</b> both hands centred on the same pivot, lengths in the ratio of their Leith amplitudes, 1.80 m to 0.61 m (about 3:1).</p>
+          </section>
+          <section>
+            <h3>Sources</h3>
+            <p>Constants: TICON-4 (Hart-Davis, Dettmering &amp; Seitz 2025, doi:10.17882/109129, CC BY 4.0), Leith BODC gauge 1981–2025. Mean level 3.29 m above chart datum. Secondary-port differences: Admiralty, Fidra. Check: NTSLF Leith predictions.</p>
+            <p>The chart's level markers (Aberlady flooding band, Aberlady submarines, Midden Rocks) are Charlie's estimates and can be changed in Settings (⚙) (submarine wrecks: no published height; chart 734 shows the obstruction drying near low water).</p>
+          </section>
+          <section>
+            <button type="button" class="x-opt x-sm" id="ovSettings">Settings</button>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="x-ov" id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvTitle">
+      <div class="x-sheet">
+        <div class="x-sheethead">
+          <h2 id="dvTitle" class="x-dvh"><span class="x-dot x-dot--big" id="dvDot"></span><span id="dvName">Gullane — sea status</span><small id="dvWord">grey</small></h2>
+          <button type="button" class="x-opt x-close" id="dvClose">Close</button>
+        </div>
+        <div class="x-scroll" id="dvScroll">
+          <div id="dvBody"></div>
+          <section>
+            <div class="x-btns">
+              <button type="button" class="x-opt x-sm" id="dvRefresh">Refresh now</button>
+              <button type="button" class="x-opt x-sm" id="dvSettings">Settings</button>
+            </div>
+            <p class="x-dvmsg" id="dvMsg" role="status"></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="x-ov" id="sv" hidden role="dialog" aria-modal="true" aria-labelledby="svTitle">
+      <div class="x-sheet">
+        <div class="x-sheethead">
+          <h2 id="svTitle">Settings</h2>
+          <button type="button" class="x-opt x-close" id="svClose">Close</button>
+        </div>
+        <div class="x-scroll" id="svScroll">
+          <p class="x-svnote" id="svNote" hidden>This copy of the page can't save settings on this device; they last until the page reloads. The GitHub Pages copy saves them.</p>
+          <div id="svBody"></div>
+        </div>
+        <div class="x-sheetfoot">
+          <button type="button" class="x-opt x-primary" id="svSave">Save</button>
+          <button type="button" class="x-opt" id="svCancel">Cancel</button>
+          <button type="button" class="x-opt" id="svReset">Reset to defaults</button>
+          <p class="x-msg" id="svMsg" role="status"></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+        // Defaults: edit here, or use Settings on the page
+        var DEFAULTS = {
+          amberHoursAfterOverflow: 48,
+          waveAmberM: 1.0, // wave or swell height threshold, metres
+          waveLookaheadH: 3, // hours ahead checked for waves
+          warningLevels: { yellow: true, amber: true, red: true },
+          warningTypes: { wind: true, rain: true, snow: true, ice: true, thunderstorms: true, fog: true, "extreme heat": true, lightning: true },
+          warningArea: "East Lothian", // a warning counts only if its area list contains this text; blank = whole Lothian & Borders region
+          warningLeadH: 0, // also count warnings starting within this many hours; 0 = only warnings in force now
+          statusUrl: ["status", "json"].join("."), // = status.json; written split so the page bundler does not treat it as a local file to fold in
+          statusRefreshMin: 15, statusStaleH: 3,
+          pressureFallbackHpa: 1013, pressureRefreshMin: 30, pressureStaleH: 6,
+          waveRefreshMin: 30,
+          sunHandShiftMin: 0, // moves only the Sun hand on the dial and its "HW at 03:11 and 15:11 GMT" text
+          dailyReload: "03:30",
+          // dtMin / hwCut: Fidra secondary-port differences from Leith (HW time, high-water height reduction)
+          locations: {
+            gullane: { name: "Gullane", lat: 56.036, lon: -2.83, marineLat: 56.045, marineLon: -2.86, dtMin: -1, hwCut: 0.2, overflows: ["GULLANE WWTW CSO"] },
+            nb: { name: "North Berwick", lat: 56.058, lon: -2.718, marineLat: 56.075, marineLon: -2.72, dtMin: -1, hwCut: 0.2,
+              overflows: ["NORTH BERWICK WESTER DUNES WWPS CSO", "NORTH BERWICK, FIDRA SPS CSO", "NORTH BERWICK, 1 MELBOURNE ROAD CSO", "NORTH BERWICK, TANTALLON TERRACE CSO"] }
+          },
+          // Charlie's estimates. Heights in metres above chart datum (Leith), the same datum and y-scale as the wave chart.
+          markers: [
+            { loc: "gullane", kind: "band", lo: 4.10, hi: 4.25, label: "Aberlady Bay floods" },
+            { loc: "gullane", kind: "line", h: 1.5, label: "Aberlady submarines visible (est.)" },
+            { loc: "nb", kind: "line", h: 4.5, label: "Midden Rocks submerged" }
+          ]
+        };
+        // GitHub Pages copy; lets the Hark-hosted fallback page read the same data
+        var STATUS_FALLBACK_URL = "https://charlie001002.github.io/tide-clock/status.json";
+        var CFG_KEY = "tideClockConfig.v1";
+        function clone(o) { return JSON.parse(JSON.stringify(o)); }
+        function isObj(o) { return o !== null && typeof o === "object" && !Array.isArray(o); }
+        function finite(v) { return typeof v === "number" && isFinite(v); }
+        function toMin(s) { var m = /^(\d{1,2}):(\d{2})$/.exec(String(s || "")); if (!m || +m[1] > 23 || +m[2] > 59) return -1; return +m[1] * 60 + +m[2]; }
+        // allowed range per numeric field (by key name); anything else only has to be a finite number
+        var RANGE = {
+          lat: [-90, 90], marineLat: [-90, 90], lon: [-180, 180], marineLon: [-180, 180],
+          pressureFallbackHpa: [870, 1090], dtMin: [-720, 720], sunHandShiftMin: [-720, 720], hwCut: [-5, 5],
+          amberHoursAfterOverflow: [0, 1000], waveAmberM: [0, 30], waveLookaheadH: [0, 72], warningLeadH: [0, 168],
+          statusRefreshMin: [1, 1440], pressureRefreshMin: [1, 1440], waveRefreshMin: [1, 1440],
+          statusStaleH: [0.1, 168], pressureStaleH: [0.1, 168]
+        };
+        var EMPTY_OK = { warningArea: 1 };
+        function getPath(o, p) { var a = p.split("."); for (var i = 0; i < a.length; i++) { if (o == null) return undefined; o = o[a[i]]; } return o; }
+        function setPath(o, p, v) { var a = p.split("."); for (var i = 0; i < a.length - 1; i++) { if (!isObj(o[a[i]])) o[a[i]] = {}; o = o[a[i]]; } o[a[a.length - 1]] = v; }
+        function numOk(v, key) { var r = RANGE[key]; return finite(v) && (!r || (v >= r[0] && v <= r[1])); }
+        function strOk(v, key) {
+          if (typeof v !== "string") return false;
+          if (key === "dailyReload") return toMin(v) >= 0;
+          return EMPTY_OK[key] ? true : v.trim() !== "";
+        }
+        // one marker, or null if it is unusable
+        function cleanMarker(m) {
+          if (!isObj(m) || typeof m.loc !== "string" || !Object.prototype.hasOwnProperty.call(DEFAULTS.locations, m.loc)) return null;
+          var label = typeof m.label === "string" ? m.label : "";
+          if (m.kind === "band" || (m.kind === undefined && finite(m.lo) && finite(m.hi))) {
+            if (!finite(m.lo) || !finite(m.hi)) return null;
+            return { loc: m.loc, kind: "band", lo: Math.min(m.lo, m.hi), hi: Math.max(m.lo, m.hi), label: label };
+          }
+          if (!finite(m.h)) return null;
+          return { loc: m.loc, kind: "line", h: m.h, label: label };
+        }
+        /* Saved values merged over DEFAULTS key by key: new defaults still appear, and an invalid saved value
+           (wrong type, NaN, out of range) falls back to the default for that field only. */
+        function mergeCfg(def, sav, key) {
+          var i, out;
+          if (Array.isArray(def)) {
+            if (!Array.isArray(sav)) return clone(def);
+            out = [];
+            for (i = 0; i < sav.length; i++) {
+              if (key === "markers") { var m = cleanMarker(sav[i]); if (m) out.push(m); }
+              else if (typeof sav[i] === "string" && sav[i].trim()) out.push(sav[i].trim());
+            }
+            return out;
+          }
+          if (isObj(def)) {
+            var s = isObj(sav) ? sav : {};
+            out = {};
+            for (var k in def) if (Object.prototype.hasOwnProperty.call(def, k)) out[k] = mergeCfg(def[k], s[k], k);
+            return out;
+          }
+          if (typeof def === "number") return numOk(sav, key) ? sav : def;
+          if (typeof def === "boolean") return typeof sav === "boolean" ? sav : def;
+          if (typeof def === "string") return strOk(sav, key) ? sav : def;
+          return def;
+        }
+        // throws only if the structure the running clock needs is missing
+        function checkCfg(c) {
+          ["gullane", "nb"].forEach(function (id) {
+            var L = c.locations && c.locations[id];
+            if (!isObj(L) || !finite(L.lat) || !finite(L.lon) || !finite(L.dtMin) || !finite(L.hwCut)) throw new Error("bad setting locations." + id);
+          });
+          if (!Array.isArray(c.markers)) throw new Error("bad setting markers");
+          if (toMin(c.dailyReload) < 0) throw new Error("bad setting dailyReload");
+        }
+        /* localStorage throws in the Hark host's sandboxed iframe: fall back to memory for this session */
+        var store = { ok: false, mem: null };
+        try { var lsT = window.localStorage; lsT.setItem("__tc", "1"); lsT.removeItem("__tc"); store.ok = true; } catch (e) { store.ok = false; }
+        function storeCfg(c) {
+          store.mem = clone(c);
+          if (!store.ok) return;
+          try { window.localStorage.setItem(CFG_KEY, JSON.stringify(c)); } catch (e) { store.ok = false; }
+        }
+        function clearCfg() {
+          store.mem = null;
+          if (!store.ok) return;
+          try { window.localStorage.removeItem(CFG_KEY); } catch (e) { store.ok = false; }
+        }
+        function loadCfg() {
+          var saved = null;
+          if (store.ok) { try { var s = window.localStorage.getItem(CFG_KEY); if (s) saved = JSON.parse(s); } catch (e) { report("saved settings", e); } }
+          var c = mergeCfg(DEFAULTS, saved);
+          try { checkCfg(c); return c; } catch (e) { report("saved settings ignored", e); return clone(DEFAULTS); }
+        }
+        var CFG = loadCfg();
+        var D2R = Math.PI / 180, R2D = 180 / Math.PI, HOUR = 3600000, MIN = 60000, WIN = 6.2;
+        var LOCS = CFG.locations;
+        // pLive / pTime: last good value and when it arrived; pFails: failures since the last success
+        var st = { loc: "gullane", pLive: null, pTime: 0, pFails: 0, pTried: false, manual: false, pManual: Math.round(CFG.pressureFallbackHpa), rising: true };
+        function report(where, e) { try { if (window.harkErr) window.harkErr(where, e); } catch (x) {} }
+        function section(name, fn) { try { fn(); } catch (e) { report(name, e); } }
+        function step(name, fn, a) { try { fn(a); } catch (e) { report(name, e); } }
+        function $(id) { return document.getElementById(id); }
+        function rev(x) { return x - 360 * Math.floor(x / 360); }
+        function sind(x) { return Math.sin(x * D2R); }
+        function cosd(x) { return Math.cos(x * D2R); }
+
+// Leith harmonic tide engine. 18 constituents from TICON-4 (Leith BODC gauge, 1981-2025, CC BY 4.0).
+var TIDE = {
+  Z0: 3.286,
+  CON: [
+    ["M2", 1.7978, 55.36, [2,0,0,0,0], 0, "M2"],
+    ["S2", 0.6138, 95.81, [2,2,-2,0,0], 0, "1"],
+    ["N2", 0.3511, 31.93, [2,-1,0,1,0], 0, "M2"],
+    ["2N2", 0.0464, 6.91, [2,-2,0,2,0], 0, "M2"],
+    ["NU2", 0.0727, 37.02, [2,-1,2,-1,0], 0, "M2"],
+    ["L2", 0.0628, 72.98, [2,1,0,-1,0], 180, "M2"],
+    ["T2", 0.0278, 91.48, [2,2,-3,0,1], 0, "1"],
+    ["K2", 0.1751, 93.81, [2,2,0,0,0], 0, "K2"],
+    ["K1", 0.1205, 220.79, [1,1,0,0,0], -90, "K1"],
+    ["O1", 0.1420, 65.87, [1,-1,0,0,0], 90, "O1"],
+    ["Q1", 0.0470, 14.24, [1,-2,0,1,0], 90, "O1"],
+    ["P1", 0.0371, 207.01, [1,1,-2,0,0], 90, "1"],
+    ["M4", 0.0760, 183.08, [4,0,0,0,0], 0, "M2^2"],
+    ["MS4", 0.0683, 299.21, [4,2,-2,0,0], 0, "M2"],
+    ["MN4", 0.0174, 125.45, [4,-1,0,1,0], 0, "M2^2"],
+    ["M6", 0.0483, 286.28, [6,0,0,0,0], 0, "M2^3"],
+    ["2MS6", 0.0475, 340.42, [6,2,-2,0,0], 0, "M2^2"],
+    ["SA", 0.0738, 227.37, [0,0,1,0,-1], 0, "1"]
+  ]
+};
+var TD2R = Math.PI / 180;
+function tideAstro(ms) {
+  var T = (ms / 86400000 + 2440587.5 - 2451545.0) / 36525;
+  var s = 218.3164477 + 481267.88123421 * T, h = 280.46646 + 36000.76983 * T;
+  var p = 83.3532465 + 4069.0137287 * T, N = 125.04452 - 1934.136261 * T, p1 = 282.94 + 1.7192 * T;
+  var ut = ((ms / 3600000) % 24 + 24) % 24, tau = 15 * ut + 180 + h - s;
+  return [tau, s, h, p, p1, N];
+}
+function tideNodal(fam, N) {
+  var sN = Math.sin(N * TD2R), cN = Math.cos(N * TD2R), s2N = Math.sin(2 * N * TD2R), c2N = Math.cos(2 * N * TD2R);
+  var fM2 = 1 - 0.037 * cN, uM2 = -2.1 * sN;
+  if (fam === "M2") return [fM2, uM2];
+  if (fam === "M2^2") return [fM2 * fM2, 2 * uM2];
+  if (fam === "M2^3") return [fM2 * fM2 * fM2, 3 * uM2];
+  if (fam === "K2") return [1.024 + 0.286 * cN + 0.008 * c2N, -17.7 * sN + 0.7 * s2N];
+  if (fam === "K1") return [1.006 + 0.115 * cN - 0.009 * c2N, -8.9 * sN + 0.7 * s2N];
+  if (fam === "O1") return [1.009 + 0.187 * cN - 0.015 * c2N, 10.8 * sN - 1.3 * s2N];
+  return [1, 0];
+}
+var TIDE_OUT = { total: 0, terms: {}, angle: {} };
+function tideLeith(ms) {
+  var a = tideAstro(ms), C = TIDE.CON, out = TIDE_OUT, tot = TIDE.Z0;
+  for (var i = 0; i < C.length; i++) {
+    var c = C[i], d = c[3], nf = tideNodal(c[5], a[5]);
+    var ang = d[0] * a[0] + d[1] * a[1] + d[2] * a[2] + d[3] * a[3] + d[4] * a[4] + c[4] + nf[1] - c[2];
+    ang = ((ang % 360) + 360) % 360;
+    var v = c[1] * nf[0] * Math.cos(ang * TD2R);
+    out.terms[c[0]] = v; out.angle[c[0]] = ang; tot += v;
+  }
+  out.total = tot;
+  return out;
+}
+// dtMin / hwCut come from the selected location's settings (applyCfg); lwRef / hwRef are fixed
+var SEC = { dtMin: LOCS[st.loc].dtMin, hwCut: LOCS[st.loc].hwCut, lwRef: 0.8, hwRef: 5.4 };
+function secondaryHeight(hLeith) { return hLeith - SEC.hwCut * (hLeith - SEC.lwRef) / (SEC.hwRef - SEC.lwRef); }
+function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondaryHeight(r.total); }
+
+        /* Hands and height sum read Leith at ms + 1 min (Fidra HW −1 min). TIDE_OUT is shared: copy what you need straight away. */
+        var HAND_SHIFT = -SEC.dtMin * MIN;
+        // the dial's two angles, copied out of TIDE_OUT
+        var HANDS = { m2: 0, s2: 0 };
+        function handsAt(ms) { var r = tideLeith(ms + HAND_SHIFT); HANDS.m2 = r.angle.M2; HANDS.s2 = r.angle.S2; return HANDS; }
+
+        /* Next time the Moon hand points straight up: angle.M2 crosses 0, turning about 28.98°/h */
+        var M2_RATE = 28.9841042;
+        function m2Phase(ms) { return rev(tideLeith(ms + HAND_SHIFT).angle.M2); }
+        function nextMoonUp(now) {
+          var t = now + ((360 - m2Phase(now)) / M2_RATE) * HOUR;
+          for (var i = 0; i < 4; i++) { var q = m2Phase(t); t -= ((q > 180 ? q - 360 : q) / M2_RATE) * HOUR; }
+          while (t <= now) t += (360 / M2_RATE) * HOUR;
+          return t;
+        }
+
+        var P_STALE = CFG.pressureStaleH * HOUR, P_RECENT = CFG.pressureRefreshMin * MIN + 5 * MIN;
+        function pFresh() { return st.pLive !== null && Date.now() - st.pTime <= P_STALE; }
+        function pressure() { return st.manual ? st.pManual : pFresh() ? st.pLive : CFG.pressureFallbackHpa; }
+        // 1 cm of tide per hPa, relative to the fallback pressure (1013 hPa by default)
+        function prCorr() { return (CFG.pressureFallbackHpa - pressure()) * 0.01; }
+        // local astronomical height (Leith + Fidra), everything except pressure: the one function for readout, wave and HW/LW search
+        function astro(ms) { return tideAt(ms); }
+        function slope(ms) { return astro(ms + 30000) - astro(ms - 30000); }
+
+        /* Formatting, in Europe/London */
+        var TZ = "Europe/London";
+        /* Plain options only (hour12, not hourCycle); each formatter falls back to device time if Intl refuses it */
+        function mkFmt(opts) {
+          try { return new Intl.DateTimeFormat("en-GB", opts); } catch (e) { report("Intl", e); return null; }
+        }
+        var fHM = mkFmt({ timeZone: TZ, hour: "2-digit", minute: "2-digit", hour12: false });
+        var fHMS = mkFmt({ timeZone: TZ, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+        var fZone = mkFmt({ timeZone: TZ, timeZoneName: "short" });
+        var fDay = mkFmt({ timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" });
+        var fDate = mkFmt({ timeZone: TZ, weekday: "long", day: "numeric", month: "long" });
+        function pad2(n) { return (n < 10 ? "0" : "") + n; }
+        function fmt(f, ms, fb) {
+          if (f) { try { return f.format(new Date(ms)); } catch (e) {} }
+          return fb(new Date(ms));
+        }
+        function fix24(s) { return s.replace(/^24/, "00"); }
+        function hm(ms) { return fix24(fmt(fHM, ms, function (d) { return pad2(d.getHours()) + ":" + pad2(d.getMinutes()); })); }
+        function hms(ms) { return fix24(fmt(fHMS, ms, function (d) { return pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + ":" + pad2(d.getSeconds()); })); }
+        function dayKey(ms) { return fmt(fDay, ms, function (d) { return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate(); }); }
+        function longDate(ms) { return fmt(fDate, ms, function (d) { return d.toDateString(); }); }
+        function lastSun(y, m) { var d = new Date(Date.UTC(y, m + 1, 0, 1)); d.setUTCDate(d.getUTCDate() - d.getUTCDay()); return d.getTime(); }
+        function ukDst(ms) { var y = new Date(ms).getUTCFullYear(); return ms >= lastSun(y, 2) && ms < lastSun(y, 9); }
+        function zone(ms) {
+          try {
+            if (fZone && typeof fZone.formatToParts === "function") {
+              var parts = fZone.formatToParts(new Date(ms)), z = "";
+              for (var i = 0; i < parts.length; i++) if (parts[i].type === "timeZoneName") z = parts[i].value;
+              if (z === "GMT" || z === "UTC") return "GMT";
+              if (z === "BST" || z === "GMT+1") return "BST";
+            }
+          } catch (e) {}
+          return ukDst(ms) ? "BST" : "GMT";
+        }
+        function when(ms, now) {
+          var k = dayKey(ms);
+          if (k === dayKey(now)) return hm(ms);
+          if (k === dayKey(now + 86400000)) return hm(ms) + " tomorrow";
+          if (k === dayKey(now - 86400000)) return hm(ms) + " yesterday";
+          return hm(ms);
+        }
+        function signed(v) { var r = Math.round(v * 100) / 100; return (r < 0 ? "−" : "+") + Math.abs(r).toFixed(2) + " m"; }
+        function r2(v) { return Math.round(v * 100) / 100; }
+        function deg(v) { return Math.round(v) + "°"; }
+        var nodes = {};
+        function setText(id, v) {
+          var n = nodes[id] || (nodes[id] = $(id));
+          if (n && n.textContent !== v) n.textContent = v;
+        }
+
+        /* Precomputed wave: fixed 3-minute grid, refilled once a minute or on location / pressure change */
+        var STEP = 3 * MIN, SPAN = 7.5 * HOUR, NS = Math.ceil((2 * SPAN) / STEP) + 2;
+        var WA = new Float64Array(NS), WH = new Float64Array(NS), W1 = new Float64Array(NS);
+        var wave = { t0: 0, n: 0, top: 6, pr: 0 };
+        var TMAX = 16, turnT = new Float64Array(TMAX), turnA = new Float64Array(TMAX), turnHW = new Uint8Array(TMAX), turnN = 0;
+        var turnLab = [], turnW = new Float64Array(TMAX), yLab = [];
+        var off = { sun: "", moonUp: "–", next: "", next1: "", next2: "" };
+        // chart markers for the current location, label widths measured once per location / settings change
+        var MK = [], MK_MAX = 24, PB = new Float64Array(MK_MAX * 4), pbN = 0;
+        function prepMarkers() {
+          MK.length = 0;
+          var list = CFG.markers || [], pass, i, m, band;
+          for (pass = 0; pass < 2; pass++) {
+            for (i = 0; i < list.length && MK.length < MK_MAX; i++) {
+              m = list[i];
+              if (!m || m.loc !== st.loc) continue;
+              band = m.kind === "band" && finite(m.lo) && finite(m.hi);
+              if ((pass === 0) !== band) continue; // bands first, then lines
+              if (!band && !finite(m.h)) continue;
+              var label = String(m.label || "");
+              MK.push({ band: band, lo: band ? Math.min(m.lo, m.hi) : 0, hi: band ? Math.max(m.lo, m.hi) : 0, h: band ? 0 : m.h, label: label, w: textW(wctx, F12, label) });
+            }
+          }
+          dirty = true;
+        }
+        var lastMinute = -1, dirty = true;
+
+        function findTurns(now) {
+          var step = 10 * MIN, a = now - 13 * HOUR, sa = slope(a), end = now + 26 * HOUR;
+          turnN = 0;
+          for (var b = a + step; b <= end && turnN < TMAX; b += step) {
+            var sb = slope(b);
+            if ((sa > 0 && sb <= 0) || (sa < 0 && sb >= 0)) {
+              var lo = a, hi = b, sl = sa;
+              for (var i = 0; i < 18; i++) { var mid = (lo + hi) / 2, sm = slope(mid); if (sm > 0 === sl > 0) { lo = mid; sl = sm; } else hi = mid; }
+              var t = (lo + hi) / 2;
+              turnT[turnN] = t; turnA[turnN] = astro(t); turnHW[turnN] = sa > 0 ? 1 : 0; turnN++;
+            }
+            a = b; sa = sb;
+          }
+        }
+
+        /* Canvases */
+        var C = { bg: "#131a22", grid: "#222c37", axis: "#3a4757", tx: "#e8edf2", tx2: "#a3b0bd", sun: "#ffa24a", tide: "#6cc9f5", wash: "rgba(108,201,245,0.14)", two: "#5d6b7a",
+          flood: "rgba(90,200,150,0.18)", floodEdge: "rgba(90,200,150,0.55)", floodTx: "#8fd9b6", subs: "rgba(255,190,100,0.7)", subsTx: "#e8b877" };
+        var FONT = "-apple-system, system-ui, sans-serif";
+        var F12 = "12px " + FONT, F13 = "500 13px " + FONT, F13B = "600 13px " + FONT, F14B = "600 14px " + FONT;
+        var dialCv = null, dialBox = null, waveCv = null, waveBox = null, dctx = null, wctx = null;
+        var dz = { w: 0, h: 0, dpr: 1, fMark: F12, fHand: F13 }, wz = { w: 0, h: 0, dpr: 1 };
+        var X_TICKS = [-6, -4, -2, 0, 2, 4, 6], X_LABS = ["−6 h", "−4 h", "−2 h", "now", "+2 h", "+4 h", "+6 h"];
+        var lastInnerH = 0;
+
+        /* --vh from the real window height; standalone mode can report 0 at launch, so never write a zero */
+        function setVh() {
+          var de = document.documentElement;
+          var h = window.innerHeight || (de && de.clientHeight) || (window.screen && window.screen.height) || 0;
+          if (h > 0) { de.style.setProperty("--vh", h / 100 + "px"); lastInnerH = h; }
+        }
+        function boxSize(box, fw, fh) {
+          var r = box.getBoundingClientRect(), w = r ? r.width : 0, h = r ? r.height : 0;
+          if (!(w > 0)) w = box.clientWidth || (box.parentNode && box.parentNode.clientWidth) || fw;
+          if (!(h > 0)) h = box.clientHeight || fh;
+          return { w: Math.max(1, Math.floor(w)), h: Math.max(1, Math.floor(h)) };
+        }
+        function fit(cv, box, ctx, z, dpr, fw, fh) {
+          if (!cv || !box || !ctx) return;
+          var s = boxSize(box, fw, fh);
+          z.w = s.w; z.h = s.h; z.dpr = dpr;
+          cv.style.width = s.w + "px"; cv.style.height = s.h + "px";
+          cv.width = Math.max(1, Math.round(s.w * dpr)); cv.height = Math.max(1, Math.round(s.h * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function resize() {
+          try { setVh(); } catch (e) { report("viewport height", e); }
+          var dpr = Math.min(2, window.devicePixelRatio || 1), vw = window.innerWidth || 1024;
+          try {
+            fit(dialCv, dialBox, dctx, dz, dpr, Math.max(200, vw / 3 - 30), 260);
+            var k = Math.min(dz.w, dz.h) / 240;
+            dz.fMark = Math.max(12, Math.round(12 * k)) + "px " + FONT;
+            dz.fHand = "600 " + Math.max(12, Math.round(13 * k)) + "px " + FONT;
+          } catch (e) { report("dial size", e); }
+          try { fit(waveCv, waveBox, wctx, wz, dpr, Math.max(300, (vw * 2) / 3 - 60), 240); } catch (e) { report("wave size", e); }
+          dirty = true; lastDraw = -1e9;
+        }
+        /* Re-fit when the boxes' real size differs from what the canvases were sized to (late layout in standalone mode) */
+        function sizeDrifted() {
+          if ((window.innerHeight || 0) > 0 && window.innerHeight !== lastInnerH) return true;
+          var pairs = [[dialBox, dz], [waveBox, wz]];
+          for (var i = 0; i < 2; i++) {
+            var b = pairs[i][0], z = pairs[i][1];
+            if (!b) continue;
+            var r = b.getBoundingClientRect();
+            if (r.width > 0 && r.height > 0 && (Math.floor(r.width) !== z.w || Math.floor(r.height) !== z.h)) return true;
+          }
+          return false;
+        }
+
+        function textW(ctx, font, s) {
+          if (!ctx) return s.length * 6.5;
+          ctx.font = font;
+          return ctx.measureText(s).width;
+        }
+        function precomputeWave(now) {
+          var pr = prCorr(), k0 = Math.floor((now - SPAN) / STEP), peak = 0;
+          wave.t0 = k0 * STEP; wave.n = NS; wave.pr = pr;
+          for (var i = 0; i < NS; i++) {
+            var t = wave.t0 + i * STEP, a = astro(t);
+            WA[i] = a + pr; WH[i] = TIDE.Z0 + TIDE_OUT.terms.M2 + TIDE_OUT.terms.S2;
+            // one hand only (M2): constant amplitude, no nodal correction, +7.4 min setting, Gullane −1 min
+            var tt = t + HAND_SHIFT - 7.4 * 60000;
+            var T1 = (tt / 86400000 + 2440587.5 - 2451545.0) / 36525;
+            var s1 = 218.3164477 + 481267.88123421 * T1, h1 = 280.46646 + 36000.76983 * T1;
+            var ut1 = ((tt / 3600000) % 24 + 24) % 24, tau1 = 15 * ut1 + 180 + h1 - s1;
+            var ang1 = 2 * tau1 - 55.36;
+            W1[i] = TIDE.Z0 + 1.7978 * Math.cos(ang1 * TD2R);
+            if (Math.abs(t - now) <= WIN * HOUR && WA[i] > peak) peak = WA[i];
+          }
+          var top = Math.max(6, Math.ceil(peak + 0.4));
+          if (top !== wave.top || yLab.length === 0) {
+            wave.top = top; yLab.length = 0;
+            for (var y = 0; y <= top; y++) yLab.push(y + " m");
+          }
+          findTurns(now);
+          var n1 = -1, n2 = -1;
+          for (var j = 0; j < turnN; j++) {
+            turnLab[j] = (turnA[j] + pr).toFixed(1) + " m · " + hm(turnT[j]);
+            turnW[j] = textW(wctx, F12, turnLab[j]);
+            if (turnT[j] > now) { if (n1 < 0) n1 = j; else if (n2 < 0) n2 = j; }
+          }
+          off.next1 = n1 >= 0 ? turnLine(n1, now, pr) : "";
+          off.next2 = n2 >= 0 ? turnLine(n2, now, pr) : "";
+          off.next = off.next1 + (off.next2 ? "; then " + off.next2 : "");
+        }
+        function addHM(s, mins) {
+          var m = toMin(s);
+          if (m < 0) return String(s);
+          m = (((m + mins) % 1440) + 1440) % 1440;
+          return pad2(Math.floor(m / 60)) + ":" + pad2(m % 60);
+        }
+        function turnLine(j, now, pr) {
+          return (turnHW[j] ? "High water " : "Low water ") + when(turnT[j], now) + " · " + (turnA[j] + pr).toFixed(2) + " m";
+        }
+        function precomputeOffsets(now) {
+          var a = addHM("03:11", Math.round(CFG.sunHandShiftMin));
+          off.sun = "HW at " + addHM(a, 0) + " and " + addHM(a, 720) + " GMT" + (zone(now) === "BST" ? " (" + addHM(a, 60) + " / " + addHM(a, 780) + " BST)" : "");
+          off.moonUp = when(nextMoonUp(now), now);
+        }
+
+        /* Readouts, once a second */
+        var shownTotal = 3.29, nowLab = "3.29 m", nowLabW = 40, ROWS = ["m2", "s2", "n2", "di", "sw", "ot", "fa", "pr"];
+        function pressText() {
+          var p = pressure(), c = signed(prCorr()), el = $("press"), txt, state;
+          var age = Date.now() - st.pTime, tag, fb = Math.round(CFG.pressureFallbackHpa) + " hPa";
+          if (st.manual) { txt = "Air pressure: " + Math.round(p) + " hPa (manual) → " + c; state = "manual"; tag = "manual"; }
+          else if (st.pLive === null && !st.pTried) { txt = "Air pressure: fetching live pressure, using " + fb; state = "loading"; tag = "default"; }
+          else if (st.pLive === null) { txt = "Air pressure: offline · using " + fb + " → " + c; state = "offline"; tag = "default"; }
+          else if (!pFresh()) { txt = "Air pressure: stale · using " + fb + " → " + c; state = "offline"; tag = "default"; }
+          else if (st.pFails === 0 && age <= P_RECENT) { txt = "Air pressure: " + Math.round(p) + " hPa · live · updated " + hm(st.pTime) + " → " + c; state = "live"; tag = "live"; }
+          else { txt = "Air pressure: " + Math.round(p) + " hPa · last known · " + hm(st.pTime) + " → " + c; state = "loading"; tag = "last known"; }
+          setText("press", txt);
+          if (el && el.getAttribute("data-state") !== state) el.setAttribute("data-state", state);
+          setText("prd", Math.round(p) + " hPa " + tag);
+          setText("baroOut", st.pManual + " hPa");
+          var hideLive = !(st.manual && pFresh()), ul = $("useLive");
+          if (ul && ul.hidden !== hideLive) ul.hidden = hideLive;
+        }
+        function readClock(now) {
+          var clock = hms(now);
+          setText("now", clock + " " + zone(now));
+          setText("nowDate", longDate(now) + " · Europe/London");
+          setText("beat", "running · " + clock);
+        }
+        function readOffsets(now) {
+          var t = handsAt(now);
+          var sep = Math.abs(rev(t.m2 - t.s2 + 180) - 180);
+          setText("phase", "Hands " + Math.round(sep) + "° apart · " + (sep < 45 ? "near springs" : sep > 135 ? "near neaps" : sep < 90 ? "nearer springs" : "nearer neaps"));
+          setText("sunOff", off.sun);
+          setText("moonUp", off.moonUp);
+        }
+        function readSum(now) {
+          var r = tideLeith(now + HAND_SHIFT), T = r.terms, lt = r.total, aM2 = r.angle.M2, aS2 = r.angle.S2;
+          var vals = [T.M2, T.S2, T.N2 + T["2N2"] + T.NU2 + T.L2, T.K1 + T.O1 + T.Q1 + T.P1,
+            T.M4 + T.MS4 + T.MN4 + T.M6 + T["2MS6"], T.K2 + T.T2 + T.SA, secondaryHeight(lt) - lt, prCorr()];
+          var sum = TIDE.Z0;
+          for (var i = 0; i < ROWS.length; i++) { setText(ROWS[i], signed(vals[i])); sum += vals[i]; }
+          // sum = Z0 + every term + adjustment + pressure = tideAt(now) + pressure
+          shownTotal = r2(sum);
+          setText("total", shownTotal.toFixed(2) + " m");
+          setText("fad", LOCS[st.loc].name + " adjustment from Leith");
+          setText("m2d", "M2 · " + deg(aM2));
+          setText("s2d", "S2 · " + deg(aS2));
+        }
+        function readHead(now) {
+          st.rising = slope(now) > 0;
+          var lead = st.rising ? "Rising" : "Falling";
+          setText("bigH", shownTotal.toFixed(2) + " m");
+          setText("trend", lead + " · " + LOCS[st.loc].name);
+          setText("next1", off.next1 || " ");
+          setText("next2", off.next2 || " ");
+          if (nowLab !== shownTotal.toFixed(2) + " m") { nowLab = shownTotal.toFixed(2) + " m"; nowLabW = textW(wctx, F14B, nowLab); }
+          var aria = "Tide " + nowLab + " now and " + lead.toLowerCase() + (off.next ? "; " + off.next : "");
+          if (waveCv && waveCv.getAttribute("aria-label") !== aria) waveCv.setAttribute("aria-label", aria);
+        }
+
+        /* Dial: two centred hands, straight up is each hand's high water */
+        function handLabel(ctx, text, cx, cy, th, len, along, w) {
+          var dx = sind(th), dy = -cosd(th), nx = -cosd(th), ny = -sind(th);
+          var o = 8 + Math.abs(nx) * w / 2 + Math.abs(ny) * 7;
+          var x = cx + dx * len * along + nx * o, y = cy + dy * len * along + ny * o;
+          ctx.strokeText(text, x, y); ctx.fillText(text, x, y);
+        }
+        function drawDial(t) {
+          if (!dctx) return;
+          var ctx = dctx, w = dz.w, h = dz.h, s = Math.min(w, h), k = s / 240, cx = w / 2, cy = h / 2, i;
+          ctx.clearRect(0, 0, w, h);
+          if (s < 20) return;
+          ctx.beginPath(); ctx.arc(cx, cy, 114 * k, 0, 2 * Math.PI);
+          ctx.fillStyle = C.bg; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = C.axis; ctx.stroke();
+          ctx.lineCap = "round";
+          for (i = 0; i < 12; i++) {
+            var a = i * 30, major = i % 3 === 0, r1 = (major ? 100 : 106) * k, r2o = 112 * k;
+            ctx.beginPath();
+            ctx.moveTo(cx + r1 * sind(a), cy - r1 * cosd(a)); ctx.lineTo(cx + r2o * sind(a), cy - r2o * cosd(a));
+            ctx.lineWidth = major ? 1.5 : 1; ctx.strokeStyle = major ? C.tx2 : C.axis; ctx.stroke();
+          }
+          ctx.font = dz.fMark; ctx.fillStyle = C.tx2; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText("HW", cx, cy - 90 * k); ctx.fillText("LW", cx, cy + 90 * k);
+          ctx.fillText("Falling", cx + 76 * k, cy); ctx.fillText("Rising", cx - 76 * k, cy);
+          var sl = 26 * k * 1.2, ml = 78 * k * 1.2;
+          // Moon hand = angle.M2, Sun hand = angle.S2: 0° straight up is that hand's high water, clockwise
+          // Sun hand shift (settings): the S2 hand turns 0.5° per minute, so a later HW means a smaller angle
+          var thS = t.s2 - 0.5 * CFG.sunHandShiftMin, thM = t.m2;
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + sl * sind(thS), cy - sl * cosd(thS));
+          ctx.lineWidth = 7 * k; ctx.strokeStyle = C.sun; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + ml * sind(thM), cy - ml * cosd(thM));
+          ctx.lineWidth = 4 * k; ctx.strokeStyle = C.tx; ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx, cy, 5 * k, 0, 2 * Math.PI); ctx.fillStyle = C.tx; ctx.fill();
+          ctx.font = dz.fHand; ctx.lineWidth = 4; ctx.lineJoin = "round"; ctx.strokeStyle = C.bg;
+          ctx.fillStyle = C.sun; handLabel(ctx, "Sun", cx, cy, thS, sl, 0.55, 26 * k);
+          ctx.fillStyle = C.tx; handLabel(ctx, "Moon", cx, cy, thM, ml, 0.62, 36 * k);
+        }
+
+        /* Reference labels: does a 14px-tall label box at [x1,x2] x [y1,y1+14] touch a turning-point label or the "now" label? */
+        var LAB_H = 14, DASH_SUBS = [6, 4], NO_DASH = [];
+        function refHits(now, x1, x2, y1, x0, sx, sy, L, R, B) {
+          var y2 = y1 + LAB_H, i, x, y, hw2, lx, t1, t2;
+          for (i = 0; i < turnN; i++) {
+            var hx = (turnT[i] - now) / HOUR;
+            if (hx < -WIN || hx > WIN) continue;
+            x = x0 + hx * sx; y = B - (turnA[i] + wave.pr) * sy;
+            hw2 = turnW[i] / 2; lx = x < L + hw2 ? L + hw2 : x > R - hw2 ? R - hw2 : x;
+            // label box plus its dot, with a 3px margin
+            if (turnHW[i]) { t1 = y - 7 - LAB_H - 3; t2 = y + 7; } else { t1 = y - 7; t2 = y + 7 + LAB_H + 3; }
+            if (x2 > lx - hw2 - 4 && x1 < lx + hw2 + 4 && y2 > t1 && y1 < t2) return true;
+          }
+          y = B - shownTotal * sy;
+          var nx1 = st.rising ? x0 - 10 - nowLabW : x0 - 8, nx2 = st.rising ? x0 + 8 : x0 + 10 + nowLabW;
+          if (x2 > nx1 && x1 < nx2 && y2 > y - 26 && y1 < y + 8) return true;
+          // marker labels already placed this frame
+          for (i = 0; i < pbN; i++) {
+            var b = i * 4;
+            if (x2 > PB[b] - 4 && x1 < PB[b + 1] + 4 && y2 > PB[b + 2] - 2 && y1 < PB[b + 3] + 2) return true;
+          }
+          return false;
+        }
+        function addPlaced(x1, x2, y1) {
+          if (pbN >= MK_MAX) return;
+          var b = pbN * 4;
+          PB[b] = x1; PB[b + 1] = x2; PB[b + 2] = y1; PB[b + 3] = y1 + LAB_H; pbN++;
+        }
+        // try above (preferred), below, then step further out in both directions; keep inside the plot
+        function placeRef(now, x1, x2, above, below, x0, sx, sy, L, R, T, B) {
+          var lo = T - 16, hi = B - LAB_H - 2, k, c;
+          for (k = 0; k < 12; k++) {
+            c = k % 2 === 0 ? above - (k >> 1) * 8 : below + (k >> 1) * 8;
+            if (c < lo || c > hi) continue;
+            if (!refHits(now, x1, x2, c, x0, sx, sy, L, R, B)) return c;
+          }
+          return NaN;
+        }
+        /* A marker label: its own side first (bands right, lines left), then the other side; if both are taken,
+           its own side nudged below any marker label it would cover. Sets mkX (left edge) and returns the top. */
+        var mkX = 0;
+        function placeMarker(now, w, right, above, below, x0, sx, sy, L, R, T, B) {
+          var side = right, k, x1, c, hi = B - LAB_H - 2;
+          for (k = 0; k < 2; k++, side = !side) {
+            x1 = side ? R - 4 - w : L + 4;
+            c = placeRef(now, x1, x1 + w, above, below, x0, sx, sy, L, R, T, B);
+            if (c === c) { mkX = x1; addPlaced(x1, x1 + w, c); return c; }
+          }
+          x1 = right ? R - 4 - w : L + 4;
+          c = Math.max(T - 16, Math.min(hi, above));
+          for (k = 0; k < pbN; k++) {
+            var b = k * 4;
+            if (x1 + w > PB[b] - 4 && x1 < PB[b + 1] + 4 && c + LAB_H > PB[b + 2] - 2 && c < PB[b + 3] + 2) c = Math.min(hi, PB[b + 3] + 2);
+          }
+          mkX = x1; addPlaced(x1, x1 + w, c);
+          return c;
+        }
+
+        /* Wave: past on the left, future on the right, drifting left past the central Now line */
+        function drawWave(now) {
+          if (!wctx || !yLab.length) return;
+          var ctx = wctx, w = wz.w, h = wz.h, L = 44, R = w - 10, T = 22, B = h - 28, pw = R - L, ph = B - T, top = wave.top, i, x, y;
+          ctx.clearRect(0, 0, w, h);
+          if (pw < 40 || ph < 40) return;
+          var sx = pw / (2 * WIN), sy = ph / top, x0 = L + pw / 2;
+          ctx.font = F12; ctx.textBaseline = "middle"; ctx.textAlign = "right"; ctx.lineWidth = 1;
+          for (i = 0; i <= top; i++) {
+            y = Math.round(B - i * sy) + 0.5;
+            ctx.strokeStyle = i === 0 ? C.axis : C.grid;
+            ctx.beginPath(); ctx.moveTo(L, y); ctx.lineTo(R, y); ctx.stroke();
+            ctx.fillStyle = C.tx2; ctx.fillText(yLab[i], L - 8, y);
+          }
+          ctx.textAlign = "center"; ctx.textBaseline = "top";
+          for (i = 0; i < X_TICKS.length; i++) {
+            ctx.font = i === 3 ? F13B : F12; ctx.fillStyle = i === 3 ? C.tx : C.tx2;
+            ctx.fillText(X_LABS[i], x0 + X_TICKS[i] * sx, B + 8);
+          }
+          ctx.font = F12; ctx.fillStyle = C.tx2; ctx.textBaseline = "top";
+          ctx.textAlign = "left"; ctx.fillText("← PAST", L + 4, 4);
+          ctx.textAlign = "right"; ctx.fillText("FUTURE →", R - 4, 4);
+
+          // reference markers (Charlie's estimates), above the grid and behind the curves
+          // bands label on the right, lines on the left; each label avoids the ones placed before it
+          pbN = 0;
+          for (var mi = 0; mi < MK.length; mi++) {
+            var mk = MK[mi], ly;
+            if (mk.band) {
+              var yLo = B - mk.lo * sy, yHi = B - mk.hi * sy;
+              if (!(yLo > T - 18 && yHi < B)) continue;
+              ctx.fillStyle = C.flood; ctx.fillRect(L, yHi, pw, yLo - yHi);
+              ctx.beginPath();
+              ctx.moveTo(L, Math.round(yHi) + 0.5); ctx.lineTo(R, Math.round(yHi) + 0.5);
+              ctx.moveTo(L, Math.round(yLo) + 0.5); ctx.lineTo(R, Math.round(yLo) + 0.5);
+              ctx.lineWidth = 1; ctx.strokeStyle = C.floodEdge; ctx.stroke();
+              if (!mk.label) continue;
+              ly = placeMarker(now, mk.w, true, yHi - 16, yLo + 3, x0, sx, sy, L, R, T, B);
+              ctx.font = F12; ctx.textAlign = "left"; ctx.textBaseline = "top"; ctx.fillStyle = C.floodTx;
+              ctx.fillText(mk.label, mkX, ly);
+            } else {
+              var yM = B - mk.h * sy;
+              if (!(yM > T - 18 && yM < B)) continue;
+              ctx.beginPath(); ctx.moveTo(L, Math.round(yM) + 0.5); ctx.lineTo(R, Math.round(yM) + 0.5);
+              ctx.setLineDash(DASH_SUBS); ctx.lineWidth = 1; ctx.strokeStyle = C.subs; ctx.stroke();
+              ctx.setLineDash(NO_DASH);
+              if (!mk.label) continue;
+              ly = placeMarker(now, mk.w, false, yM - 16, yM + 3, x0, sx, sy, L, R, T, B);
+              ctx.font = F12; ctx.textAlign = "left"; ctx.textBaseline = "top"; ctx.fillStyle = C.subsTx;
+              ctx.fillText(mk.label, mkX, ly);
+            }
+          }
+
+          ctx.save();
+          ctx.beginPath(); ctx.rect(L, T - 18, pw, ph + 18); ctx.clip();
+          var n = wave.n, xs = (wave.t0 - now) / HOUR;
+          // one hand only (M2), dotted, behind the others
+          ctx.beginPath();
+          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - W1[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+          ctx.setLineDash([2, 4]); ctx.lineWidth = 1; ctx.globalAlpha = 0.7; ctx.strokeStyle = "#7f8c99"; ctx.stroke();
+          ctx.globalAlpha = 1; ctx.setLineDash([]);
+          // two hands only (M2+S2)
+          ctx.beginPath();
+          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WH[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+          ctx.lineWidth = 1; ctx.strokeStyle = C.two; ctx.stroke();
+          // full prediction: wash then line
+          ctx.beginPath();
+          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WA[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+          ctx.lineTo(x, B); ctx.lineTo(x0 + xs * sx, B); ctx.closePath();
+          ctx.fillStyle = C.wash; ctx.fill();
+          ctx.beginPath();
+          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WA[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+          ctx.lineWidth = 2.5; ctx.lineJoin = "round"; ctx.strokeStyle = C.tide; ctx.stroke();
+          ctx.restore();
+
+          // now line
+          ctx.beginPath(); ctx.moveTo(Math.round(x0) + 0.5, T - 4); ctx.lineTo(Math.round(x0) + 0.5, B);
+          ctx.lineWidth = 1; ctx.strokeStyle = C.tx2; ctx.stroke();
+
+          // turning points
+          ctx.font = F12; ctx.textAlign = "center";
+          for (i = 0; i < turnN; i++) {
+            var hx = (turnT[i] - now) / HOUR;
+            if (hx < -WIN || hx > WIN) continue;
+            x = x0 + hx * sx; y = B - (turnA[i] + wave.pr) * sy;
+            ctx.beginPath(); ctx.arc(x, y, 3.5, 0, 2 * Math.PI); ctx.fillStyle = C.tx; ctx.fill();
+            var hw2 = turnW[i] / 2, lx = x < L + hw2 ? L + hw2 : x > R - hw2 ? R - hw2 : x;
+            ctx.textBaseline = turnHW[i] ? "bottom" : "top";
+            ctx.fillStyle = C.tx2; ctx.fillText(turnLab[i], lx, turnHW[i] ? y - 7 : y + 7);
+          }
+
+          // height now
+          y = B - shownTotal * sy;
+          ctx.beginPath(); ctx.arc(x0, y, 6, 0, 2 * Math.PI);
+          ctx.fillStyle = C.tx; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = C.bg; ctx.stroke();
+          ctx.font = F14B; ctx.textBaseline = "bottom"; ctx.fillStyle = C.tx;
+          ctx.textAlign = st.rising ? "right" : "left";
+          ctx.fillText(nowLab, st.rising ? x0 - 10 : x0 + 10, y - 8);
+        }
+
+        /* Loop: one rAF, throttled to ~12 fps, paused while hidden */
+        var FRAME = 80, rafId = 0, running = false, lastDraw = -1e9, lastSec = -1, lastFrame = 0;
+        function drawDialNow(now) { drawDial(handsAt(now)); }
+        function tick(ts) {
+          rafId = requestAnimationFrame(tick);
+          try {
+            var nowP = typeof ts === "number" ? ts : Date.now();
+            lastFrame = Date.now();
+            if (nowP - lastDraw < FRAME) return;
+            lastDraw = nowP;
+            var now = Date.now(), m = Math.floor(now / MIN), s = Math.floor(now / 1000);
+            if (dirty || m !== lastMinute) {
+              lastMinute = m; dirty = false; lastSec = -1;
+              step("wave", precomputeWave, now);
+              step("offsets", precomputeOffsets, now);
+            }
+            if (s !== lastSec) {
+              lastSec = s;
+              step("clock", readClock, now);
+              step("offsets", readOffsets, now);
+              step("sum table", readSum, now);
+              step("headline", readHead, now);
+              step("pressure", pressText);
+            }
+            step("dial", drawDialNow, now);
+            step("wave", drawWave, now);
+          } catch (e) { report("frame", e); }
+        }
+        function start() {
+          if (running) return;
+          running = true; dirty = true; lastDraw = -1e9; lastSec = -1; lastFrame = Date.now();
+          rafId = requestAnimationFrame(tick);
+        }
+        function stop() { running = false; cancelAnimationFrame(rafId); }
+        function resizeSoon() { resize(); setTimeout(resize, 300); setTimeout(resize, 1000); }
+
+        /* Pressure */
+        /* One setTimeout chain: 30 min after a success; 1, 2, 5, 10, then every 30 min after failures.
+           One request at a time; a request older than 20 s is abandoned so the chain can never stall. */
+        // the last back-off step is the configured interval (CFG.refresh.pressureMin)
+        var P_EVERY = CFG.pressureRefreshMin * MIN, P_BACKOFF = [1, 2, 5, 10, 0];
+        function backoffMs(n) { var m = P_BACKOFF[n - 1]; return m ? Math.min(m * MIN, P_EVERY) : P_EVERY; }
+        var fetchId = 0, pTimer = 0, pBusy = false, pBusyAt = 0, pAgain = false;
+        function schedulePressure(ms) {
+          if (pTimer) clearTimeout(pTimer);
+          pTimer = setTimeout(function () { pTimer = 0; fetchPressure(); }, ms);
+        }
+        function pressureDone(id, ok, p) {
+          if (id !== fetchId) return;
+          pBusy = false; st.pTried = true;
+          if (ok) {
+            st.pLive = p; st.pTime = Date.now(); st.pFails = 0;
+            // kept on the device so a reload (the daily one included) reuses it instead of asking the API again
+            if (store.ok) { try { window.localStorage.setItem(P_KEY, JSON.stringify({ p: p, t: st.pTime })); } catch (e) {} }
+          }
+          else st.pFails = Math.min(st.pFails + 1, P_BACKOFF.length);
+          dirty = true; lastSec = -1;
+          schedulePressure(ok ? P_EVERY : backoffMs(st.pFails));
+          if (pAgain) { pAgain = false; fetchPressure(); }
+        }
+        function pressureFailed(id) { pressureDone(id, false, null); }
+        var P_KEY = "tideClockPressure.v1";
+        // a saved reading still within the refresh interval: use it and wait for the next scheduled fetch. Returns true if used.
+        function pressureFromStore() {
+          if (!store.ok) return false;
+          try {
+            var j = JSON.parse(window.localStorage.getItem(P_KEY) || "null"), age;
+            if (!j || !finite(j.p) || !finite(j.t) || j.p < 870 || j.p > 1090) return false;
+            age = Date.now() - j.t;
+            if (age < 0 || age >= P_EVERY) return false;
+            st.pLive = j.p; st.pTime = j.t; st.pTried = true; st.pFails = 0;
+            schedulePressure(Math.max(5000, P_EVERY - age));
+            return true;
+          } catch (e) { return false; }
+        }
+        // queue: a request already in flight is followed by one more (location changed)
+        function fetchPressure(queue) {
+          if (pBusy && Date.now() - pBusyAt < 20000) { if (queue) pAgain = true; return; }
+          var id = ++fetchId;
+          pBusy = true; pBusyAt = Date.now();
+          if (pTimer) { clearTimeout(pTimer); pTimer = 0; }
+          try {
+            var L = LOCS[st.loc], timer = 0, opts = { cache: "no-store" };
+            if (typeof fetch !== "function") { pressureFailed(id); return; }
+            var url = "https://api.open-meteo.com/v1/forecast?latitude=" + L.lat + "&longitude=" + L.lon + "&current=pressure_msl";
+            // 15 s timeout: always AbortController + setTimeout (AbortSignal.timeout is missing in Safari 16.0–16.3)
+            if (typeof AbortController === "function") {
+              var ac = new AbortController();
+              opts.signal = ac.signal;
+              timer = setTimeout(function () { try { ac.abort(); } catch (e) {} }, 15000);
+            }
+            fetch(url, opts)
+              .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+              .then(function (j) {
+                var p = j && j.current && j.current.pressure_msl;
+                if (typeof p !== "number" || !isFinite(p) || p < 870 || p > 1090) throw new Error("data");
+                pressureDone(id, true, p);
+              })
+              .catch(function () { pressureFailed(id); })
+              .then(function () { if (timer) clearTimeout(timer); });
+          } catch (e) { report("pressure fetch", e); pressureFailed(id); }
+        }
+        // retry now on reconnect or return to view, if the last success is over 5 min old
+        function pressureNudge() {
+          try { if (!st.pTime || Date.now() - st.pTime > 5 * MIN) fetchPressure(false); } catch (e) { report("pressure retry", e); }
+        }
+
+        // new interval or new coordinates: re-time the pressure chain without a burst of requests
+        function restartPressure(moved) {
+          if (moved) { fetchPressure(true); return; }
+          if (pBusy || !st.pTried) return; // the request in flight reschedules itself
+          if (st.pFails === 0 && st.pTime) schedulePressure(Math.max(5000, st.pTime + P_EVERY - Date.now()));
+          else if (st.pFails) schedulePressure(backoffMs(st.pFails));
+        }
+
+        /* The selected location's settings: secondary-port differences, its markers, and the offsets text */
+        function applyLoc() {
+          var L = LOCS[st.loc], dt = L.dtMin, cut = L.hwCut;
+          SEC.dtMin = dt; SEC.hwCut = cut; HAND_SHIFT = -dt * MIN;
+          setText("secTxt", "HW " + (dt < 0 ? "−" : dt > 0 ? "+" : "±") + Math.abs(dt) + " min, high-water heights " +
+            (cut > 0 ? "−" : cut < 0 ? "+" : "±") + Math.abs(cut) + " m");
+          prepMarkers();
+          dirty = true; lastSec = -1;
+        }
+
+        /* Daily soft reload time, from CFG.dailyReload */
+        var reloadDone = "";
+        function resetDailyReload() {
+          var now = Date.now(), rel = toMin(CFG.dailyReload);
+          reloadDone = rel >= 0 && toMin(hm(now)) >= rel ? dayKey(now) : "";
+        }
+
+        /* applyCfg: the one place settings take effect. Pass 2 extends this (traffic lights, wave / status timers). */
+        var cfgApplied = false;
+        function applyCfg(next) {
+          function core(c) {
+            checkCfg(c);
+            var prev = LOCS && LOCS[st.loc], plat = prev ? prev.lat : null, plon = prev ? prev.lon : null, prevCfg = CFG;
+            CFG = c; LOCS = c.locations;
+            applyLoc();
+            P_EVERY = c.pressureRefreshMin * MIN; P_RECENT = P_EVERY + 5 * MIN; P_STALE = c.pressureStaleH * HOUR;
+            if (!st.manual) { st.pManual = Math.round(c.pressureFallbackHpa); var bar = $("baro"); if (bar) bar.value = String(st.pManual); }
+            setText("pEveryTxt", String(c.pressureRefreshMin));
+            setText("pBaseTxt", String(c.pressureFallbackHpa));
+            Array.prototype.forEach.call(document.querySelectorAll(".x-seg [data-loc]"), function (b) {
+              var L = LOCS[b.getAttribute("data-loc")], n = b.querySelector(".x-locname") || b;
+              if (L && L.name && n.textContent !== L.name) n.textContent = L.name;
+            });
+            prepMarkers();
+            resetDailyReload();
+            var cur = LOCS[st.loc];
+            if (cfgApplied) restartPressure(plat !== null && (cur.lat !== plat || cur.lon !== plon));
+            // sea status: wave / status timers, refetch on moved marine points, lights recomputed at once
+            if (seaReady) step("sea status settings", seaApply, prevCfg);
+            dirty = true; lastSec = -1; lastDraw = -1e9;
+          }
+          try { core(next); cfgApplied = true; return true; }
+          catch (e) {
+            report("settings (defaults restored)", e);
+            try { core(clone(DEFAULTS)); cfgApplied = true; } catch (e2) { report("settings defaults", e2); }
+            return false;
+          }
+        }
+
+        /* ---------- Sea status: waves, overflows, weather warnings, traffic lights ----------
+           Every failure here is contained: SEA records "unavailable" and the clock, chart and
+           pressure carry on untouched. */
+        var SEA = {
+          waves: { gullane: null, nb: null },       // per location, or null until the first good fetch
+          waveErr: { gullane: false, nb: false },
+          status: null,                              // last good status.json
+          statusAt: 0, statusUrlUsed: "", statusErr: "",
+          statusTried: false
+        };
+        var seaReady = false, COMPASS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        function compass(d) { return COMPASS[Math.round(rev(d) / 22.5) % 16]; }
+        function dirTxt(d) { return finite(d) ? compass(d) + " " + deg(d) + " (from)" : "–"; }
+        function iso(s) {
+          if (typeof s !== "string" || !s) return null;
+          var t = Date.parse(/Z|[+-]\d\d:?\d\d$/.test(s) ? s : s + "Z");
+          return isFinite(t) ? t : null;
+        }
+        // "HH:MM ddd d MMM" in Europe/London
+        var fDM = mkFmt({ timeZone: TZ, weekday: "short", day: "numeric", month: "short" });
+        function stamp(ms) {
+          if (!finite(ms)) return "–";
+          return hm(ms) + " " + fmt(fDM, ms, function (d) { return d.toDateString().slice(0, 10); }).replace(/,/g, "");
+        }
+        // "HH:MM ddd"
+        function shortWhen(ms) { return finite(ms) ? hm(ms) + " " + fmt(fDM, ms, function (d) { return d.toDateString().slice(0, 3); }).replace(/,/g, "").split(" ")[0] : "–"; }
+        function hAgo(ms, now) {
+          var h = (now - ms) / HOUR;
+          return h < 1 ? Math.max(0, Math.round(h * 60)) + " min ago" : Math.round(h) + " h ago";
+        }
+        function norm(s) { return String(s == null ? "" : s).trim().toUpperCase(); }
+
+        /* Waves: one timer chain per location, staggered, same retry style as pressure */
+        var WAVE_BACKOFF = [1, 2, 5, 10, 0];
+        var waveT = { gullane: 0, nb: 0 }, waveFails = { gullane: 0, nb: 0 }, waveBusy = { gullane: 0, nb: 0 }, waveGen = { gullane: 0, nb: 0 };
+        function waveEvery() { return CFG.waveRefreshMin * MIN; }
+        function waveBackoff(n) { var m = WAVE_BACKOFF[n - 1]; return m ? Math.min(m * MIN, waveEvery()) : waveEvery(); }
+        function scheduleWave(id, ms) {
+          if (waveT[id]) clearTimeout(waveT[id]);
+          waveT[id] = setTimeout(function () { waveT[id] = 0; fetchWaves(id); }, Math.max(1000, ms));
+        }
+        function parseWaves(j, now) {
+          var c = j && j.current, hr = j && j.hourly;
+          if (!c) throw new Error("no current");
+          var out = {
+            waveH: finite(c.wave_height) ? c.wave_height : null,
+            waveD: finite(c.wave_direction) ? c.wave_direction : null,
+            swellH: finite(c.swell_wave_height) ? c.swell_wave_height : null,
+            swellD: finite(c.swell_wave_direction) ? c.swell_wave_direction : null,
+            curTime: iso(c.time),
+            hours: [], at: now
+          };
+          if (hr && Array.isArray(hr.time)) {
+            for (var i = 0; i < hr.time.length; i++) {
+              var t = iso(hr.time[i]);
+              if (t === null) continue;
+              out.hours.push({
+                t: t,
+                w: hr.wave_height && finite(hr.wave_height[i]) ? hr.wave_height[i] : null,
+                s: hr.swell_wave_height && finite(hr.swell_wave_height[i]) ? hr.swell_wave_height[i] : null
+              });
+            }
+          }
+          if (out.waveH === null && out.swellH === null && !out.hours.length) throw new Error("no wave data");
+          var m = waveMax(out, now);
+          out.maxH = m ? m.v : null; out.maxAt = m ? m.t : null; // as stored at fetch time
+          return out;
+        }
+        // highest wave or swell from now to now + CFG.waveLookaheadH, current values included: { v, t, kind, now }
+        function waveMax(w, now) {
+          var best = null, look = now + CFG.waveLookaheadH * HOUR, i;
+          function take(v, t, kind, isNow) { if (v !== null && (best === null || v > best.v)) best = { v: v, t: t, kind: kind, now: isNow }; }
+          take(w.waveH, now, "Waves", true);
+          take(w.swellH, now, "Swell", true);
+          for (i = 0; i < w.hours.length; i++) {
+            var h = w.hours[i];
+            if (h.t <= now || h.t > look) continue;
+            take(h.w, h.t, "Waves", false);
+            take(h.s, h.t, "Swell", false);
+          }
+          return best;
+        }
+        function waveDone(id, ok, data, gen) {
+          if (gen !== undefined && gen !== waveGen[id]) return; // answer for old coordinates
+          waveBusy[id] = 0;
+          if (ok) { SEA.waves[id] = data; SEA.waveErr[id] = false; waveFails[id] = 0; }
+          else { SEA.waveErr[id] = true; waveFails[id] = Math.min(waveFails[id] + 1, WAVE_BACKOFF.length); }
+          scheduleWave(id, ok ? waveEvery() : waveBackoff(waveFails[id]));
+          step("lights", paintLights);
+        }
+        function fetchWaves(id) {
+          try {
+            var L = LOCS[id];
+            if (!L || typeof fetch !== "function") { waveDone(id, false); return; }
+            if (waveBusy[id] && Date.now() - waveBusy[id] < 25000) return;
+            waveBusy[id] = Date.now();
+            if (waveT[id]) { clearTimeout(waveT[id]); waveT[id] = 0; }
+            var lat = finite(L.marineLat) ? L.marineLat : L.lat, lon = finite(L.marineLon) ? L.marineLon : L.lon;
+            var url = "https://marine-api.open-meteo.com/v1/marine?latitude=" + lat + "&longitude=" + lon +
+              "&current=wave_height,wave_direction,swell_wave_height,swell_wave_direction&hourly=wave_height,swell_wave_height&forecast_hours=12&timezone=GMT";
+            var opts = { cache: "no-store" }, timer = 0, gen = waveGen[id];
+            if (typeof AbortController === "function") {
+              var ac = new AbortController();
+              opts.signal = ac.signal;
+              timer = setTimeout(function () { try { ac.abort(); } catch (e) {} }, 20000);
+            }
+            fetch(url, opts)
+              .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+              .then(function (j) { return parseWaves(j, Date.now()); })
+              .then(function (d) { step("waves", function () { waveDone(id, true, d, gen); }); },
+                function () { step("waves", function () { waveDone(id, false, null, gen); }); })
+              .then(function () { if (timer) clearTimeout(timer); });
+          } catch (e) { report("waves", e); waveDone(id, false); }
+        }
+
+        /* status.json: overflows and weather warnings, with the GitHub Pages copy as a fallback */
+        var statusT = 0, statusBusy = 0;
+        function statusEvery() { return CFG.statusRefreshMin * MIN; }
+        function scheduleStatus(ms) {
+          if (statusT) clearTimeout(statusT);
+          statusT = setTimeout(function () { statusT = 0; fetchStatus(); }, Math.max(1000, ms));
+        }
+        function absUrl(u) {
+          try { return new URL(u, location.href).href; } catch (e) { return String(u || ""); }
+        }
+        function bust(u) { return u + (u.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now(); }
+        function getJson(url) {
+          var opts = { cache: "no-store" }, timer = 0;
+          if (typeof AbortController === "function") {
+            var ac = new AbortController();
+            opts.signal = ac.signal;
+            timer = setTimeout(function () { try { ac.abort(); } catch (e) {} }, 20000);
+          }
+          return fetch(bust(url), opts)
+            .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.text(); })
+            .then(function (t) {
+              var j = JSON.parse(t);
+              if (!j || typeof j !== "object") throw new Error("not json");
+              return j;
+            })
+            .then(function (j) { if (timer) clearTimeout(timer); return j; }, function (e) { if (timer) clearTimeout(timer); throw e; });
+        }
+        var statusGen = 0;
+        function statusOk(j, url, g) {
+          if (g !== statusGen) return;
+          SEA.status = j; SEA.statusAt = Date.now(); SEA.statusUrlUsed = url; SEA.statusErr = ""; SEA.statusTried = true;
+          statusBusy = 0;
+          scheduleStatus(statusEvery());
+          step("lights", paintLights);
+        }
+        function statusBad(msg, g) {
+          if (g !== undefined && g !== statusGen) return;
+          SEA.statusErr = msg || "unavailable"; SEA.statusTried = true; statusBusy = 0;
+          scheduleStatus(Math.min(5 * MIN, statusEvery()));
+          step("lights", paintLights);
+        }
+        function fetchStatus() {
+          try {
+            if (typeof fetch !== "function") { statusBad("no fetch"); return; }
+            if (statusBusy && Date.now() - statusBusy < 45000) return;
+            statusBusy = Date.now();
+            if (statusT) { clearTimeout(statusT); statusT = 0; }
+            var g = ++statusGen, primary = absUrl(CFG.statusUrl), fb = absUrl(STATUS_FALLBACK_URL);
+            function why(e) { return e && e.message ? e.message : "failed"; }
+            getJson(primary).then(function (j) { step("status", function () { statusOk(j, primary, g); }); }, function (e1) {
+              if (fb === primary) { step("status", function () { statusBad(why(e1), g); }); return; }
+              getJson(fb).then(function (j) { step("status", function () { statusOk(j, fb, g); }); },
+                function (e2) { step("status", function () { statusBad("primary " + why(e1) + "; fallback " + why(e2), g); }); });
+            });
+          } catch (e) { report("status fetch", e); statusBad("failed"); }
+        }
+
+        /* The parts of status.json the lights use, or null when there is nothing usable */
+        function statusData(now) {
+          var j = SEA.status;
+          if (!j) return null;
+          var gen = iso(j.generated_utc);
+          if (gen !== null && now - gen > 24 * HOUR) return null; // older than 24 h: treated as unavailable
+          var src = isObj(j.sources) ? j.sources : {};
+          return {
+            gen: gen,
+            stale: gen === null || now - gen > CFG.statusStaleH * HOUR,
+            ofOk: Array.isArray(j.overflows) && !(isObj(src.scottish_water) && src.scottish_water.ok === false),
+            wnOk: Array.isArray(j.warnings) && !(isObj(src.met_office) && src.met_office.ok === false),
+            overflows: Array.isArray(j.overflows) ? j.overflows : [],
+            warnings: Array.isArray(j.warnings) ? j.warnings : [],
+            sources: isObj(j.sources) ? j.sources : {}
+          };
+        }
+        function trackedList(loc) {
+          var L = LOCS[loc];
+          return L && Array.isArray(L.overflows) ? L.overflows : [];
+        }
+        // tracked assets matched to the feed by exact name, case-insensitive and trimmed
+        function matchOverflows(loc, sd) {
+          var want = trackedList(loc), out = [], i, k;
+          for (i = 0; i < want.length; i++) {
+            var found = null;
+            for (k = 0; k < sd.overflows.length; k++) {
+              var o = sd.overflows[k];
+              if (o && norm(o.asset_name) === norm(want[i])) { found = o; break; }
+            }
+            out.push({ name: want[i], row: found });
+          }
+          return out;
+        }
+        function warnCounts(w, now) {
+          if (!isObj(w)) return { counts: false, why: "unreadable" };
+          var lv = String(w.level || "").toLowerCase();
+          var type = String(w.type || "").toLowerCase();
+          var from = iso(w.valid_from_utc), to = iso(w.valid_to_utc);
+          if (to !== null && to <= now) return { counts: false, why: "expired" };
+          if (CFG.warningLevels[lv] === false) return { counts: false, why: "level switched off" };
+          if (Object.prototype.hasOwnProperty.call(CFG.warningTypes, type) && CFG.warningTypes[type] === false) return { counts: false, why: "type switched off" };
+          var area = String(CFG.warningArea || "").trim().toLowerCase();
+          if (area) {
+            var areas = Array.isArray(w.areas) ? w.areas : [];
+            var hit = false;
+            for (var i = 0; i < areas.length; i++) if (String(areas[i] || "").toLowerCase().indexOf(area) >= 0) hit = true;
+            if (!hit) return { counts: false, why: "area not listed" };
+          }
+          if (from !== null && from > now + CFG.warningLeadH * HOUR) return { counts: false, why: "not yet in force" };
+          return { counts: true, why: "" };
+        }
+        function warnTxt(w, now) {
+          var lv = String(w.level || "").toLowerCase(), type = String(w.type || "weather");
+          var to = iso(w.valid_to_utc), from = iso(w.valid_from_utc);
+          var head = cap(lv || "weather") + " " + type + " warning";
+          if (from !== null && from > now) return head + " from " + shortWhen(from) + (to !== null ? " until " + shortWhen(to) : "");
+          if (to !== null) return head + " in force until " + shortWhen(to);
+          return head + " in force";
+        }
+        function mTxt(v) { return (Math.round(v * 10) / 10).toFixed(1) + " m"; }
+
+        /* lightFor: pure, the one place the colour is decided */
+        function lightFor(loc, now) {
+          var out = { colour: "grey", reasons: [], partial: false, stale: false };
+          var sd = statusData(now), w = SEA.waves[loc], any = false;
+          var red = [], amber = [];
+          if (sd) {
+            any = true;
+            if (sd.stale) out.stale = true;
+            if (!sd.ofOk || !sd.wnOk) out.partial = true;
+            var ms = matchOverflows(loc, sd), i;
+            for (i = 0; i < ms.length; i++) {
+              var m = ms[i];
+              if (!m.row) { out.partial = true; continue; }
+              var code = String(m.row.status_code || "").toUpperCase();
+              var start = iso(m.row.start_utc), end = iso(m.row.end_utc);
+              if (code === "OF" || /^OF/.test(String(m.row.status || "").toUpperCase())) {
+                red.push(m.name + " is overflowing now" + (start !== null ? " (since " + shortWhen(start) + ")" : ""));
+              } else if (code === "RO" && end === null) {
+                amber.push(m.name + " stopped overflowing recently (amber for " + CFG.amberHoursAfterOverflow + " h)");
+              } else if (end !== null && now - end < CFG.amberHoursAfterOverflow * HOUR && now - end >= 0) {
+                amber.push(m.name + " stopped overflowing " + hAgo(end, now) + " (amber for " + CFG.amberHoursAfterOverflow + " h)");
+              }
+            }
+            for (i = 0; i < sd.warnings.length; i++) {
+              var wr = sd.warnings[i];
+              if (warnCounts(wr, now).counts) red.push(warnTxt(wr, now));
+            }
+          } else out.partial = true;
+          // wave data past its 12 h forecast is treated as missing
+          if (w && now - w.at > 12 * HOUR) w = null;
+          if (w) {
+            any = true;
+            if (now - w.at > 2 * waveEvery()) out.stale = true;
+            var pk = waveMax(w, now);
+            if (pk && pk.v > CFG.waveAmberM) {
+              amber.push(pk.kind + " " + mTxt(pk.v) + (pk.now ? " now" : " expected by " + when(pk.t, now)) + " (amber above " + mTxt(CFG.waveAmberM) + ")");
+            }
+          } else out.partial = true;
+          if (!any) { out.reasons = ["No sea data yet."]; return out; }
+          if (red.length) { out.colour = "red"; out.reasons = red.concat(amber); }
+          else if (amber.length) { out.colour = "amber"; out.reasons = amber; }
+          else { out.colour = "green"; out.reasons = ["All clear"]; }
+          if (out.partial) out.reasons.push("Some data is missing, so this light is based on what is known.");
+          if (out.stale) out.reasons.push("The data behind this light is older than expected.");
+          return out;
+        }
+
+        /* Lights on the two buttons, the footer line, and the open detail page */
+        var lightState = { gullane: null, nb: null };
+        function setDot(el, L) {
+          if (!el) return;
+          el.setAttribute("data-c", L.colour);
+          el.setAttribute("data-ring", L.partial || L.stale ? "true" : "false");
+        }
+        function seaFootLine(now) {
+          var w = SEA.waves[st.loc], sd = statusData(now), parts = [];
+          if (w && now - w.at > 12 * HOUR) w = null;
+          parts.push(w ? (now - w.at > 2 * waveEvery() ? "waves stale " : "waves live ") + hm(w.at) : SEA.waveErr[st.loc] ? "waves unavailable" : "waves loading");
+          if (sd) parts.push("overflows " + (sd.gen !== null ? hm(sd.gen) : "loaded") + (sd.stale ? " (stale)" : ""));
+          else parts.push(SEA.statusTried ? "overflows unavailable" : "overflows loading");
+          return "Sea status: " + parts.join(" · ");
+        }
+        function paintLights() {
+          var now = Date.now();
+          LOC_IDS.forEach(function (id) {
+            var L = lightFor(id, now);
+            lightState[id] = L;
+            var btn = document.querySelector('[data-light="' + id + '"]');
+            if (!btn) return;
+            setDot(btn.querySelector(".x-dot"), L);
+            var word = L.colour === "grey" ? "no data" : L.colour;
+            btn.setAttribute("aria-label", ((LOCS[id] && LOCS[id].name) || id) + " status: " + word + ". Open details");
+          });
+          setText("seaLine", seaFootLine(now));
+          if (dv && !dv.hidden) step("sea detail", renderDetail);
+        }
+
+        /* Detail page */
+        var dv = null, dvScroll = null, dvLoc = "gullane", dvReturn = null;
+        function ofStatusColour(code) {
+          code = String(code || "").toUpperCase();
+          return code === "OF" ? "red" : code === "RO" ? "amber" : code === "NO" ? "green" : "grey";
+        }
+        function reasonsHtml(L) {
+          var h = "";
+          for (var i = 0; i < L.reasons.length; i++) h += "<li>" + esc(L.reasons[i]) + "</li>";
+          return '<ul class="x-reasons">' + h + "</ul>";
+        }
+        function overflowHtml(loc, sd) {
+          if (!sd) return "<p>Overflow data unavailable. It arrives once the GitHub Pages copy and its hourly update are running.</p>";
+          var ms = matchOverflows(loc, sd);
+          if (!ms.length) return "<p>No overflows are tracked for this place. Add asset names in Settings.</p>";
+          var h = '<div class="x-tblwrap"><table class="x-tbl x-of"><thead><tr><th>Asset</th><th>Status</th><th>Last start</th><th>Last end</th><th>Min in 48 h</th><th>Receiving water</th><th>Last transmitted</th></tr></thead><tbody>';
+          for (var i = 0; i < ms.length; i++) {
+            var m = ms[i], o = m.row;
+            h += "<tr><th>" + esc(m.name) + "</th>";
+            if (!o) h += '<td colspan="6" class="m">not in feed — check the name in Settings</td></tr>';
+            else {
+              var st2 = iso(o.start_utc), en = iso(o.end_utc);
+              if (st2 === null) st2 = iso(o.prev_start_utc);
+              if (en === null) en = iso(o.prev_end_utc);
+              h += '<td class="x-st" data-c="' + ofStatusColour(o.status_code) + '">' + esc(o.status || o.status_code || "–") + "</td>" +
+                '<td class="n">' + esc(stamp(st2)) + '</td><td class="n">' + esc(en === null ? (String(o.status_code).toUpperCase() === "OF" ? "still on" : "–") : stamp(en)) + "</td>" +
+                '<td class="n">' + (finite(o.total_min_48h) ? Math.round(o.total_min_48h) : "–") + "</td>" +
+                "<td>" + esc(o.receiving_water || "–") + '</td><td class="n">' + esc(stamp(iso(o.last_transmitted_utc))) + "</td></tr>";
+            }
+          }
+          return h + "</tbody></table></div>";
+        }
+        function warningsHtml(sd, now) {
+          if (!sd) return "<p>Warning data unavailable.</p>";
+          var on = "", off = "", i;
+          for (i = 0; i < sd.warnings.length; i++) {
+            var w = sd.warnings[i], c = warnCounts(w, now), lv = String(w.level || "").toLowerCase();
+            var areas = Array.isArray(w.areas) ? w.areas.join(", ") : "";
+            var li = '<li' + (c.counts ? "" : ' class="x-dim"') + '><span class="x-badge" data-lv="' + esc(lv) + '">' + esc(cap(lv || "warning")) + "</span>" +
+              "<b>" + esc(cap(String(w.type || "weather"))) + "</b> · " + esc(w.title || warnTxt(w, now)) +
+              "<small>" + esc(w.valid_text || (stamp(iso(w.valid_from_utc)) + " to " + stamp(iso(w.valid_to_utc)))) +
+              (areas ? " · " + esc(areas) : "") + (c.counts ? "" : " · not counted: " + esc(c.why)) + "</small>" +
+              (w.link ? ' <a href="' + esc(w.link) + '" target="_blank" rel="noopener">Met Office</a>' : "") + "</li>";
+            if (c.counts) on += li; else off += li;
+          }
+          if (!on && !off) return "<p>None in force.</p>";
+          return '<ul class="x-wl">' + (on || '<li class="x-dim">None in force.</li>') + off + "</ul>";
+        }
+        function seaStateHtml(loc, now) {
+          var w = SEA.waves[loc];
+          if (!w) return "<p>" + (SEA.waveErr[loc] ? "Sea state unavailable." : "Sea state loading…") + "</p>";
+          function row(a, b) { return '<div class="x-row"><dt>' + a + "</dt><dd>" + b + "</dd></div>"; }
+          var h = '<dl class="x-rows x-dvrows">';
+          h += row("Significant wave height now", w.waveH === null ? "–" : w.waveH.toFixed(1) + " m");
+          h += row("Wave direction", esc(dirTxt(w.waveD)));
+          h += row("Swell height now", w.swellH === null ? "–" : w.swellH.toFixed(1) + " m");
+          h += row("Swell direction", esc(dirTxt(w.swellD)));
+          var pk = waveMax(w, now);
+          h += row("Highest wave or swell, next " + CFG.waveLookaheadH + " h", pk ? esc(pk.kind + " " + mTxt(pk.v) + (pk.now ? ", now" : " at " + when(pk.t, now))) : "–");
+          h += row("Amber threshold", "above " + mTxt(CFG.waveAmberM));
+          h += row("Model time", esc(stamp(w.curTime)) + (now - w.at > 2 * waveEvery() ? " · stale" : ""));
+          return h + "</dl>";
+        }
+        function timesHtml(sd, loc, now) {
+          var w = SEA.waves[loc], src = sd ? sd.sources : {}, sw = isObj(src.scottish_water) ? src.scottish_water : {}, mo = isObj(src.met_office) ? src.met_office : {};
+          function row(a, b) { return '<div class="x-row"><dt>' + a + "</dt><dd>" + b + "</dd></div>"; }
+          var h = '<dl class="x-rows x-dvrows">';
+          h += row("status.json generated", sd ? esc(stamp(sd.gen)) + (sd.stale ? " · stale" : "") : "unavailable" + (SEA.statusErr ? " (" + esc(SEA.statusErr) + ")" : ""));
+          h += row("Scottish Water feed updated", esc(sw.feed_updated_utc ? stamp(iso(sw.feed_updated_utc)) : sw.error ? String(sw.error) : "–"));
+          h += row("Met Office feed published", esc(mo.feed_published ? String(mo.feed_published) : mo.error ? String(mo.error) : "–"));
+          h += row("Waves fetched", w ? esc(stamp(w.at)) + (now - w.at > 2 * waveEvery() ? " · stale" : "") + (SEA.waveErr[loc] ? " · last retry failed" : "") : SEA.waveErr[loc] ? "unavailable" : "–");
+          h += row("Status URL used", esc(SEA.statusUrlUsed || absUrl(CFG.statusUrl)));
+          h += "</dl>";
+          h += '<p class="x-note">Data: Scottish Water near-real-time overflow monitoring; Met Office warnings; Open-Meteo Marine. Not a bathing-water quality reading.</p>';
+          return h;
+        }
+        function renderDetail() {
+          var now = Date.now(), loc = dvLoc, L = lightFor(loc, now), sd = statusData(now);
+          var name = (LOCS[loc] && LOCS[loc].name) || loc;
+          setText("dvName", name + " — sea status");
+          setText("dvWord", L.colour === "grey" ? "no data" : L.colour);
+          setDot($("dvDot"), L);
+          var h = "";
+          h += "<section><h3>Why this colour</h3>" + reasonsHtml(L) + "</section>";
+          h += "<section><h3>Overflows <small>Scottish Water</small></h3>" + overflowHtml(loc, sd) + "</section>";
+          h += "<section><h3>Weather warnings <small>Met Office, Lothian &amp; Borders</small></h3>" + warningsHtml(sd, now) + "</section>";
+          h += "<section><h3>Sea state <small>Open-Meteo Marine</small></h3>" + seaStateHtml(loc, now) + "</section>";
+          h += "<section><h3>Data timestamps</h3>" + timesHtml(sd, loc, now) + "</section>";
+          var body = $("dvBody");
+          if (body) body.innerHTML = h;
+        }
+        function openDv(loc, from) {
+          try {
+            dvLoc = loc; dvReturn = from || null;
+            renderDetail();
+            var msg = $("dvMsg"); if (msg) msg.textContent = "";
+            dv.hidden = false; dvScroll.scrollTop = 0; $("dvClose").focus();
+          } catch (e) { report("sea detail", e); }
+        }
+        function closeDv() {
+          dv.hidden = true;
+          try { if (dvReturn) dvReturn.focus(); } catch (e) {}
+        }
+        // settings changed: re-time the chains, refetch moved marine points, repaint at once
+        function seaApply(prev) {
+          var waveInt = !prev || prev.waveRefreshMin !== CFG.waveRefreshMin;
+          var urlMoved = !prev || prev.statusUrl !== CFG.statusUrl;
+          var statusInt = !prev || prev.statusRefreshMin !== CFG.statusRefreshMin;
+          LOC_IDS.forEach(function (id, i) {
+            var a = prev && prev.locations && prev.locations[id], b = LOCS[id];
+            if (!b) return;
+            if (!a || a.marineLat !== b.marineLat || a.marineLon !== b.marineLon) {
+              // new marine point: drop the old reading and any answer still in flight, fetch again
+              waveGen[id]++; waveBusy[id] = 0; waveFails[id] = 0;
+              SEA.waves[id] = null; SEA.waveErr[id] = false;
+              scheduleWave(id, 1000 + i * 4000);
+            } else if (waveInt && !waveBusy[id]) {
+              scheduleWave(id, SEA.waves[id] && !waveFails[id] ? Math.max(5000, SEA.waves[id].at + waveEvery() - Date.now()) : waveBackoff(Math.max(1, waveFails[id])));
+            }
+          });
+          if (urlMoved) { statusBusy = 0; scheduleStatus(1000); }
+          else if (statusInt && !statusBusy) scheduleStatus(SEA.status && !SEA.statusErr ? Math.max(5000, SEA.statusAt + statusEvery() - Date.now()) : Math.min(5 * MIN, statusEvery()));
+          paintLights();
+        }
+
+        /* Init: each section on its own, so one failure cannot stop the others */
+        var ov = null, ovScroll = null, infoBtn = null, sv = null, svScroll = null;
+
+        section("viewport", function () { setVh(); });
+
+        section("dial", function () {
+          dialCv = $("dial"); dialBox = $("dialBox");
+          dctx = dialCv && dialCv.getContext ? dialCv.getContext("2d") : null;
+          if (!dctx) throw new Error("dial canvas unavailable");
+        });
+
+        section("wave", function () {
+          waveCv = $("wave"); waveBox = $("waveBox");
+          wctx = waveCv && waveCv.getContext ? waveCv.getContext("2d") : null;
+          if (!wctx) throw new Error("wave canvas unavailable");
+        });
+
+        section("settings", function () { applyCfg(CFG); });
+
+        section("layout", resize);
+
+        section("picker", function () {
+          var locBtns = document.querySelectorAll(".x-seg [data-loc]");
+          Array.prototype.forEach.call(locBtns, function (btn) {
+            btn.addEventListener("click", function () {
+              try {
+                var loc = btn.getAttribute("data-loc");
+                if (loc === st.loc) {
+                  // tapping the active place refreshes it: re-fetch live pressure and recompute
+                  btn.setAttribute("data-refreshed", String(Date.now()));
+                  // at most one extra request every 2 min, so repeated taps cannot trip the API's rate limit (429)
+                  dirty = true; lastSec = -1;
+                  if (!st.pTime || Date.now() - st.pTime > 2 * MIN) fetchPressure(false);
+                  return;
+                }
+                st.loc = loc;
+                Array.prototype.forEach.call(locBtns, function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+                step("location settings", applyLoc);
+                if (seaReady) step("lights", paintLights);
+                dirty = true; lastSec = -1;
+                // the two places are ~8 km apart: reuse a recent live reading instead of a new request
+                // a request in flight or a recent failure is already on the back-off chain; don't add another
+                if (!pFresh() && !pBusy && !(st.pFails && Date.now() - pBusyAt < 2 * MIN)) fetchPressure(true);
+              } catch (e) { report("picker", e); }
+            });
+          });
+        });
+
+        section("offsets", function () { var n = Date.now(); precomputeOffsets(n); readOffsets(n); });
+        section("sum table", function () { readSum(Date.now()); });
+        section("wave", function () { var n = Date.now(); precomputeWave(n); readHead(n); });
+        section("clock", function () { readClock(Date.now()); });
+
+        section("pressure fetch", function () {
+          window.addEventListener("online", pressureNudge);
+          document.addEventListener("visibilitychange", function () { if (!document.hidden) pressureNudge(); });
+          $("baro").addEventListener("input", function (e) { st.manual = true; st.pManual = parseInt(e.target.value, 10) || Math.round(CFG.pressureFallbackHpa); dirty = true; lastSec = -1; });
+          $("useLive").addEventListener("click", function () { st.manual = false; dirty = true; lastSec = -1; });
+          if (!pressureFromStore()) fetchPressure();
+          pressText();
+        });
+
+        /* Info overlay: the only part that scrolls */
+        section("overlay", function () {
+          ov = $("ov"); ovScroll = $("ovScroll"); infoBtn = $("infoBtn");
+          function openOv() { ov.hidden = false; ovScroll.scrollTop = 0; $("ovClose").focus(); }
+          function closeOv() { ov.hidden = true; infoBtn.focus(); }
+          infoBtn.addEventListener("click", openOv);
+          $("ovClose").addEventListener("click", closeOv);
+          ov.addEventListener("click", function (e) { if (e.target === ov) closeOv(); });
+          document.addEventListener("keydown", function (e) { if (e.key === "Escape" && ov && !ov.hidden) closeOv(); });
+          $("ovSettings").addEventListener("click", function () { ov.hidden = true; openSv(infoBtn); });
+        });
+
+        /* Settings page: a second overlay, built from CFG each time it opens; Cancel discards the draft */
+        var svBody = null, gearBtn = null, svReturn = null, draft = null, resetTimer = 0, fid = 0;
+        var LOC_IDS = ["gullane", "nb"];
+        function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+        function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+        function parseNum(s) {
+          s = String(s == null ? "" : s).trim().replace(/−/g, "-").replace(",", ".");
+          if (s === "" || !/^[-+]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
+          return Number(s);
+        }
+        function svMsg(t, bad) { var m = $("svMsg"); if (!m) return; m.textContent = t || ""; m.setAttribute("data-bad", bad ? "true" : "false"); }
+        var IN_ATTR = ' autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"';
+        // one labelled input; kind: num, text, req (non-blank), time (HH:MM)
+        function fld(path, label, kind, min, max) {
+          var id = "sf" + (++fid), v = getPath(draft, path);
+          return '<div class="x-fld"><label for="' + id + '">' + esc(label) + '</label><input class="x-in" type="text" id="' + id + '" data-k="' + esc(path) +
+            '" data-kind="' + kind + '"' + (kind === "num" ? ' inputmode="decimal" data-min="' + min + '" data-max="' + max + '"' : kind === "time" ? ' inputmode="numeric" placeholder="HH:MM"' : "") +
+            IN_ATTR + ' value="' + esc(v == null ? "" : v) + '" /><span class="x-bad" hidden></span></div>';
+        }
+        function chk(path, label) {
+          return '<label class="x-chk"><input type="checkbox" data-k="' + esc(path) + '" data-kind="bool"' + (getPath(draft, path) !== false ? " checked" : "") + " /> " + esc(label) + "</label>";
+        }
+        function sec(title, inner) { return "<section><h3>" + esc(title) + "</h3>" + inner + "</section>"; }
+        function grid(inner) { return '<div class="x-form">' + inner + "</div>"; }
+        function locName(id) { var L = draft.locations[id]; return (L && L.name) || id; }
+
+        function buildForm() {
+          fid = 0;
+          var h = "", i, types = Object.keys(draft.warningTypes || {});
+          h += sec("Traffic lights", grid(
+            fld("amberHoursAfterOverflow", "Amber hours after an overflow ends", "num", 0, 1000) +
+            fld("waveAmberM", "Wave / swell amber threshold (m)", "num", 0, 30) +
+            fld("waveLookaheadH", "Hours ahead to check waves", "num", 0, 72)));
+          var lv = "", ty = "";
+          ["yellow", "amber", "red"].forEach(function (k) { lv += chk("warningLevels." + k, cap(k)); });
+          for (i = 0; i < types.length; i++) ty += chk("warningTypes." + types[i], cap(types[i]));
+          h += sec("Weather warnings",
+            "<h4>Levels</h4>" + '<div class="x-chks">' + lv + "</div><h4>Types</h4>" + '<div class="x-chks">' + ty + "</div>" +
+            grid(fld("warningArea", "Area text (blank = all Lothian & Borders)", "text") +
+              fld("warningLeadH", "Lead hours: also count warnings starting within", "num", 0, 168)) +
+            "<p class=\"x-note\">Lead 0 = only warnings in force now.</p>");
+          var of = "";
+          LOC_IDS.forEach(function (id) {
+            of += "<h4>" + esc(locName(id)) + '</h4><ul class="x-list" id="svOf-' + id + '"></ul>' +
+              '<div class="x-addrow"><div class="x-fld"><input class="x-in" type="text" id="svOfIn-' + id + '" data-enter="' + id + '" aria-label="Asset name to track at ' + esc(locName(id)) + '"' +
+              IN_ATTR + ' placeholder="Scottish Water ASSET_NAME" /><span class="x-bad" id="svOfBad-' + id + '" hidden></span></div>' +
+              '<button type="button" class="x-opt x-sm" data-act="of-add" data-loc="' + id + '">Add</button></div>';
+          });
+          h += sec("Tracked overflows", "<p>Scottish Water ASSET_NAME, exact text.</p>" + of +
+            '<p class="x-note">Gullane Loan Cottage CSO is not tracked: it discharges to Peffer Burn.</p>');
+          h += sec("Level markers",
+            '<div class="x-tblwrap"><table class="x-tbl x-mk"><thead><tr><th>Location</th><th>Label</th><th>Type</th><th>Height / Low (m)</th><th>High (m)</th><th></th></tr></thead><tbody id="svMk"></tbody></table></div>' +
+            '<div class="x-addrow"><button type="button" class="x-opt x-sm" data-act="mk-add">Add marker</button></div>' +
+            "<p class=\"x-note\">Metres above chart datum. These are Charlie's own estimates.</p>");
+          var lc = "";
+          LOC_IDS.forEach(function (id) {
+            var p = "locations." + id + ".";
+            lc += "<h4>" + esc(locName(id)) + "</h4>" + grid(fld(p + "name", "Name", "req") +
+              fld(p + "lat", "Latitude (pressure)", "num", -90, 90) + fld(p + "lon", "Longitude (pressure)", "num", -180, 180) +
+              fld(p + "marineLat", "Marine latitude (waves)", "num", -90, 90) + fld(p + "marineLon", "Marine longitude (waves)", "num", -180, 180) +
+              fld(p + "dtMin", "Time difference from Leith (min)", "num", -720, 720) + fld(p + "hwCut", "HW height reduction (m)", "num", -5, 5));
+          });
+          h += sec("Locations", lc);
+          h += sec("Clock and data", grid(
+            fld("sunHandShiftMin", "Sun hand shift (min)", "num", -720, 720) +
+            fld("pressureFallbackHpa", "Pressure fallback (hPa)", "num", 870, 1090) +
+            fld("pressureRefreshMin", "Pressure refresh (min)", "num", 1, 1440) +
+            fld("pressureStaleH", "Pressure stale after (h)", "num", 0.1, 168) +
+            fld("waveRefreshMin", "Wave refresh (min)", "num", 1, 1440) +
+            fld("statusUrl", "Status file URL", "req") +
+            fld("statusRefreshMin", "Status refresh (min)", "num", 1, 1440) +
+            fld("statusStaleH", "Status stale after (h)", "num", 0.1, 168) +
+            fld("dailyReload", "Daily reload time (HH:MM)", "time")));
+          svBody.innerHTML = h;
+          LOC_IDS.forEach(renderOf);
+          renderMk();
+        }
+        function renderOf(id) {
+          var ul = $("svOf-" + id), list = draft.locations[id].overflows, h = "";
+          for (var i = 0; i < list.length; i++)
+            h += "<li><span>" + esc(list[i]) + '</span><button type="button" class="x-opt x-sm x-xb" data-act="of-del" data-loc="' + id + '" data-i="' + i + '" aria-label="Remove ' + esc(list[i]) + '">✕</button></li>';
+          if (ul) ul.innerHTML = h || '<li class="x-empty">No overflows tracked.</li>';
+        }
+        function mkType(m) { return m.kind || (m.lo != null && m.hi != null && m.lo !== "" ? "band" : "line"); }
+        function numIn(f, label, v, hide) {
+          return '<input class="x-in" type="text" inputmode="decimal" data-f="' + f + '" aria-label="' + label + '" placeholder="' + label + '"' + IN_ATTR +
+            ' value="' + esc(v == null ? "" : v) + '"' + (hide ? " hidden" : "") + " />";
+        }
+        function renderMk() {
+          var tb = $("svMk"), h = "", list = draft.markers;
+          for (var i = 0; i < list.length; i++) {
+            var m = list[i], t = mkType(m), opts = "";
+            LOC_IDS.forEach(function (id) { opts += '<option value="' + id + '"' + (m.loc === id ? " selected" : "") + ">" + esc(locName(id)) + "</option>"; });
+            h += '<tr data-i="' + i + '">' +
+              '<td><select class="x-in" data-f="loc" aria-label="Location">' + opts + "</select></td>" +
+              '<td><input class="x-in" type="text" data-f="label" aria-label="Label"' + IN_ATTR + ' value="' + esc(m.label || "") + '" /><span class="x-bad" hidden></span></td>' +
+              '<td><select class="x-in" data-f="type" aria-label="Type"><option value="line"' + (t === "line" ? " selected" : "") + '>Line</option><option value="band"' + (t === "band" ? " selected" : "") + ">Band</option></select></td>" +
+              "<td>" + numIn("h", "Height m", m.h, t !== "line") + numIn("lo", "Low m", m.lo, t !== "band") + '<span class="x-bad" hidden></span></td>' +
+              "<td>" + numIn("hi", "High m", m.hi, t !== "band") + '<span class="x-bad" hidden></span></td>' +
+              '<td><button type="button" class="x-opt x-sm x-xb" data-act="mk-del" data-i="' + i + '" aria-label="Remove marker">✕</button></td></tr>';
+          }
+          if (tb) tb.innerHTML = h || '<tr><td colspan="6" class="m">No markers.</td></tr>';
+        }
+        // marker rows back into the draft as typed (raw strings), before any re-render
+        function syncMk() {
+          var rows = svBody.querySelectorAll("#svMk tr[data-i]"), out = [];
+          Array.prototype.forEach.call(rows, function (tr) {
+            function v(f) { var el = tr.querySelector('[data-f="' + f + '"]'); return el ? el.value : ""; }
+            out.push({ loc: v("loc"), label: v("label"), kind: v("type"), h: v("h"), lo: v("lo"), hi: v("hi") });
+          });
+          draft.markers = out;
+        }
+        function setBad(el, msg) {
+          el.setAttribute("aria-invalid", "true");
+          var s = el.parentNode && el.parentNode.querySelector(".x-bad");
+          if (s && s.hidden) { s.textContent = msg; s.hidden = false; }
+        }
+        function clearBad() {
+          Array.prototype.forEach.call(svBody.querySelectorAll(".x-bad"), function (s) { s.hidden = true; s.textContent = ""; });
+          Array.prototype.forEach.call(svBody.querySelectorAll('[aria-invalid="true"]'), function (el) { el.removeAttribute("aria-invalid"); });
+        }
+        function checkNum(el, min, max) {
+          var n = parseNum(el.value);
+          if (String(el.value).trim() === "") { setBad(el, "Enter a number"); return null; }
+          if (!isFinite(n)) { setBad(el, "Not a number"); return null; }
+          if (n < min || n > max) { setBad(el, "Between " + min + " and " + max); return null; }
+          return n;
+        }
+        // validate every field; returns { ok, cfg } or { ok: false, el } (first bad field). Never throws past its caller's try.
+        function readForm() {
+          syncMk(); clearBad();
+          var out = clone(draft), first = null;
+          function fail(el) { if (!first) first = el; }
+          Array.prototype.forEach.call(svBody.querySelectorAll("[data-k]"), function (el) {
+            var k = el.getAttribute("data-k"), kind = el.getAttribute("data-kind"), v = el.value;
+            if (kind === "bool") { setPath(out, k, !!el.checked); return; }
+            if (kind === "num") {
+              var n = checkNum(el, Number(el.getAttribute("data-min")), Number(el.getAttribute("data-max")));
+              if (n === null) fail(el); else setPath(out, k, n);
+              return;
+            }
+            v = String(v).trim();
+            if (kind === "time") { if (toMin(v) < 0) { setBad(el, "Use HH:MM, 24-hour"); fail(el); return; } var mm = toMin(v); v = pad2(Math.floor(mm / 60)) + ":" + pad2(mm % 60); }
+            if (kind === "req" && !v) { setBad(el, "Required"); fail(el); return; }
+            setPath(out, k, v);
+          });
+          var mks = [];
+          Array.prototype.forEach.call(svBody.querySelectorAll("#svMk tr[data-i]"), function (tr) {
+            function q(f) { return tr.querySelector('[data-f="' + f + '"]'); }
+            var lab = q("label"), type = q("type").value, m = { loc: q("loc").value, kind: type === "band" ? "band" : "line", label: String(lab.value).trim() };
+            if (!m.label) { setBad(lab, "Required"); fail(lab); }
+            if (type === "band") {
+              var lo = checkNum(q("lo"), -5, 20), hi = checkNum(q("hi"), -5, 20);
+              if (lo === null) fail(q("lo"));
+              if (hi === null) fail(q("hi"));
+              if (lo !== null && hi !== null && lo >= hi) { setBad(q("hi"), "Must be above Low"); fail(q("hi")); }
+              m.lo = lo; m.hi = hi;
+            } else {
+              var hh = checkNum(q("h"), -5, 20);
+              if (hh === null) fail(q("h"));
+              m.h = hh;
+            }
+            mks.push(m);
+          });
+          out.markers = mks;
+          if (first) return { ok: false, el: first };
+          return { ok: true, cfg: out };
+        }
+        function disarmReset() {
+          if (resetTimer) clearTimeout(resetTimer);
+          resetTimer = 0;
+          var b = $("svReset"); if (b) b.textContent = "Reset to defaults";
+        }
+        function fillForm() { draft = clone(CFG); buildForm(); svMsg(""); }
+        function openSv(from) {
+          try {
+            svReturn = from || gearBtn;
+            $("svNote").hidden = store.ok;
+            disarmReset(); fillForm();
+            sv.hidden = false; svScroll.scrollTop = 0; $("svClose").focus();
+          } catch (e) { report("settings open", e); }
+        }
+        function closeSv() {
+          disarmReset();
+          sv.hidden = true;
+          try { if (svReturn) svReturn.focus(); } catch (e) {}
+        }
+        function svSave() {
+          try {
+            var r = readForm();
+            if (!r.ok) { svMsg("Fix the fields marked in red.", true); try { r.el.focus(); } catch (e) {} return; }
+            // field-by-field merge over DEFAULTS; markers and overflow lists replace the defaults wholesale
+            var next = mergeCfg(DEFAULTS, r.cfg);
+            if (!applyCfg(next)) { svMsg("Those settings could not be applied; defaults are in use.", true); fillForm(); return; }
+            storeCfg(next);
+            if (!store.ok) $("svNote").hidden = false;
+            closeSv();
+          } catch (e) { report("settings save", e); svMsg("Could not save: " + (e && e.message ? e.message : e), true); }
+        }
+        function svReset() {
+          try {
+            if (!resetTimer) {
+              // confirm() dialog; a sandboxed frame blocks it (returns false at once or throws): then fall back to tap-again
+              var t0 = Date.now(), ok = false, blocked = false;
+              try { ok = window.confirm("Reset all settings to defaults?"); } catch (x) { blocked = true; }
+              if (!ok && (blocked || Date.now() - t0 < 30)) { $("svReset").textContent = "Tap again to reset"; resetTimer = setTimeout(disarmReset, 4000); return; }
+              if (!ok) return;
+            }
+            disarmReset();
+            clearCfg();
+            applyCfg(clone(DEFAULTS));
+            fillForm();
+            svMsg("Defaults restored.", false);
+          } catch (e) { report("settings reset", e); }
+        }
+        function ofAdd(id) {
+          var inp = $("svOfIn-" + id), bad = $("svOfBad-" + id), v = String(inp.value).trim(), list = draft.locations[id].overflows;
+          bad.hidden = true; inp.removeAttribute("aria-invalid");
+          var msg = !v ? "Enter an asset name" : list.indexOf(v) >= 0 ? "Already tracked" : "";
+          if (msg) { bad.textContent = msg; bad.hidden = false; inp.setAttribute("aria-invalid", "true"); return; }
+          list.push(v); inp.value = ""; renderOf(id);
+        }
+        section("settings page", function () {
+          sv = $("sv"); svScroll = $("svScroll"); svBody = $("svBody"); gearBtn = $("gearBtn");
+          gearBtn.addEventListener("click", function () { openSv(gearBtn); });
+          $("svClose").addEventListener("click", closeSv);
+          $("svCancel").addEventListener("click", closeSv);
+          $("svSave").addEventListener("click", svSave);
+          $("svReset").addEventListener("click", svReset);
+          document.addEventListener("keydown", function (e) {
+            try {
+              if (!sv || sv.hidden) return;
+              if (e.key === "Escape") { closeSv(); return; }
+              var t = e.target, id = t && t.getAttribute ? t.getAttribute("data-enter") : null;
+              if (e.key === "Enter" && id) { e.preventDefault(); ofAdd(id); }
+            } catch (x) { report("settings keys", x); }
+          });
+          svBody.addEventListener("click", function (e) {
+            try {
+              var b = e.target && e.target.closest ? e.target.closest("[data-act]") : null;
+              if (!b) return;
+              var act = b.getAttribute("data-act"), id = b.getAttribute("data-loc"), i = +b.getAttribute("data-i");
+              if (act === "of-add") ofAdd(id);
+              else if (act === "of-del") { draft.locations[id].overflows.splice(i, 1); renderOf(id); }
+              else if (act === "mk-add") { syncMk(); draft.markers.push({ loc: st.loc, label: "", kind: "line", h: "", lo: "", hi: "" }); renderMk(); }
+              else if (act === "mk-del") { syncMk(); draft.markers.splice(i, 1); renderMk(); }
+            } catch (x) { report("settings edit", x); }
+          });
+          svBody.addEventListener("change", function (e) {
+            try {
+              var t = e.target;
+              if (!t || t.getAttribute("data-f") !== "type") return;
+              var tr = t.closest("tr"), band = t.value === "band";
+              tr.querySelector('[data-f="h"]').hidden = band;
+              tr.querySelector('[data-f="lo"]').hidden = !band;
+              tr.querySelector('[data-f="hi"]').hidden = !band;
+            } catch (x) { report("settings edit", x); }
+          });
+        });
+
+        /* Sea status: lights, detail page, wave and status timers */
+        section("sea status", function () {
+          dv = $("dv"); dvScroll = $("dvScroll");
+          Array.prototype.forEach.call(document.querySelectorAll("[data-light]"), function (b) {
+            b.addEventListener("click", function (e) {
+              e.stopPropagation();
+              openDv(b.getAttribute("data-light"), b);
+            });
+          });
+          $("dvClose").addEventListener("click", closeDv);
+          dv.addEventListener("click", function (e) { if (e.target === dv) closeDv(); });
+          document.addEventListener("keydown", function (e) { if (e.key === "Escape" && dv && !dv.hidden) closeDv(); });
+          $("dvSettings").addEventListener("click", function () { dv.hidden = true; openSv(dvReturn || gearBtn); });
+          $("dvRefresh").addEventListener("click", function () {
+            try {
+              var msg = $("dvMsg"); if (msg) msg.textContent = "Refreshing… updated data appears here as it arrives.";
+              statusBusy = 0; waveBusy[dvLoc] = 0;
+              fetchStatus(); fetchWaves(dvLoc);
+            } catch (x) { report("sea refresh", x); }
+          });
+          seaReady = true;
+          paintLights();
+          // stagger: status first, then each place's waves a few seconds apart
+          scheduleStatus(1000);
+          LOC_IDS.forEach(function (id, i) { scheduleWave(id, 3000 + i * 5000); });
+          setInterval(function () { step("lights", paintLights); }, MIN);
+          function seaNudge() {
+            try {
+              if (SEA.statusErr || !SEA.status || Date.now() - SEA.statusAt > statusEvery()) fetchStatus();
+              LOC_IDS.forEach(function (id, i) {
+                var w = SEA.waves[id];
+                if (waveFails[id] || !w || Date.now() - w.at > waveEvery()) scheduleWave(id, 1000 + i * 4000);
+              });
+            } catch (x) { report("sea retry", x); }
+          }
+          window.addEventListener("online", seaNudge);
+          document.addEventListener("visibilitychange", function () { if (!document.hidden) seaNudge(); });
+        });
+
+        /* No page scroll, pinch or rubber-band outside the overlay */
+        section("touch", function () {
+          document.addEventListener("touchmove", function (e) {
+            if (e.touches && e.touches.length > 1) { e.preventDefault(); return; }
+            var app = $("app"), sheet = ov && !ov.hidden ? ovScroll : sv && !sv.hidden ? svScroll : dv && !dv.hidden ? dvScroll : null, overlayOpen = !!sheet;
+            if (sheet && sheet.contains(e.target)) return;
+            // stacked narrow layout: the app itself scrolls
+            if (!overlayOpen && app && app.scrollHeight > app.clientHeight + 1 && app.contains(e.target)) return;
+            e.preventDefault();
+          }, { passive: false });
+          document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
+          document.addEventListener("dblclick", function (e) { e.preventDefault(); });
+        });
+
+        section("loop", function () {
+          document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else { resize(); start(); } });
+          window.addEventListener("pageshow", function () { if (!document.hidden) { resizeSoon(); start(); } });
+          window.addEventListener("pagehide", stop);
+          window.addEventListener("resize", resize);
+          window.addEventListener("orientationchange", resizeSoon);
+          window.addEventListener("load", resizeSoon);
+          if (!document.hidden) start();
+        });
+
+        /* Heartbeat: restart a stalled loop, keep the clock ticking, re-fit late layout */
+        section("heartbeat", function () {
+          setInterval(function () {
+            try {
+              if (document.hidden) return;
+              if (!running) start();
+              else if (Date.now() - lastFrame > 3000) { stop(); start(); }
+              if (sizeDrifted()) resize();
+              if (Date.now() - lastFrame > 1500) readClock(Date.now());
+            } catch (e) { report("heartbeat", e); }
+          }, 1000);
+          resizeSoon();
+        });
+
+        /* Daily soft reload at CFG.dailyReload Europe/London, checked once a minute; skipped while offline until the next day */
+        section("daily reload", function () {
+          resetDailyReload();
+          setInterval(function () {
+            try {
+              var t = Date.now(), c = toMin(hm(t)), day = dayKey(t), rel = toMin(CFG.dailyReload);
+              if (rel < 0 || c < rel || day === reloadDone) return;
+              reloadDone = day;
+              if (c < rel + 60 && navigator.onLine === true) location.reload();
+            } catch (e) { report("daily reload", e); }
+          }, MIN);
+        });
+
+        /* Last statement of our code: errors reported on later lines (host-injected scripts) are not ours */
+        try { throw new Error("end of page script"); } catch (e) { if (window.harkEnd) window.harkEnd(e); }
+      })();
+    </script>
+  </body>
+</html>
