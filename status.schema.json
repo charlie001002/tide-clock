@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tide clock status.json (schema 1)",
+  "type": "object",
+  "required": ["schema", "generated_utc", "sources", "overflows", "warnings"],
+  "properties": {
+    "schema": {"const": 1},
+    "generated_utc": {"type": "string", "description": "ISO 8601 UTC, when the workflow ran"},
+    "sources": {
+      "type": "object",
+      "properties": {
+        "scottish_water": {"type": "object", "properties": {
+          "ok": {"type": "boolean"}, "url": {"type": "string"},
+          "feed_updated_utc": {"type": ["string", "null"]}, "assets_in_feed": {"type": "integer"},
+          "tracked_missing": {"type": "array", "items": {"type": "string"}},
+          "fetched_utc": {"type": "string"}, "error": {"type": ["string", "null"]}}},
+        "met_office": {"type": "object", "properties": {
+          "ok": {"type": "boolean"}, "url": {"type": "string"}, "region": {"type": "string"},
+          "feed_published": {"type": "string"}, "fetched_utc": {"type": "string"}, "error": {"type": ["string", "null"]}}}
+      }
+    },
+    "overflows": {"type": "array", "items": {"type": "object", "properties": {
+      "asset_id": {"type": "string"}, "asset_name": {"type": "string"},
+      "status_code": {"enum": ["OF", "RO", "NO", "DA", ""]}, "status": {"type": "string"},
+      "start_utc": {"type": ["string", "null"]}, "end_utc": {"type": ["string", "null"]},
+      "duration_min": {"type": ["number", "null"]},
+      "prev_start_utc": {"type": ["string", "null"]}, "prev_end_utc": {"type": ["string", "null"]},
+      "total_min_48h": {"type": "number"}, "last_transmitted_utc": {"type": ["string", "null"]},
+      "receiving_water": {"type": "string"}, "local_authority": {"type": ["string", "null"]},
+      "lat": {"type": ["number", "null"]}, "lon": {"type": ["number", "null"]},
+      "tracked": {"type": "boolean"}}}},
+    "warnings": {"type": "array", "items": {"type": "object", "properties": {
+      "level": {"enum": ["yellow", "amber", "red", ""]}, "type": {"type": "string"},
+      "title": {"type": "string"}, "areas": {"type": "array", "items": {"type": "string"}},
+      "valid_from_utc": {"type": ["string", "null"]}, "valid_to_utc": {"type": ["string", "null"]},
+      "valid_text": {"type": "string"}, "link": {"type": "string"}}}}
+  }
+}
