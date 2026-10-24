@@ -1,0 +1,36 @@
+name: Update status.json
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly, a little after Scottish Water's hourly refresh
+  workflow_dispatch: {}      # "Run workflow" button for a manual refresh
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-status
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch Scottish Water overflows and Met Office warnings
+        run: python scripts/fetch_status.py
+      - name: Commit status.json if it changed
+        run: |
+          git config user.name "tide-clock-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status.json
+          if git diff --cached --quiet; then
+            echo "No change"
+          else
+            git commit -m "status: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
