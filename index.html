@@ -53,7 +53,14 @@
 
       .x-left > .x-dialbox { flex: 1 1 160px; height: 160px; min-height: 140px; position: relative; overflow: hidden; }
       .x-dialbox canvas { position: absolute; left: 0; top: 0; }
+      .x-key { position: absolute; left: 4px; top: 4px; z-index: 1; list-style: none; margin: 0; padding: 0; font-size: 13px; color: var(--tx-2); line-height: 1.7; }
+      .x-key li { display: flex; align-items: center; gap: 6px; }
+      .x-sw { display: inline-block; height: 4px; border-radius: 2px; box-shadow: 0 0 0 1px #3b2a1a; }
+      .x-sw-m { width: 22px; background: #ffffff; }
+      .x-sw-s { width: 12px; height: 6px; border-radius: 3px; background: #f2c230; }
       .x-phase { text-align: center; font-size: 13px; color: var(--tx-2); }
+      .x-setrow { text-align: center; margin: 2px 0 4px; }
+      .x-setbtn { min-height: 36px; padding: 0 16px; font-size: 14px; }
 
       .x-h { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--tx-2); margin-bottom: 2px; }
       .x-rows { display: block; }
@@ -156,6 +163,12 @@
       .x-list li.x-empty { color: var(--tx-2); padding: 10px 0; }
       .x-addrow { display: flex; gap: 8px; margin-top: 6px; align-items: flex-start; }
       .x-addrow .x-fld { flex: 1 1 auto; }
+      .x-setdials { display: flex; flex-wrap: wrap; gap: 14px 22px; margin: 6px 0 10px; }
+      .x-setdials figure { flex: 0 1 180px; min-width: 120px; text-align: center; }
+      .x-setdials canvas { display: block; width: 100%; aspect-ratio: 1 / 1; }
+      .x-setdials figcaption { font-size: 13px; color: var(--tx-2); margin-top: 4px; }
+      .x-settimes li { display: block; }
+      .x-settimes small { display: block; color: var(--tx-2); font-size: 13px; }
       .x-sm { flex: 0 0 auto; min-width: 88px; }
       .x-sm.x-xb { min-width: 44px; width: 44px; padding: 0; font-size: 16px; }
       .x-primary { background: var(--tx); color: var(--bg); border-color: var(--tx); }
@@ -310,12 +323,13 @@
           </div>
         </div>
         <p class="x-phase">Based on Leith standard port</p>
-        <div class="x-dialbox" id="dialBox"><canvas id="dial" role="img" aria-label="Tide clock dial, based on Leith standard port: a short Sun hand (S2) and a long Moon hand (M2) on a centre pivot. Straight up is each hand's high water."></canvas></div>
+        <div class="x-dialbox" id="dialBox"><ul class="x-key" id="dialKey" aria-hidden="true"><li><span class="x-sw x-sw-m"></span>Moon</li><li><span class="x-sw x-sw-s"></span>Sun</li></ul><canvas id="dial" role="img" aria-label="Tide clock dial on Charlie's laser-cut Gullane face: a map of Gullane and Aberlady, HIGH WATER at the top, LOW WATER at the bottom. Based on Leith standard port: a short Sun hand (S2) and a long Moon hand (M2) on a centre pivot. Straight up is each hand's high water."></canvas></div>
         <p class="x-phase" id="phase">&nbsp;</p>
+        <p class="x-setrow"><button type="button" class="x-opt x-setbtn" id="setClockBtn" aria-haspopup="dialog">Set your clock</button></p>
         <div class="x-panel">
           <p class="x-h">Offsets</p>
           <div class="x-offs">
-            <p><b>Sun hand:</b> <span id="sunOff">HW at 03:11 and 15:11 GMT</span></p>
+            <p><b>Sun hand:</b> <span id="sunOff">HW 3 h 00 m after the mean Sun crosses the meridian here (03:11 and 15:11 GMT)</span></p>
             <p><b>Moon hand:</b> HW 1 h 42 m after the mean Moon crosses the meridian here.</p>
             <p><b>Moon hand next up: <span id="moonUp">–</span></b></p>
             <p class="x-src" id="secSrc">Leith constants (TICON-4), with Fidra secondary-port differences applied (<span id="secTxt">HW −1 min, high-water heights −0.2 m</span>).</p>
@@ -353,11 +367,11 @@
           </div>
         </div>
         <div class="x-panel x-wave">
-          <p class="x-cap"><b>Past ← now → future</b> · metres above chart datum · solid: full prediction · faint: two hands (M2+S2) · dotted: one hand only (M2)</p>
+          <p class="x-cap" id="waveCap">Metres above chart datum · solid: full prediction · faint: spring–neap envelope of the two hands · dashed: mean springs and neaps</p>
           <div class="x-wavebox" id="waveBox"><canvas id="wave" role="img" aria-label="Predicted tide height over the six hours either side of now"></canvas></div>
         </div>
         <div class="x-foot">
-          <p><span class="x-press" id="press" data-state="loading">Air pressure: fetching live pressure, using 1013 hPa</span><span class="x-sea" id="seaLine">Sea status: loading</span>Approximate: check an official tide table before swimming or boating.</p>
+          <p><span class="x-press" id="press" data-state="loading">Air pressure: fetching live pressure, using 1013 hPa</span><span class="x-sea" id="seaLine">Sea status: loading</span>Approximate: check an official tide table before swimming or boating. Dial faces: map data © OpenStreetMap contributors, ODbL.</p>
           <p class="x-beat"><i></i><span id="beat">running · --:--:--</span></p>
         </div>
       </div>
@@ -372,8 +386,9 @@
         <div class="x-scroll" id="ovScroll">
           <section>
             <h3>Why the second hand?</h3>
-            <p>The main reason for the second (Sun) hand is that it shows spring and neap tides. When the Sun and Moon hands line up, at new and full moon, their pulls add together and you get big spring tides: higher highs and lower lows. When the hands point in opposite directions, at the quarter moons, they partly cancel and you get small neap tides. (In the sky the Sun and Moon are then at right angles, 90° apart; the clock hands turn twice per day, so that 90° shows as 180° on the dial.) So at a glance the clock shows whether today's tide is a big one or a small one, which a one-hand clock can't do.</p>
-            <p>Better accuracy is a secondary, marginal benefit. Adding the Sun hand cuts the average high-water timing error only from about 27 to 23 minutes, and the average height error from about 0.39 to 0.22 m (Leith, 18.6-year simulation, details below).</p>
+            <p>Most tide clocks have one hand that gives an indication of when there are high and low tides.</p>
+            <p>However, tides depend on the positions of both the Moon and the Sun. When the Sun and Moon hands align, their effects add together and we get spring tides, with the highest highs and lowest lows. When the Sun and Moon hands point in opposite directions, they partly cancel and we get neap tides. Between neap and spring tides, the Sun delays high and low tides by up to about 40 minutes, known as lagging. Between spring and neap tides, the Sun brings high and low tides forward by up to about 40 minutes, known as priming.</p>
+            <p>With our tide clock, you can keep it simple and fit one hand. However, if you choose to fit two hands, it will give you a much more nuanced understanding of the tides.</p>
           </section>
           <section>
             <h3>Air pressure</h3>
@@ -390,23 +405,6 @@
               <p><b>Predictions are approximate; check an official tide table before swimming or boating.</b></p>
               <p>Both places use the Admiralty Fidra secondary-port differences on Leith. Wind surge is not included.</p>
             </div>
-          </section>
-          <section>
-            <h3>How accurate is each clock?</h3>
-            <p>Most tide clocks rely on one hand, following the Moon's gravitational pull, but this leads to errors of up to 2 h 11 min and 1.5 m (34 min and 0.42 m on average). This clock takes account of the impact of the Sun's gravitational pull, and reduces the error to up to 2 h 1 min and 0.9 m (24 min and 0.24 m on average). The online version of the clock takes account of N2 lunar distance, K1/O1 diurnal inequality, M4 shallow-water distortion and live air pressure, and this reduces the error to up to 31 min and 0.17 m (4 min and 3.5 cm on average).</p>
-            <p>The largest time errors come at neap low waters, when the tide is nearly flat. 95% of high and low waters fall within 84 min (one hand), 59 min (two hands) and 11 min (online).</p>
-          </section>
-          <section>
-            <h3>How the figures were worked out</h3>
-            <table class="x-tbl">
-              <thead><tr><th>Clock</th><th>Max time</th><th>95% time</th><th>Average time</th><th>Max height</th><th>95% height</th><th>Average height</th></tr></thead>
-              <tbody>
-                <tr><th>One hand <small>M2</small></th><td class="n">131 min</td><td class="n">84 min</td><td class="n">34 min</td><td class="n">1.53 m</td><td class="n">0.94 m</td><td class="n">0.42 m</td></tr>
-                <tr><th>Two hands <small>M2+S2</small></th><td class="n">121 min</td><td class="n">59 min</td><td class="n">24 min</td><td class="n">0.92 m</td><td class="n">0.57 m</td><td class="n">0.24 m</td></tr>
-                <tr><th>Online <small>18 constituents</small></th><td class="n">31 min</td><td class="n">11 min</td><td class="n">4 min</td><td class="n">0.17 m</td><td class="n">0.09 m</td><td class="n">0.035 m</td></tr>
-              </tbody>
-            </table>
-            <p class="x-note">Truth = the full 47-constituent Leith prediction (TICON-4 constants), simulated from 1 Jan 2026 for 18.61 years (one full nodal cycle) at 1-minute steps: 26,268 high and low waters. Each clock gets one fixed time setting (its mean error removed). High waters only: one hand max 107 min, two hands max 80 min. The chart's dotted line is the one-hand clock with the same setting used here.</p>
           </section>
           <section>
             <h3>Check against the official tables</h3>
@@ -498,7 +496,9 @@
           statusRefreshMin: 15, statusStaleH: 3,
           pressureFallbackHpa: 1013, pressureRefreshMin: 30, pressureStaleH: 6,
           waveRefreshMin: 30,
+          graphMode: "envelope", // wave chart extras: "envelope" (spring–neap envelope) or "hands" (one hand and two hands)
           sunHandShiftMin: 0, // moves only the Sun hand on the dial and its "HW at 03:11 and 15:11 GMT" text
+          clockMovement: "clockwise", // the real clock's movement: "clockwise" or "anticlockwise"; mirrors only the small Set your clock dials
           dailyReload: "03:30",
           // dtMin / hwCut: Fidra secondary-port differences from Leith (HW time, high-water height reduction)
           locations: {
@@ -535,6 +535,8 @@
         function strOk(v, key) {
           if (typeof v !== "string") return false;
           if (key === "dailyReload") return toMin(v) >= 0;
+          if (key === "graphMode") return v === "envelope" || v === "hands";
+          if (key === "clockMovement") return v === "clockwise" || v === "anticlockwise";
           return EMPTY_OK[key] ? true : v.trim() !== "";
         }
         // one marker, or null if it is unusable
@@ -751,7 +753,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
 
         /* Precomputed wave: fixed 3-minute grid, refilled once a minute or on location / pressure change */
         var STEP = 3 * MIN, SPAN = 7.5 * HOUR, NS = Math.ceil((2 * SPAN) / STEP) + 2;
-        var WA = new Float64Array(NS), WH = new Float64Array(NS), W1 = new Float64Array(NS);
+        var WA = new Float64Array(NS), WH = new Float64Array(NS), W1 = new Float64Array(NS), WE = new Float64Array(NS);
         var wave = { t0: 0, n: 0, top: 6, pr: 0 };
         var TMAX = 16, turnT = new Float64Array(TMAX), turnA = new Float64Array(TMAX), turnHW = new Uint8Array(TMAX), turnN = 0;
         var turnLab = [], turnW = new Float64Array(TMAX), yLab = [];
@@ -853,6 +855,8 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         }
         function precomputeWave(now) {
           var pr = prCorr(), k0 = Math.floor((now - SPAN) / STEP), peak = 0;
+          // two-hand envelope: half-range R of M2+S2, from the hands' separation d (the Sun hand gains 1.0159 deg/h)
+          var h0 = handsAt(now), d0 = h0.s2 - h0.m2;
           wave.t0 = k0 * STEP; wave.n = NS; wave.pr = pr;
           for (var i = 0; i < NS; i++) {
             var t = wave.t0 + i * STEP, a = astro(t);
@@ -864,6 +868,8 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
             var ut1 = ((tt / 3600000) % 24 + 24) % 24, tau1 = 15 * ut1 + 180 + h1 - s1;
             var ang1 = 2 * tau1 - 55.36;
             W1[i] = TIDE.Z0 + 1.7978 * Math.cos(ang1 * TD2R);
+            var dd = (d0 + (30 - M2_RATE) * (t - now) / HOUR) * TD2R;
+            WE[i] = Math.sqrt(1.7978 * 1.7978 + 0.6138 * 0.6138 + 2 * 1.7978 * 0.6138 * Math.cos(dd));
             if (Math.abs(t - now) <= WIN * HOUR && WA[i] > peak) peak = WA[i];
           }
           var top = Math.max(6, Math.ceil(peak + 0.4));
@@ -893,7 +899,8 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         }
         function precomputeOffsets(now) {
           var a = addHM("03:11", Math.round(CFG.sunHandShiftMin));
-          off.sun = "HW at " + addHM(a, 0) + " and " + addHM(a, 720) + " GMT" + (zone(now) === "BST" ? " (" + addHM(a, 60) + " / " + addHM(a, 780) + " BST)" : "");
+          var lag = 180 + Math.round(CFG.sunHandShiftMin); lag = ((lag % 720) + 720) % 720;
+          off.sun = "HW " + Math.floor(lag / 60) + " h " + pad2(lag % 60) + " m after the mean Sun crosses the meridian here (" + addHM(a, 0) + " and " + addHM(a, 720) + " GMT" + (zone(now) === "BST" ? "; " + addHM(a, 60) + " and " + addHM(a, 780) + " BST" : "") + ")";
           off.moonUp = when(nextMoonUp(now), now);
         }
 
@@ -921,10 +928,27 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           setText("nowDate", longDate(now) + " · Europe/London");
           setText("beat", "running · " + clock);
         }
+        /* Springs / neaps line: the Sun hand gains on the Moon hand at 30 - 28.9841 = 1.0159 deg/h (24.38 deg/day).
+           Hands together = springs, opposite = neaps. Combining M2 (1.80 m) and S2 (0.61 m) as one wave:
+           the Sun adds R - aM2 to high water and moves it by phi / 28.98 deg/h (phi > 0 = earlier). */
+        var A_M2 = 1.7978, A_S2 = 0.6138, GAIN_DAY = (30 - M2_RATE) * 24;
+        function phaseText(t) {
+          var d = rev(t.s2 - t.m2), sep = Math.abs(rev(d + 180) - 180);
+          var rem = 180 - (d % 180), nextIsSprings = (d + rem) % 360 < 1 || (d + rem) % 360 > 359;
+          var days = rem / GAIN_DAY, rad = d * Math.PI / 180;
+          var re = A_M2 + A_S2 * Math.cos(rad), im = A_S2 * Math.sin(rad);
+          var dh = Math.sqrt(re * re + im * im) - A_M2;
+          var dm = Math.atan2(im, re) * 180 / Math.PI / M2_RATE * 60;
+          var h = Math.round(Math.abs(dh) * 10) / 10, m = Math.round(Math.abs(dm) / 5) * 5;
+          var hTxt = h === 0 ? "Sun adding nothing to high water" : "Sun " + (dh > 0 ? "adding " : "reducing high water by ") + h.toFixed(1) + " m" + (dh > 0 ? " to high water" : "");
+          var mTxt = m === 0 ? "not moving it" : (dm > 0 ? "advancing" : "delaying") + " it by " + m + " min";
+          return "Hands " + Math.round(sep) + "° apart · nearest " + (sep < 90 ? "springs" : "neaps") + " · " +
+            (nextIsSprings ? "springs" : "neaps") + (Math.round(days) === 0 ? " today" : " in " + Math.round(days) + (Math.round(days) === 1 ? " day" : " days")) + " · " + hTxt + ", " + mTxt;
+        }
         function readOffsets(now) {
           var t = handsAt(now);
           var sep = Math.abs(rev(t.m2 - t.s2 + 180) - 180);
-          setText("phase", "Hands " + Math.round(sep) + "° apart · " + (sep < 45 ? "near springs" : sep > 135 ? "near neaps" : sep < 90 ? "nearer springs" : "nearer neaps"));
+          setText("phase", phaseText(t));
           setText("sunOff", off.sun);
           setText("moonUp", off.moonUp);
         }
@@ -960,35 +984,185 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           var x = cx + dx * len * along + nx * o, y = cy + dy * len * along + ny * o;
           ctx.strokeText(text, x, y); ctx.fillText(text, x, y);
         }
+        /* Charlie's laser-cut faces (220 mm, from the cutting files; Map data © OpenStreetMap contributors, ODbL).
+           Path2D strings in 0.1 mm units, face centre at 1120,1120: sea = blue paper showing through the ring/land piece,
+           score = 170 mm circle across the land, text = engraved letters and town dots (fill even-odd). */
+        var FACES = {
+          gullane: { name: "Gullane", map: "Gullane and Aberlady", hw: "HIGH WATER", lw: "LOW WATER",
+            sea: "M486 1686l2 0 3-1 2-1-1-3-2-4 1-1 1-2 0-1-2-2 7 5 10 2 6-1 7-4 15-10 4-10 43-27 14-11 13-7 17-6 2-4 0-21 7 0 15 29 2 1 3 2 11 1 19-1 5-3 1-2-1-7 3-6 4-3 0 5-2 3-1 2 1 4 1 2 5 1 22-5 8-3 6-4 9-3 5-4 2-2 0-15 3-5 11-7 11-3 11 5 6-1 9-3 8 0 10 2 28 13 13 11 1 14 3 7 2 15 3 12 11 17 1 1 22 4 23 0 14-2 9-3 12 0 8-2 8-5 5-1 2-2 12-1 7 2 15-3 10 3 12 0 7 1 12 6 5 0 15-6 24-6 6-3 34-16 16-6 3-5 6-14 12-8 4-11 9-7 5-9 14-11 9-3 1-1 1-2-3-11-9-12-1-1-14-4-24 4-30-1-22-10-18-10-28-3-26-8-12-13 1-16-10-17-1-8-3-6-10-5-14-19-2-1-12 4-13-6-14-13-6-7-9-9-1-1-8 0-6-10-20-23-13-20-8-16-10-29 9 1 1 0 2-2 0-5-15-10-10-3-7-2-12-22-6-20 0-15 4-37 12-29 8-24 17-25 17-36 16-21 14-27 14-35 6-31-1-2-5-5 6-5 1-14-1-2-10-6-5-8-7-5-3-17 4-6 9-5 2-6 6 4 2 0 1-2 1-2 4-5 0-2-2-4-5-6 0-7 4 1 3 3 11 8 10 7 7 1 27-3 16-9 13-15 10-21 2-2 2 1 11 18 9 6 8 4 20-1 15-5 11-3 53-2 22-7 26-3 11 4 19-2 47-12 26-12 30-16 27-18 45-36 16-16 21-28 31-37 2-15-4-12-4-4-7-13 7-13 13-23 3-13 0-15-6-24 7-30 13-21 10-1 4-5 2-8-1-7-2-9 16-15 1-3-1-2-32-19-33-16-36-16-36-15-34-12-38-11-38-9-36-8-36-5-38-5-37-2-36-1-39 1-37 2-36 4-39 6-36 7-38 9-37 11-37 13-34 14-33 15-35 17-32 18-31 19-33 22-31 24-28 23-27 24-27 26-25 26-25 30-24 31-21 29-20 31-19 31-17 33-17 35-15 36-13 34-12 37-10 35-8 39-7 36-5 36-3 36-2 37 0 39 2 36 3 37 4 36 7 41 9 38 9 35 12 38 13 34 14 33 17 36 17 32 19 34 22 33 21 29 24 31z",
+            score: "M1970 1120l0 29-2 34-3 31-4 31-5 31-7 30-7 31-9 32-10 30-12 32-12 29-13 28-15 30-15 28-18 29-16 24-18 25-20 27-20 24-19 22-24 24-22 22-24 21-24 20-27 20-23 17-26 17-29 18-28 15-30 15-28 13-29 12-32 12-30 10-32 9-31 7-30 7-31 5-31 4-31 3-32 1-28 1-32 0-34-2-31-3-31-4-31-5-30-7-31-7-32-9-28-9-31-12-29-12-31-14-28-14-25-14-27-16-26-17-28-19-25-19-26-22-24-20-24-24-21-22M1558 392l47 30 42 31 44 37 39 38 37 41 34 43 31 44 29 47 25 49 21 48 19 51 16 52 12 51 9 57 5 54 2 55",
+            text: "M998 2082l2 4 1 3 0 3 0 6-1 6-1 2-3 4-2 2-2 2-5 1-3 1-6 0-3-1-5-1-3-2-3-4-3-4-1-3 0-3 0-6 1-6 1-2 3-4 2-2 5-3 3 0 3-1 6 0 3 1 5 1 2 2zM972 2097l1 5 1 2 2 2 2 1 3 0 2 0 3-1 1-2 2-2 1-5 0-4-1-3-2-4-1-2-4-1-4 0-2 1-3 3-1 3 0 3zM954 2107l0 8-29 0 0-40 11 0 1 0 0 31zM1031 2075l10 0 6 26 7-26 10 0-9 40-12 0-1 0-6-28-7 28-13 0-9-40 1 0 10 0 6 26zM1114 2075l10 0 6 26 7-26 10 0-9 40-12 0-7-28-7 28-12 0-10-40 1 0 10 0 6 26zM1166 2075l12 0 15 39 0 1-11 0-3-7-15 0-2 7-11 0 0-1zM1176 2100l-4-14-5 14zM990 1798l10 0 0 1 11 28-1 1-8 0-2-5-10 0-2 5-8 0zM992 1816l6 0-3-9zM1038 1814l1 3 0 5-1 2-3 2-2 1-4 1-14 0 0-29 13-1 5 1 2 1 3 3 0 3 0 4-3 2zM1031 1818l-1-2-1 0-6 0 0 6 5 0 2-1 1-1zM1030 1807l-1-2-1 0-5 0 0 4 6 0 1-1zM1066 1809l0 7-11 0 0 5 12 0 1 1-1 6-21 0 1-30 20 0 0 1 0 6-12 0 0 4zM1093 1799l2 1 2 2 1 2 0 3 0 3-1 1-2 2-2 1 2 1 2 2 4 10 0 1-8 0-5-10-2-1-3 0 0 11-8 0 0-29 0-1 13 0zM1089 1807l0-1-1-1-5 0 0 6 4 0 1-1 1-1zM1128 1821l0 6-1 1-20 0 0-30 7 0 1 1 0 22zM1141 1798l9 1 11 28-1 1-8 0-2-5-10 0-2 5-8 0 0-1zM1148 1816l-3-9-3 9zM1006 150l0-7 1-1 16 0 0 20-4 2-6 1-5 1-5 0-6-1-5-3-2-2-3-4-2-5 0-3 0-6 0-3 2-5 2-2 4-4 5-3 2 0 7-1 5 0 5 1 5 2 0 9-1 0-7-3-6 0-5 0-3 2-2 2-2 4 0 4 0 4 2 4 3 3 3 1 4 0 4 0 0-7zM942 125l11 0 0 40-1 0-10 0 0-16-14 0 0 16-11 0 0-40 11 0 0 15 14 0zM964 165l0-40 1 0 10 0 1 0 0 40-1 0zM1059 125l10 0 1 0 0 40-1 0-10 0-1-16-13 0 0 16-1 0-10 0-1 0 0-40 11 0 1 0 0 15 13 0zM1122 125l11 0 6 26 6-26 1 0 10 0-9 40-13 0-7-28-6 28-1 0-12 0-9-40 11 0 6 26zM1219 2115l-10 0-1 0 0-31-13-1 0-8 37 0 0 8-13 1zM1266 2090l0 8-16 1 0 7 18 0 0 1 0 8-29 0 0-40 28 0 0 8-17 1 0 6zM1303 2076l3 1 2 3 1 3 1 3 0 3-2 3-2 3-3 1 3 2 2 3 7 13 0 1-1 0-11 0-5-11-2-2-2-1-5-1 0 15-11 0 0-40 19 0zM1298 2087l0-2-2-1-2-1-5 0 0 9 5 0 3-1 1-1zM1184 1800l3 1 2 2 2 3 1 2 1 3 0 4-1 4-2 3-3 3-4 2-6 1-12 0 0-1 0-28 12-1 5 1zM1184 1814l0-2 0-2-2-3-2-1-2-1-5 0 0 16 5 0 3-1 2-2zM1216 1798l9 0 0 1-11 17 0 12-8 0 0-1 0-11-11-17 1-1 8 0 6 10zM1580 1067l2 0 2 0 2-1 1-1 0-5 0-20 1 0 9 0 0 23 0 2-2 3-2 3-3 2-3 2-5 0-5 0-3-2-3-2-2-3-2-3 0-2 0-23 9 0 1 0 0 23 1 2zM1544 1061l0-6 14 0 1 0-1 17-3 1-5 1-5 1-4 0-5-1-2-1-4-3-3-4-1-4-1-2 0-6 1-2 2-5 2-3 2-2 5-2 2 0 5-1 5 0 4 1 4 2 0 7 0 1-6-3-5-1-5 1-2 1-2 2-1 4-1 3 1 5 1 2 2 2 3 1 4 1 3-1 0-5zM1631 1067l0 7-24 0 0-34 9 0 0 27zM1663 1067l0 7-1 0-24 0 0-34 9 0 1 27zM1678 1040l10 0 1 0 12 34-9 0-2-6-13 0-2 6-10 0zM1687 1061l-4-11-4 11zM1729 1040l8 0 1 0 0 34-11 0-11-21 0 21-1 0-8 0 0-34 10 0 11 21zM1771 1053l0 7-14 0 0 7 15 0 0 7-25 0 0-34 24 0 1 0 0 7-1 0-14 0 0 5zM1174 125l13 0 15 39 0 1-11 0-3-7-15 0-3 7-11 0 0-1zM1185 150l-4-14-5 14zM1228 165l-11 0 0-31-13-1-1-8 1 0 36 0 1 0 0 8-13 1zM1275 140l0 8-16 1 0 7 17 0 1 1-1 8-28 0 0-40 28 0 0 8 0 1-17 0 0 6zM1314 127l3 3 1 3 0 3 0 3 0 2-2 2-1 2-3 1 2 2 3 3 6 13 0 1-11 0-6-11-1-2-3-1-4-1 0 15-1 0-10 0 0-40 18 0 6 1zM1307 136l-1-2-2 0-6-1 0 9 6 0 2-1 1-2z" },
+          nb: { name: "North Berwick", map: "North Berwick and its bays", hw: "HIGH WATER", lw: "LOW WATER",
+            sea: "M438 911l70 4 24-16 4-6 1 0 4 0 2-1 15-11 1-2 0-7-3-5-2-1-3 0-2-2-4-15 0-2 2-4 0-5 0-2 2-2 3-1 3 2 1 3 3 6 7 2 2 2 1 1 0 7 1 2 3 1 7-2 8 0 2 3 1 6 3 2 2 0 6-4 4-8 3-2 2-1 2 1 3 2 3 3 4 0 4 3 5 1 3 4 6 7 2 5-1 3-4 3-1 2 0 8 3 3 29 36 41 23 63 42 26 20 33 19 53 25 27 12 44 9 58-5 34-10 21-13 25-18 7-8 20-29 14-35 0-3-9-9-32-24-1-2 0-2 2-3 5-2 40-37 1-2 0-2-2-3-11-9-1-1-4 1-10 9-2 0-2-1-1-2 0-2 11-16 1-11 4-4 0-6 0-2 8-8 7-3 2-2 2-6 0-7 0-7 2-3 3-2 2-1 6 1 2 2 1 2 0 13-3 6 0 2 2 2 4 3 4 1 2-1 1-1 6-13 3-9 5-6 3-1 3 2 0 5-6 23-4 7 0 3 0 1 2 2 8 4 5 2 2 2 0 3-3 8-3 17-8 16-2 11-1 4-13 24 1 3 10 17 24 21 43 34 59 51 38 26 79 44 131 28 25 0 10-4 2-1 35 9 49 16 35 8 29 7 34 4 32 5 12 1 8-1 35-5 22 0 13 3 20 8 38 6 15 0 4-39 1-40 0-39-3-39-3-36-7-41-8-41-8-36-11-37-13-37-16-39-15-33-18-35-20-36-21-33-23-32-25-33-26-30-26-28-28-28-30-26-30-24-32-23-32-22-34-20-34-19-35-17-36-15-39-15-35-11-38-10-38-9-44-7-46-6-40-2-46-1-45 2-44 4-44 6-43 9-43 10-43 14-39 14-41 17-42 21-39 21-35 22-36 26-27 20-22 19-24 20-20 20-20 21-23 25-19 22-19 24-18 26-18 26-16 26-15 25-14 28-14 28-11 26-12 29-9 27-9 26z",
+            score: "M1965 1213l-6 42-8 44-10 43-14 45-15 41-16 39-19 40-21 39-24 38-25 36-27 35-28 34-31 32-30 29-34 29-35 27-36 25-38 23-39 22-37 18-41 17-39 14-43 14-43 10-43 9-44 6-44 4-45 2-46-1-40-2-46-6-44-7-43-10-43-12-44-15-39-16-40-18-39-21-39-22-36-25-36-27-34-28-33-30-31-31-29-34-26-32-26-36-24-38-23-41-20-39-16-39-16-41-13-42-12-43-9-44-6-41-4-41-3-45 0-46 3-45 5-46 6-42 10-43 11-43",
+            text: "M994 2078l2 2 3 4 1 2 1 6 0 6 0 3-1 3-2 4-4 4-2 2-5 1-3 1-6 0-3-1-3 0-5-3-3-4-2-2-1-2-1-6 0-6 0-3 1-3 3-4 3-4 3-2 5-1 3-1 6 0 3 1 5 1zM973 2088l-1 3 0 6 1 5 1 2 2 2 3 1 4 0 3-1 1-2 2-2 1-5 0-4-1-3-2-4-1-2-3-1-4 0-3 1-2 2zM954 2106l0 1 0 8-29 0 0-40 11 0 1 0 0 31zM1030 2075l11 0 6 26 7-26 10 0-9 40-12 0-1 0-6-28-7 28-13 0-9-40 1 0 10 0 6 26zM1114 2075l10 0 6 26 7-26 10 0-9 40-12 0-7-28-7 28-12 0-10-40 1 0 10 0 6 26zM959 1507l2 2 2 4 1 4 0 3 0 3-1 4-1 3-3 3-3 3-3 1-4 1-3 0-3 0-4-1-2-1-4-3-1-2-3-3 0-3-1-5 1-5 0-3 3-3 1-2 4-3 2-1 4-1 3 0 3 0 4 1 3 1zM939 1515l-1 3 1 5 0 3 2 3 2 1 3 1 2-1 3-1 1-2 1-2 1-5-1-5-1-2-1-2-3-1-2-1-2 1-2 1-2 1zM921 1503l0 34-11 0-11-21 0 21-1 0-8 0 0-34 10 0 12 21 0-21zM991 1503l3 1 2 2 2 3 0 5 0 3-2 2-3 2 2 1 2 3 6 11 0 1-1 0-9 0-6-11-2-1-4 0 0 12-9 0-1 0 0-34 1 0 13 0zM989 1515l0-3-2-1-2-1-4 0 0 7 5 0 2-1zM1026 1537l-1 0-9 0 0-27-11 0 0-7 32 0 0 7-11 0zM1064 1503l9 0 0 34-9 0 0-14-12 0 0 14-10 0 0-34 10 0 0 12 12 0zM1127 1520l2 3 0 4 0 5-3 3-3 1-5 1-17 0 0-34 16 0 5 1 3 1 2 2 1 4 0 2 0 2-2 2-1 2zM1120 1527l-1-2-1-2-2 0-5 0 0 7 5 0 2 0 1-1zM1118 1514l0-3-1-1-6 0 0 6 5-1 1 0zM1007 150l-1 0 0-7 1-1 16 0 0 20-4 2-6 1-5 1-5 0-6-1-5-3-2-2-3-4-2-5 0-3 0-6 0-3 2-5 2-2 4-4 5-3 2 0 7-1 5 0 5 1 5 2 0 9-1 0-7-3-6 0-5 0-3 2-2 2-2 4 0 4 0 4 2 4 3 3 3 1 4 0 4 0 0-7zM942 125l11 0 0 40-1 0-10 0 0-16-14 0 0 16-11 0 0-40 11 0 0 15 14 0zM964 165l0-40 1 0 10 0 1 0 0 40-1 0zM1059 125l10 0 1 0 0 40-1 0-10 0-1-16-13 0 0 16-1 0-10 0-1 0 0-40 11 0 1 0 0 15 13 0zM1122 125l1 0 10 0 6 26 6-26 1 0 10 0-9 40-13 0-7-28-6 28-1 0-12 0-9-40 11 0 6 26zM1165 2075l13 0 15 39 0 1-11 0-3-7-15 0-2 7-11 0 0-1zM1167 2100l9 0-4-14zM1219 2115l-11 0 0-31-13-1 0-8 37 0 0 8-13 1zM1266 2090l0 8-16 1 0 7 18 0 0 1 0 8-29 0 0-40 28 0 0 8-17 1 0 6zM1299 2075l4 1 3 1 2 3 1 1 1 5-1 5-2 3-4 2 3 2 2 3 7 13 0 1-1 0-11 0-5-11-2-2-2-1-5-1 0 15-11 0 0-40 1 0zM1298 2090l0-4-1-2-2-1-6 0 0 9 7 0 1-1zM1304 1537l-7 1-5-1-2 0-3-1-3-3-3-4-2-4 0-2 0-6 0-2 1-2 2-4 3-4 3-1 4-1 6-1 6 1 4 2 0 7 0 1-7-3-3-1-3 1-2 1-2 2-2 3 0 2 0 5 1 3 2 3 2 1 3 0 4 0 3 0 4-3 0 1 0 7zM1161 1515l0 1 0 7-13 0 0 7 14 0 1 0 0 7-25 0 0-34 24 0 0 7-14 0 0 5zM1191 1503l3 1 2 2 2 3 0 5 0 3-2 2-3 2 2 1 2 3 6 12-1 0-9 0-6-11-2-1-4 0 0 12-9 0-1 0 0-34 1 0 13 0zM1188 1515l0-3-1-1-2-1-4 0 0 7 5 0 2 0zM1226 1503l9 0 5 22 6-22 9 0-8 34-11 0-6-23-5 23-11 0-8-34 9 0 5 22zM1261 1503l1 0 9 0 0 34-9 0-1 0zM1348 1503l1 1-16 15 17 17 0 1-11 0-13-12 0 12-9 0-1-34 10 0 0 11 12-11zM1174 125l13 0 15 39 0 1-11 0-3-7-15 0-3 7-11 0 0-1zM1176 150l9 0-4-14zM1228 165l-1 0-10 0 0-31-13-1-1-8 1 0 36 0 1 0 0 8-13 1zM1275 140l0 8-16 1 0 7 17 0 1 1-1 8-28 0 0-40 28 0 0 8 0 1-17 0 0 6zM1310 125l5 2 2 3 0 1 1 5 0 5-2 3-4 2 2 2 3 3 6 14-11 0-6-11-1-2-3-1-4-1 0 15-1 0-10 0 0-40 16 0zM1307 139l0-3-2-2-2-1-5 0 0 9 5 0 2 0 1-1z" },
+          el: { name: "East Lothian", map: "the East Lothian coast from Longniddry to Dunbar", hw: "HIGH TIDE", lw: "LOW TIDE",
+            sea: "M380 1518l12-1 10-2 12-1 9-2 8-3 14-8 12-11 8-9 9-9 9-6 9 0 2-1 2-2 2-4 4-4 3-6 1-5 0-6-3-8-1-2-4-2-2-4 0-2 2-3 5-3 10-6 3 0 5 2 2 0 5-4 8-8 6-13 5-18 1-8 1-4-1-5 1-2-1-10-1-2-3-4-4-2-4-4-7-8-4-7-3-2 0-3-2-2-1-5 0-2 1-1 3-1 2-1 1-2-1-4 1-1 5-2 3-1 1-3 17-10 3-1 2 3 3 0 2 0 3-2 3 1 2-1 5-2 2-5 4-2 3 1 3-1 3 1 6 3 2 2 2 9 2 3 1 0 8 1 7-1 4-2 6 0 10 2 7-3 11-5 2-3 2-2 1-2 6-6 1-3-3-2-2-1-4 1-6 0-8-4-5-1-6-2-2-2 0-3-2-6-5-4-3 0-2-1-5-5-3-2-5-6-4-7-2-7-4-3-2-3-1-5 1-10 4-10 12-21 3-7 1-10-5-6 0-2 1-2 3-3 2-1 5 1 5 0 3-2 4-4 1-1 2 1 4 2 4 0 5-1 10-1 9-2 3 1 3 0 10-3 11-5 14-11 3-3 10-13 0-3-2-5 3-7 1-2 0-3-1-6 1-5 2-3 3-3 1-4 4-6 6-1 4 1 4-1 7-4 5-5 3-6 0-4-1-2 0-2 4-2 2-5 1-3 7-7 3-6 0-4 1-4 3-2 2-3 1-4 1-2 8-3 2 0 2 2 3 2 9 2 5 0 4-3 4 0 6-5 5-6 7-4 11 1 3 1 5 2 8 1 5-2 4-3 3-3 5-2 7 0 3 4 4 3 7 3 3 0 4 0 6-1 8-6 2 0 2 0 2 2 3 4 10 8 22 9 19 10 23 0 4-3 2-4 5-2 5-7 9 0 8-1 12 5 13 4 5 0 2-1 2-3 4 0 2 1 1 3 2 2 9 6 9 4 3 1 7-1 4-3 2-5 3-1 1 1 9 7 9 5 9 2 4 0 10 3 6 0 5 0 5 1 5 0 5-1 6-3 1-3-2-3 0-3 2-4 2-1 1 0 3 2 2 0 3-2 3-2 4 0 3-2 3-1 5 3 6 1 2-1 3-3 6-2 3 1 6-2 8 6 3 4 1 3 2 1 3 2 8 6 6 2 2 0 3-4 2-1 5 0 2 2 3 2 5-1 13-9 5 1 8 2 4-2 2 0 2 2 0 3 2 2-1 6 1 2 2 1 3-1 3 0 4 0 2 2 1 2-2 7 3 3 1 4 1 1 2 1 4 0 4-5 2-1 5 0 4 3 2 0 3-1 3 1 1 3 5 8 4 3 11 1 6 0 6-2 4 0 4 6 4 2 3 1 6 5 2 4 3 1 5 6 1 2 0 3 2 5 0 3 1 4 3 10 2 2 8 7 3 5-1 3 1 1 14 14 1 2 0 6 2 11-1 4-2 3 1 3 3 2 4-1 4 4 6 6 4 7 20 26 6 6 7 3 2 3 2 1 2 3 5 3 7 2 4 5 4 1 1-1 2-1 3-7 3-2 5 0 3 1 2 1 1 1-1 4-1 3-6 3-3 2 0 1-2 6 1 5 0 2-1 1-5 1-4 6-9 6-2 4-4 2-3 4-1 3-1 7 2 27-2 8-11 12-6 3-5 0-4 2-3 1-2 1 0 2 2 2 5 2 5 0 3 2 0 2 0 3-3 5-2 4 1 9 3 6 3 2 3 3 5 1 11-2 14-4 8-3 11-8 10-4 6 0 2-1 0-3-1-9 1-5 11-17 5-5 6-1 1-3-1-5-3-7-4-3-5 0-3-2-3-7-8-9-1-2 0-2 2-1 1 0 11 4 9 9 18 20 29 25 14 10 6 6 3 7 1 4 3 2 1 3 2 1 3 0 2 1 1 1 0 3 2 2 2 0 6-2 3-5-1-4 1-2 9-7 1-3 0-4-1-4-3-4 0-2 1-2 3-1 12 4 9 0 1-1 2-4 5-4 2-2 3-2 2 0 3 0 4 2 5 0 4 0 5 2 3 1 1 3 1 1 2 1 4-1 3 2 4 2 3-1 2-6 3-1 2 0 3 3 5 0 2-1 5 1 1 1 1 2-1 3-3 3 1 6-1 3 2 4 3 2 7 9 6 4 8 3 2 0 6-1 3 1 10 5 10 1 6 5 5 2 2 3 2 1 7 1 5 2 5 0 4-2 6-6 9 0 12-42 9-41 7-41 5-42 3-41 1-39-1-45-3-41-5-42-7-41-9-41-12-42-14-40-15-39-18-40-18-35-20-36-23-35-24-34-26-33-29-34-29-30-28-27-32-27-33-25-32-23-37-23-37-21-39-20-39-16-36-14-42-14-41-11-40-9-39-6-41-5-39-3-45-1-39 1-44 3-39 5-41 7-41 9-42 12-40 14-39 15-40 18-35 18-36 20-35 23-34 24-35 27-34 29-28 28-28 30-27 32-27 35-24 34-21 33-20 37-19 37-16 39-16 41-13 40-11 43-9 40-6 42-5 44-3 41 0 45 2 39 4 44 7 46 9 46 12 46 13 42 11 29 12 29 14 31 14 28 2 4z",
+            score: "M1931 1373l-10 31-10 27-12 29-13 28-14 28-14 25-16 27-18 29-18 25-19 25-22 26-20 24-20 20-25 24-21 19-24 20-24 20-26 18-26 17-26 17-30 16-28 15-28 13-27 11-29 12-29 10-28 8-30 8-31 7-30 6-29 4-33 4-58 4-33 0-32-1-31-2-31-3-31-5-31-5-30-7-31-8-30-9-27-9-32-12-28-12-31-14-23-12-28-15-27-16-26-18-25-18-27-20-22-19-24-20-20-20-20-21-23-25-20-24-21-27-18-25-18-26-15-24-16-30",
+            text: "M584 1528l1 1 2 4 1 2 0 4 0 4-1 2-2 3-1 2-1 1-4 2-6 1-6-1-2-1-3-2-1-2-2-3-1-6 1-6 1-2 2-3 3-2 2-1 6-1 6 1 2 1zM567 1536l0 4 0 3 1 2 1 1 2 1 2 0 2 0 2-1 1-1 1-2 0-4 0-4-1-2-1-1-1-1-2-1-2 0-1 1-2 1-1 1zM642 1543l-1-1 0-5 1 0 11 0 0 14-7 2-7 1-2-1-4-1-3-2-2-3-2-4 0-2 0-6 2-4 2-3 2-1 3-2 2-1 5 0 3 0 4 1 3 1 0 6 0 1-5-2-4-1-3 1-2 0-2 2-1 3-1 3 1 4 1 1 1 2 3 1 3 0 3 0 0-4zM555 1547l0 6-21 0 0-28 8-1 0 1 0 22zM832 1525l-10 16 0 12-8 0 0-12-11-16 1-1 8 1 6 9 6-9zM794 1525l2 1 1 2 1 2 1 3-1 2 0 2-2 2-2 1 2 1 1 2 5 10-8 0-5-9-2-1-3 0 0 10-8 0 0-28 0-1 13 0zM790 1534l0-2-1-1-2 0-3 0 0 6 5-1 1 0zM760 1525l3 2 3 2 2 2 1 3 1 3 0 4-1 4-1 2-4 4-4 1-5 1-12 0 0-28 0-1 10 0zM760 1543l1-2 0-3 0-3-1-1-1-2-2 0-6-1 0 16 6-1 2-1zM727 1525l3 2 3 2 2 2 1 3 1 3 0 4-1 4-1 2-4 4-3 1-2 1-6 0-10 0 0-28 10-1zM727 1543l1-2 0-3 0-3-1-1-2-2-1 0-6-1 0 16 6-1 1-1zM694 1553l0-28 0-1 8 0 0 1 0 28zM686 1525l0 28-9 0-9-17 0 17-8 0 0-28 9 0 9 17 0-17 1-1zM620 1525l0 28-9 0-9-17 0 17-1 0-7 0 0-28 9 0 9 17 0-17 0-1zM523 1506l-2 3-3 2-3 1-4 0-3-2-2-3-1-3 0-4 2-3 3-2 3-1 4 0 3 2 2 3 1 3zM818 1310l9 0 10 28-8 0-1-5-11 0-2 5-7 1-1-1zM825 1327l-3-8-3 8zM717 1324l2 3 0 3 0 4-3 2-3 2-3 0-14 1 0-1-1-28 1 0 13 0 4 0 2 1 2 2 1 3 0 4-1 2-1 1zM711 1330l0-2-1-1-6-1 0 6 6 0 0-1zM710 1319l0-2-1-1-5 0 0 4 4 0 2 0zM805 1332l1 6-1 0-20 0 0-28 7 0 1 0 0 22zM770 1310l3 1 1 1 2 3 0 4 0 2-2 2-2 2 2 1 1 2 5 10-1 1-8-1-4-9-2-1-3 0 0 10 0 1-8-1 0-28 11 0zM768 1319l0-1-1-2-2 0-3 0 0 6 5 0 1-1zM745 1320l1 1 0 6-12 0 0 5 13 0 0 6-21 0 0-28 20 0 1 0 0 6-1 0-12 0 0 4zM672 1310l9 0 10 28-8 0-2-5-10 0-2 5-8 0zM679 1327l-3-8-3 8zM650 1291l-2 3-3 2-3 1-4 0-3-2-2-3-1-3 0-4 2-3 3-2 3-1 4 0 3 2 2 3 1 3zM676 1184l1 1 3 0 2-1 0-1 1-3 0-18 8 0 0 1 0 16-1 6-1 2-2 3-3 1-5 1-4-1-3-1-3-1-2-3-1-5 0-19 1 0 7 0 0 1 0 17 1 3zM647 1180l0-5 12 0 0 14-7 2-7 0-2 0-4-1-3-2-2-4-1-1-1-4 0-7 2-3 1-2 2-3 4-1 2-1 5 0 3 0 4 1 3 1 0 6 0 1-5-2-4-1-3 0-2 1-2 2-2 3 0 3 0 2 2 3 1 2 3 1 3 0 2 0 0-5zM758 1162l9 0 10 28 0 1-8 0-2-5-10 0-2 5-8 0 0-1zM765 1180l-3-9-3 9zM745 1185l0 5 0 1-20 0 0-29 7 0 1 1 0 21zM800 1162l7 0 1 1-1 28-8 0-10-17 0 17-7 0 0-29 9 0 9 17zM719 1185l1 6-1 0-20 0 0-29 7 0 1 1 0 21zM834 1173l1 0 0 6-12 0 0 5 13 1 0 6-21 0 0-29 20 0 0 1 0 5 0 1-12 0 0 4zM742 1137l-1 3-3 3-3 1-4-1-3-2-2-3-1-3 0-3 2-3 3-3 3 0 4 0 2 2 3 2 1 4zM809 1102l3 1 3 2 2 3 1 2 1 3 0 4-1 4-2 2-3 4-4 2-6 1-11 0-1-1 1-28 11 0zM809 1120l1-2 0-4 0-2-1-2-2-1-2-1-5-1 0 16 5 0 3-2zM825 1130l0-1 0-28 8 0 0 28-1 1zM1028 2078l2 2 3 5 1 3 0 7 0 7-1 3-1 2-4 5-2 2-5 3-6 1-4 0-3 0-6-1-3-1-5-4-3-5-1-2-2-6 0-4 0-3 2-7 1-2 3-5 3-2 5-3 6-1 3 0 4 0 6 1 5 3zM1001 2091l0 6 1 4 1 3 2 2 3 3 3 0 3 0 4-3 2-2 1-3 1-6-1-6-1-3-2-2-2-2-3-1-3 0-3 1-2 2-2 2zM1067 2073l12 0 7 29 7-29 11 0-10 44-14 0-7-31-8 31-14 0-10-44 0-1 12 1 7 29zM982 2108l0 9-32 0 0-44 12-1 0 1 0 35zM1146 1654l2 2 2 5 1 3 1 6 0 3-2 6-2 5-2 2-4 3-3 1-2 1-6 0-4 0-5-1-3-1-4-3-2-2-2-5-1-3-1-6 1-6 1-3 1-2 3-5 4-3 3-1 3-1 6 0 3 0 5 1 3 1zM1122 1666l-1 6 1 3 1 3 2 2 3 2 3 1 4-1 2-2 1-2 1-3 1-5-1-5-1-3-1-2-2-2-3-1-3 0-2 1-2 2-2 2zM991 1658l-5-1-4 1-1 1-1 3 1 1 2 1 9 2 3 1 3 2 2 2 2 2 0 5 0 4-1 3-3 3-1 1-4 2-4 0-4 0-6 0-9-3 0-9 8 3 7 1 3-1 2 0 1-1 0-2 0-1-1-2-14-4-2-1-2-2-2-3 0-4 0-4 1-3 3-3 3-2 2-1 6 0 8 0 7 2 0 9-1 0-4-1zM1104 1682l0 8 0 1-30-1 0-41 11 0 1 1 0 32zM949 1649l15 41-11 1-3-8-15 0-3 8-11 0 0-1 15-40 0-1zM938 1675l9 0-4-14zM1033 1690l-1 1-10 0-1-1 0-32-13 0 0-8 0-1 38 0 0 1 0 8-13 0zM913 1665l1 0 0 8-17 1 0 8 18 0 0 8-29 0 0-41 28 0 1 1 0 8-18 0 0 7zM859 1311l3 1 3 2 2 2 1 3 1 3 0 4-1 4-1 2-4 4-3 1-2 1-6 0-10 0 0-28 10 0zM860 1327l0-2 0-2 0-2-1-2-2-1-1-1-6-1 0 16 3 0 4-1 2-2zM892 1310l8 0-10 16 0 12-8 0 0-12-11-16 1 0 8 0 6 9zM977 1104l1 2 2 3 1 6-1 6-1 2-2 3-2 1-3 2-6 1-6-1-2-1-3-2-1-1-2-3-1-7 0-4 1-2 2-3 1-2 3-2 2-1 6-1 6 1 2 1zM960 1114l0 5 1 2 1 2 2 1 3 0 1-1 2-1 2-4 0-4-1-3-1-2-1-1-1-1-2 0-2 0-2 1-1 1-1 2zM1005 1101l7 0 0 28 0 1-8 0-10-18 0 17 0 1-7 0 0-29 9 0 9 17zM892 1123l0 6 0 1-20-1 0-28 7 0 1 0 0 22zM857 1101l3 2 2 2 1 4 0 3-2 2-2 2 1 1 2 2 5 10-1 1-8 0-5-10-1-1-3 0 0 10-8 1-1-1 1-28 11 0zM855 1111l0-2-1-1-2-1-3 0 0 6 4 0 1-1zM939 1129l0 1-8-1 0-22-9 0 0-6 26 0 0 6-9 0zM917 1111l0 1 0 6-11 0 0 5 12 0 0 1 0 6-21-1 1-28 19 0 1 0 0 6-1 0-11 0 0 4zM910 1076l-1 3-3 2-4 1-3 0-3-2-2-3-1-3 1-4 1-3 3-2 4-1 3 1 3 2 2 2 1 4zM987 1017l2 3 1 2 1 6-1 6-1 2-2 3-3 2-2 1-6 1-6-1-2-1-3-2-1-1-2-4-1-6 1-6 1-2 2-3 3-2 2-1 6-1 6 1 2 1zM970 1025l0 4 0 3 1 2 1 1 2 1 2 1 2-1 2-1 2-2 1-5-1-5-2-2-1-1-2-1-2 0-1 1-2 1-1 1zM1015 1014l2 1 1 2 1 2 1 3-1 2 0 2-2 2-2 1 2 1 2 2 4 10-8 0-5-9-2-1-3 0 0 10-8 0 0-28 1 0 12 0zM1011 1023l0-2-1-1-2 0-3 0 0 6 5-1 1 0zM1042 1042l-8 0 0-22-9 0 0-6 26 0 0 6-9 0zM1073 1014l8 0 1 0 0 28-1 0-8 0 0-11-9 0 0 11-1 0-7 0 0-28 8 0 0 10 9 0zM955 1014l0 28-8 0-9-17 0 17-1 0-7 0 0-28 9 0 9 17 0-17zM1126 1028l1 3 1 3-1 4-2 2-4 2-3 0-14 0 0-28 13 0 5 0 2 1 2 2 1 3 0 2-1 2-1 2-1 1zM1120 1033l-1-1-1-1-6-1 0 6 6 0 1-1zM1118 1022l0-1-1-1-5 0 0 4 5 0 1-1zM1049 167l-4 1-5 0-7 0-3-1-6-3-4-4-1-3-2-2-1-7 0-6 0-4 1-3 3-5 5-4 2-2 6-2 4 0 5 0 8 1 7 2 0 10-6-2-4-1-5-1-4 0-3 2-3 2-2 2-1 4-1 4 1 4 2 5 2 2 3 2 5 1 6-1 0-7-7-1 0-8 18 0 1 0 0 22-4 1zM993 167l0-44 1-1 11 1 1 0 0 44-1 0zM968 123l1-1 11 0 1 1 0 44-1 0-12 0 0-18-15 0 0 18-1 0-11 0-1 0 0-44 12-1 1 1 0 16 15 0zM1098 123l0-1 12 0 0 1 0 44-12 0 0-18-15 0-1 18-12 0 0-44 12 0 1 16 15 0zM1159 2117l-1 0-11 0-1 0 0-35-14 0 0-9 41-1 0 1 0 9-14 0zM1181 2117l-1 0 0-44 1-1 11 1 1 0 0 44-1 0zM1233 2074l4 2 4 3 3 3 3 5 1 5 0 6-2 6-2 4-3 3-2 2-3 2-3 1-9 1-18 0-1 0 0-44 19 0zM1233 2102l1-3 1-6-1-4-2-2-2-3-3-1-4-1-5 0 0 26 5 0 4-1 3-2zM1288 2089l0 1 0 9-18 0 0 9 20 0 0 9-32 0 0-44 31 0 0 9-19 0 0 7zM1181 1690l-11 1-1-1 0-32-13 0 0-9 38 0 0 1 0 8-13 0zM1227 1650l10-1 1 1 0 40-11 0-1-16-14 0 0 16-11 1 0-1 0-40 0-1 11 1 0 15 14 0zM1354 1649l0 1 0 40-12 0-14-25 0 25 0 1-11-1 0-40 13 0 13 25 0-25 1-1zM1250 1691l-1-1 0-40 1-1 10 0 1 1 0 40-1 1zM1296 1649l15 41-1 0-11 1-2-8-16 0-2 8-11 0-1-1 15-40 1-1zM1284 1675l10 0-5-14zM1695 1387l1 0 3 0 1 0 1-2 1-2 0-18 8 0 0 19-1 4-2 3-3 2-3 1-4 0-3 0-4-1-2-2-2-3-1-4 0-19 0-1 8 0 0 1 0 18 1 2zM1829 1365l3 1 3 3 0 4 0 2-2 3-2 2 1 1 2 2 5 10-1 0-8 0-5-9-1-1-3 0 0 10-8 0 0-28 0-1 11 0zM1827 1375l0-2-1-2-2 0-3 0 0 6 5-1zM1789 1365l9-1 0 1 10 28-8 0-2-5-10 0-2 5-8 0zM1796 1382l-3-9-3 9zM1772 1379l2 2 1 4-1 4-2 2-4 2-3 0-14 0 0-28 13-1 5 1 2 1 1 2 2 3 0 2-1 2-1 2-1 1zM1766 1385l0-2-1-1-2-1-4 0 0 6 6 0 1 0zM1765 1374l0-2-1-1-1 0-4 0 0 4 4 0 1 0zM1736 1365l7-1 0 1 0 28-9 0-9-17 0 17-7 0 0-28 8 0 9 17zM1669 1365l3 2 3 2 2 2 1 3 1 3 0 4-1 3-1 3-4 4-4 1-5 1-12 0 0-28 0-1 10 0zM1670 1382l0-2 0-2 0-3-1-1-2-2-1 0-6-1 0 16 3 0 4-1 1-1zM1824 1340l-2 3-3 2-3 1-4 0-3-2-2-3-1-3 1-4 1-3 3-2 3-1 4 1 3 1 2 3 1 3zM1271 1042l-4 1-3 0-4-1-2-1-3-2-1-2-2-3-1-2 0-4 0-4 1-2 1-2 2-3 2-1 3-2 4-1 5 0 4 1 3 1 0 6-1 1-3-2-2 0-3-1-2 1-2 0-1 2-2 1 0 2 0 4 0 3 1 2 2 2 3 1 2 0 4-1 3-2 1 0 0 7zM1309 1014l0 1-13 12 14 14 0 1-9 0-11-10 0 10-8 0 0-28 8 0 0 9 10-9zM1237 1014l8 0 0 28-8 0zM1207 1014l8 0 4 18 5-18 7 0-6 28-9 0-5-19-4 19-10 0-6-28 8 0 4 18zM1180 1014l2 1 2 2 1 2 0 3 0 2-1 2-2 2-1 1 1 1 2 2 4 10-8 0-5-9-2-1-2 0-1 10-8 0 0-28 14 0zM1177 1023l-1-2 0-1-2 0-3 0 0 6 4-1 1 0zM1154 1024l0 1 0 5-11 1 0 5 12 0 0 6-20 0 0-28 20 0 0 6-12 0 0 4zM1298 139l0 1 0 9-18 0 0 9 19 0 1 0-1 9-31 0 0-44 31 0 0 9-19 0 0 7zM1242 124l5 2 4 3 3 3 2 5 1 5 0 6-1 6-2 4-3 3-3 2-2 2-4 1-9 1-18 0 0-44 19 0zM1243 152l1-3 0-6 0-4-2-2-2-3-3-1-4-1-6 0 0 26 6 0 4-1 4-3zM1190 167l0-44 1-1 11 1 0 44zM1168 167l-12 0 0-35-14 0-1 0 0-9 1 0 40-1 1 1 0 9-1 0-14 0z" }
+        };
+        // birch ply ring and land, blue paper sea, darker score line, dark engraving (as in the assembled previews)
+        var FACE_COL = { ply: "#ddbd8d", sea: "#466ea8", score: "#8a6a42", ink: "#3b2714", edge: "#9c7d52" };
+        // Hand colours on Charlie's clock (inferred: Moon white, Sun yellow). Change them here.
+        var MOON_HAND_COLOUR = "#ffffff";
+        var SUN_HAND_COLOUR = "#f2c230";
+        var HAND_EDGE = "rgba(28,20,10,0.85)", HUB_COL = "#2b2b2b";
+        // hand lengths on the 220 mm face, in the ratio of the Leith amplitudes (about 3:1); widths in mm
+        var MOON_LEN_MM = 84, SUN_LEN_MM = 28, MOON_W_MM = 2.4, SUN_W_MM = 3.8, EDGE_MM = 1.1;
+        function faceKey(loc) { return loc === "nb" ? "nb" : "gullane"; }
+        var facePaths = {}, faceImgs = {}, faceImgN = 0;
+        // Path2D per face, built on first use; null where Path2D or SVG path strings are unsupported
+        function faceP(key) {
+          if (facePaths[key] !== undefined) return facePaths[key];
+          var p = null, f = FACES[key];
+          try { if (typeof Path2D === "function" && f) p = { sea: new Path2D(f.sea), score: new Path2D(f.score), text: new Path2D(f.text) }; }
+          catch (e) { report("face paths", e); p = null; }
+          facePaths[key] = p;
+          return p;
+        }
+        // the assembled face, in mm (viewBox 0 0 224 224, centre 112,112) scaled to px
+        function paintFace(ctx, key, px) {
+          var sc = px / 224, P = faceP(key), f = FACES[key];
+          ctx.save(); ctx.scale(sc, sc);
+          ctx.beginPath(); ctx.arc(112, 112, 110, 0, 2 * Math.PI); ctx.fillStyle = FACE_COL.ply; ctx.fill();
+          ctx.lineWidth = Math.max(0.3, 1 / sc); ctx.strokeStyle = FACE_COL.edge; ctx.stroke();
+          if (P) {
+            ctx.save(); ctx.scale(0.1, 0.1);
+            ctx.fillStyle = FACE_COL.sea; ctx.fill(P.sea);
+            ctx.lineWidth = Math.max(3, 8 / sc); ctx.strokeStyle = FACE_COL.score; ctx.stroke(P.score);
+            ctx.fillStyle = FACE_COL.ink; ctx.fill(P.text, "evenodd");
+            ctx.restore();
+          } else {
+            // fallback: plain sea disc and the ring words
+            ctx.beginPath(); ctx.arc(112, 112, 85, 0, 2 * Math.PI); ctx.fillStyle = FACE_COL.sea; ctx.fill();
+            ctx.fillStyle = FACE_COL.ink; ctx.font = "700 9px " + FONT; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+            ctx.fillText(f.hw, 112, 15); ctx.fillText(f.lw, 112, 209);
+          }
+          // centre hole: the blue paper shows through
+          ctx.beginPath(); ctx.arc(112, 112, 5.5, 0, 2 * Math.PI); ctx.fillStyle = FACE_COL.sea; ctx.fill();
+          ctx.restore();
+        }
+        // one offscreen canvas per face and device-pixel size, so the frame loop only blits it
+        function faceImg(key, pxDev) {
+          var id = key + "|" + pxDev, c = faceImgs[id];
+          if (c) return c;
+          if (faceImgN >= 8) { faceImgs = {}; faceImgN = 0; }
+          c = document.createElement("canvas"); c.width = c.height = pxDev;
+          var x = c.getContext("2d");
+          if (!x) return null;
+          paintFace(x, key, pxDev);
+          faceImgs[id] = c; faceImgN++;
+          return c;
+        }
+        function hand(ctx, cx, cy, th, len, w, edge, col) {
+          var x = cx + len * sind(th), y = cy - len * cosd(th);
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y);
+          ctx.lineWidth = w + 2 * edge; ctx.strokeStyle = HAND_EDGE; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y);
+          ctx.lineWidth = w; ctx.strokeStyle = col; ctx.stroke();
+        }
+        /* A face of radius R px (the 224 mm square's half) with both hands; mirror turns the hands anticlockwise */
+        function drawFace(ctx, cx, cy, R, key, thS, thM, dpr, mirror) {
+          var mm = R / 112, img = faceImg(key, Math.max(1, Math.round(2 * R * dpr)));
+          if (img) ctx.drawImage(img, cx - R, cy - R, 2 * R, 2 * R);
+          if (mirror) { thS = -thS; thM = -thM; }
+          var edge = Math.max(0.75, EDGE_MM * mm);
+          ctx.lineCap = "round";
+          hand(ctx, cx, cy, thS, SUN_LEN_MM * mm, Math.max(2.5, SUN_W_MM * mm), edge, SUN_HAND_COLOUR);
+          hand(ctx, cx, cy, thM, MOON_LEN_MM * mm, Math.max(1.5, MOON_W_MM * mm), edge, MOON_HAND_COLOUR);
+          ctx.beginPath(); ctx.arc(cx, cy, Math.max(2.5, 4 * mm), 0, 2 * Math.PI);
+          ctx.fillStyle = HUB_COL; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = HAND_EDGE; ctx.stroke();
+          return { s: SUN_LEN_MM * mm, m: MOON_LEN_MM * mm, thS: thS, thM: thM };
+        }
         function drawDial(t) {
           if (!dctx) return;
-          var ctx = dctx, w = dz.w, h = dz.h, s = Math.min(w, h), k = s / 240, cx = w / 2, cy = h / 2, i;
+          var ctx = dctx, w = dz.w, h = dz.h, s = Math.min(w, h), k = s / 240, cx = w / 2, cy = h / 2;
           ctx.clearRect(0, 0, w, h);
           if (s < 20) return;
-          ctx.beginPath(); ctx.arc(cx, cy, 114 * k, 0, 2 * Math.PI);
-          ctx.fillStyle = C.bg; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = C.axis; ctx.stroke();
-          ctx.lineCap = "round";
-          for (i = 0; i < 12; i++) {
-            var a = i * 30, major = i % 3 === 0, r1 = (major ? 100 : 106) * k, r2o = 112 * k;
-            ctx.beginPath();
-            ctx.moveTo(cx + r1 * sind(a), cy - r1 * cosd(a)); ctx.lineTo(cx + r2o * sind(a), cy - r2o * cosd(a));
-            ctx.lineWidth = major ? 1.5 : 1; ctx.strokeStyle = major ? C.tx2 : C.axis; ctx.stroke();
-          }
-          ctx.font = dz.fMark; ctx.fillStyle = C.tx2; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-          ctx.fillText("HW", cx, cy - 90 * k); ctx.fillText("LW", cx, cy + 90 * k);
-          ctx.fillText("Falling", cx + 76 * k, cy); ctx.fillText("Rising", cx - 76 * k, cy);
-          var sl = 26 * k * 1.2, ml = 78 * k * 1.2;
           // Moon hand = angle.M2, Sun hand = angle.S2: 0° straight up is that hand's high water, clockwise
           // Sun hand shift (settings): the S2 hand turns 0.5° per minute, so a later HW means a smaller angle
           var thS = t.s2 - 0.5 * CFG.sunHandShiftMin, thM = t.m2;
-          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + sl * sind(thS), cy - sl * cosd(thS));
-          ctx.lineWidth = 7 * k; ctx.strokeStyle = C.sun; ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + ml * sind(thM), cy - ml * cosd(thM));
-          ctx.lineWidth = 4 * k; ctx.strokeStyle = C.tx; ctx.stroke();
-          ctx.beginPath(); ctx.arc(cx, cy, 5 * k, 0, 2 * Math.PI); ctx.fillStyle = C.tx; ctx.fill();
-          ctx.font = dz.fHand; ctx.lineWidth = 4; ctx.lineJoin = "round"; ctx.strokeStyle = C.bg;
-          ctx.fillStyle = C.sun; handLabel(ctx, "Sun", cx, cy, thS, sl, 0.55, 26 * k);
-          ctx.fillStyle = C.tx; handLabel(ctx, "Moon", cx, cy, thM, ml, 0.62, 36 * k);
+          var d = drawFace(ctx, cx, cy, s / 2 - 1, faceKey(st.loc), thS, thM, dz.dpr, false);
+          // hand names are in the key beside the dial (#dialKey), not on the face
+        }
+        function dialAria() {
+          var f = FACES[faceKey(st.loc)];
+          return "Tide clock dial on Charlie's laser-cut " + f.name + " face: a map of " + f.map + ", " + f.hw + " at the top, " + f.lw +
+            " at the bottom. Based on Leith standard port: a short Sun hand (S2) and a long Moon hand (M2) on a centre pivot. Straight up is each hand's high water.";
+        }
+
+        /* Set your clock: moments when both hands sit within SET_TOL° of a quarter mark (Settings) */
+        var QUARTER_NAMES = ["high water", "falling half-tide", "low water", "rising half-tide"];
+        var SET_TOL = 2, SET_DAYS = 45, SET_MAX = 5, SET_FROM = 8 * 60, SET_TO = 21 * 60;
+        var setCache = null;
+        // signed degrees from the nearest quarter (0 HW, 90 falling half-tide, 180 LW, 270 rising half-tide)
+        function qErr(a) { var q = rev(a) % 90; return q > 45 ? q - 90 : q; }
+        function qName(a) { return QUARTER_NAMES[Math.round(rev(a) / 90) % 4]; }
+        // the angles the main dial shows (Sun hand shift included), copied out of HANDS
+        function dialAngles(ms) { var h = handsAt(ms); return { s: rev(h.s2 - 0.5 * CFG.sunHandShiftMin), m: rev(h.m2) }; }
+        /* The Sun hand reaches a quarter every 3 h (30°/h); at each one check how far the Moon hand (28.98°/h) is from a quarter.
+           Within about 4° the two can share a minute inside SET_TOL, so search the minutes around it for the smallest worst error. */
+        function findSetTimes(now) {
+          var out = [], end = now + SET_DAYS * 24 * HOUR, t = now, a, i, n = 0;
+          a = dialAngles(t); t += ((90 - (a.s % 90)) / 30) * HOUR;
+          while (t < end && out.length < SET_MAX && n++ < 1000) {
+            for (i = 0; i < 2; i++) t -= (qErr(dialAngles(t).s) / 30) * HOUR;
+            a = dialAngles(t);
+            if (Math.abs(qErr(a.m)) < 2 * SET_TOL + 0.5) {
+              var best = null, m0 = Math.round(t / MIN) * MIN;
+              for (var dm = -8; dm <= 8; dm++) {
+                var tm = m0 + dm * MIN;
+                if (tm <= now) continue;
+                var b = dialAngles(tm), err = Math.max(Math.abs(qErr(b.s)), Math.abs(qErr(b.m)));
+                if (!best || err < best.err) best = { t: tm, s: b.s, m: b.m, err: err };
+              }
+              if (best && best.err <= SET_TOL) { var lm = toMin(hm(best.t)); if (lm >= SET_FROM && lm <= SET_TO) out.push(best); }
+            }
+            t += 3 * HOUR;
+          }
+          return out;
+        }
+        // cached until the first listed time passes or the location / hand settings change
+        function setTimes(now) {
+          var key = st.loc + "|" + HAND_SHIFT + "|" + CFG.sunHandShiftMin, c = setCache;
+          if (!c || c.key !== key || (c.list.length ? c.list[0].t <= now : now - c.at > HOUR)) setCache = c = { key: key, at: now, list: findSetTimes(now) };
+          return c.list;
+        }
+        function setMirror() {
+          var el = svBody && svBody.querySelector('[data-k="clockMovement"]');
+          return (el ? el.value : CFG.clockMovement) === "anticlockwise";
+        }
+        function drawSetDials(now) {
+          var a = dialAngles(now), mir = setMirror(), dpr = Math.min(2, window.devicePixelRatio || 1);
+          [["svDialLoc", faceKey(st.loc)], ["svDialEl", "el"]].forEach(function (p) {
+            var cv = $(p[0]), ctx = cv && cv.getContext ? cv.getContext("2d") : null;
+            if (!ctx) return;
+            var css = Math.max(60, Math.floor(cv.clientWidth || 160)), px = Math.round(css * dpr);
+            if (cv.width !== px) { cv.width = px; cv.height = px; }
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, css, css);
+            drawFace(ctx, css / 2, css / 2, css / 2 - 1, p[1], a.s, a.m, dpr, mir);
+          });
+        }
+        function setClockHtml() {
+          var now = Date.now(), f = FACES[faceKey(st.loc)], list = setTimes(now), li = "", i;
+          for (i = 0; i < list.length; i++) {
+            var e = list[i];
+            li += "<li><b>" + esc(longDate(e.t) + ", " + hm(e.t) + " " + zone(e.t)) + "</b><small>Moon hand: " + qName(e.m) + " · Sun hand: " + qName(e.s) +
+              " · worst error " + e.err.toFixed(1) + "°</small></li>";
+          }
+          var lab = function (g) { return "Hands now on the " + g.name + " face: a map of " + g.map + ", " + g.hw + " at the top"; };
+          return '<div class="x-setdials">' +
+            '<figure><canvas id="svDialLoc" role="img" aria-label="' + esc(lab(f)) + '"></canvas><figcaption>' + esc(f.name) + " face</figcaption></figure>" +
+            '<figure><canvas id="svDialEl" role="img" aria-label="' + esc(lab(FACES.el)) + '"></canvas><figcaption>East Lothian face</figcaption></figure></div>' +
+            "<p>You can set the hands at any time: just copy where they sit on the dial. For the most accurate setting, pick a moment when both hands are exactly on 12, 3, 6 or 9. " +
+            "Those positions are much easier to line up by eye than an in-between angle. The next good times are listed below.</p>" +
+            '<p class="x-note">On these faces 12 is high water and 6 is low water; 3 and 9 are half-tide. Moon hand white, Sun hand yellow. ' +
+            "Times are for " + esc(LOCS[st.loc].name) + " with the saved settings (Sun hand shift included): both hands within " + SET_TOL + "° of a mark, 08:00 to 21:00, next " + SET_DAYS + " days.</p>" +
+            grid(sel("clockMovement", "Real clock movement", [["clockwise", "Clockwise"], ["anticlockwise", "Anticlockwise"]])) +
+            '<p class="x-note">Real clock movement turns the hands the other way on these two small dials only, to match a movement that runs anticlockwise; ' +
+            "the main dial always turns clockwise. High water stays at the top, and the times below are the same either way.</p>" +
+            '<ul class="x-list x-settimes">' + (li || '<li class="x-empty">No moment in the next ' + SET_DAYS + " days has both hands on a mark between 08:00 and 21:00.</li>") + "</ul>" +
+            '<p class="x-note">Faces: map data © OpenStreetMap contributors, ODbL.</p>';
         }
 
         /* Reference labels: does a 14px-tall label box at [x1,x2] x [y1,y1+14] touch a turning-point label or the "now" label? */
@@ -1105,15 +1279,36 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           ctx.save();
           ctx.beginPath(); ctx.rect(L, T - 18, pw, ph + 18); ctx.clip();
           var n = wave.n, xs = (wave.t0 - now) / HOUR;
-          // one hand only (M2), dotted, behind the others
-          ctx.beginPath();
-          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - W1[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
-          ctx.setLineDash([2, 4]); ctx.lineWidth = 1; ctx.globalAlpha = 0.7; ctx.strokeStyle = "#7f8c99"; ctx.stroke();
-          ctx.globalAlpha = 1; ctx.setLineDash([]);
-          // two hands only (M2+S2)
-          ctx.beginPath();
-          for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WH[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
-          ctx.lineWidth = 1; ctx.strokeStyle = C.two; ctx.stroke();
+          if (CFG.graphMode === "hands") {
+            setText("waveCap", "Metres above chart datum · solid: full prediction · faint: two hands (M2+S2) · dotted: one hand only (M2)");
+            // one hand only (M2), dotted, behind the others
+            ctx.beginPath();
+            for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - W1[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+            ctx.setLineDash([2, 4]); ctx.lineWidth = 1; ctx.globalAlpha = 0.7; ctx.strokeStyle = "#7f8c99"; ctx.stroke();
+            ctx.globalAlpha = 1; ctx.setLineDash([]);
+            // two hands only (M2+S2)
+            ctx.beginPath();
+            for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WH[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+            ctx.lineWidth = 1; ctx.strokeStyle = C.two; ctx.stroke();
+          } else {
+            setText("waveCap", "Metres above chart datum · solid: full prediction · faint: spring–neap envelope of the two hands · dashed: mean springs and neaps");
+            // mean springs (M2+S2) and mean neaps (M2−S2), dashed
+            var ref = [[1.7978 + 0.6138, "Springs"], [1.7978 - 0.6138, "Neaps"]];
+            ctx.setLineDash([5, 4]); ctx.lineWidth = 1; ctx.strokeStyle = "#7f8c99"; ctx.globalAlpha = 0.8;
+            ctx.font = F12; ctx.textAlign = "right"; ctx.textBaseline = "bottom"; ctx.fillStyle = C.tx2;
+            for (var ri = 0; ri < 2; ri++) for (var sg = -1; sg <= 1; sg += 2) {
+              y = Math.round(B - (TIDE.Z0 + sg * ref[ri][0]) * sy) + 0.5;
+              ctx.beginPath(); ctx.moveTo(L, y); ctx.lineTo(R, y); ctx.stroke();
+              ctx.fillText(ref[ri][1], R - 4, y - 2);
+            }
+            ctx.setLineDash([]); ctx.globalAlpha = 1;
+            // envelope of the two hands: mean level ± R
+            for (sg = -1; sg <= 1; sg += 2) {
+              ctx.beginPath();
+              for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - (TIDE.Z0 + sg * WE[i]) * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+              ctx.lineWidth = 1.5; ctx.strokeStyle = C.two; ctx.stroke();
+            }
+          }
           // full prediction: wash then line
           ctx.beginPath();
           for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WA[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
@@ -1172,6 +1367,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
               step("sum table", readSum, now);
               step("headline", readHead, now);
               step("pressure", pressText);
+              if (sv && !sv.hidden) step("set your clock dials", drawSetDials, now);
             }
             step("dial", drawDialNow, now);
             step("wave", drawWave, now);
@@ -1271,6 +1467,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           setText("secTxt", "HW " + (dt < 0 ? "−" : dt > 0 ? "+" : "±") + Math.abs(dt) + " min, high-water heights " +
             (cut > 0 ? "−" : cut < 0 ? "+" : "±") + Math.abs(cut) + " m");
           prepMarkers();
+          if (dialCv) { var aria = dialAria(); if (dialCv.getAttribute("aria-label") !== aria) dialCv.setAttribute("aria-label", aria); }
           dirty = true; lastSec = -1;
         }
 
@@ -1842,6 +2039,11 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
             '" data-kind="' + kind + '"' + (kind === "num" ? ' inputmode="decimal" data-min="' + min + '" data-max="' + max + '"' : kind === "time" ? ' inputmode="numeric" placeholder="HH:MM"' : "") +
             IN_ATTR + ' value="' + esc(v == null ? "" : v) + '" /><span class="x-bad" hidden></span></div>';
         }
+        function sel(path, label, opts) {
+          var id = "sf" + (++fid), v = getPath(draft, path), o = "";
+          for (var i = 0; i < opts.length; i++) o += '<option value="' + esc(opts[i][0]) + '"' + (opts[i][0] === v ? " selected" : "") + ">" + esc(opts[i][1]) + "</option>";
+          return '<div class="x-fld"><label for="' + id + '">' + esc(label) + '</label><select class="x-in" id="' + id + '" data-k="' + esc(path) + '" data-kind="sel">' + o + '</select><span class="x-bad" hidden></span></div>';
+        }
         function chk(path, label) {
           return '<label class="x-chk"><input type="checkbox" data-k="' + esc(path) + '" data-kind="bool"' + (getPath(draft, path) !== false ? " checked" : "") + " /> " + esc(label) + "</label>";
         }
@@ -1852,6 +2054,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         function buildForm() {
           fid = 0;
           var h = "", i, types = Object.keys(draft.warningTypes || {});
+          try { h += sec("Set your clock", setClockHtml()); } catch (e) { report("set your clock", e); }
           h += sec("Traffic lights", grid(
             fld("amberHoursAfterOverflow", "Amber hours after an overflow ends", "num", 0, 1000) +
             fld("waveAmberM", "Wave / swell amber threshold (m)", "num", 0, 30) +
@@ -1887,6 +2090,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           });
           h += sec("Locations", lc);
           h += sec("Clock and data", grid(
+            sel("graphMode", "Tide graph shows", [["envelope", "Spring–neap envelope"], ["hands", "One hand and two hands"]]) +
             fld("sunHandShiftMin", "Sun hand shift (min)", "num", -720, 720) +
             fld("pressureFallbackHpa", "Pressure fallback (hPa)", "num", 870, 1090) +
             fld("pressureRefreshMin", "Pressure refresh (min)", "num", 1, 1440) +
@@ -1996,13 +2200,14 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           resetTimer = 0;
           var b = $("svReset"); if (b) b.textContent = "Reset to defaults";
         }
-        function fillForm() { draft = clone(CFG); buildForm(); svMsg(""); }
+        function fillForm() { draft = clone(CFG); buildForm(); svMsg(""); if (sv && !sv.hidden) step("set your clock dials", drawSetDials, Date.now()); }
         function openSv(from) {
           try {
             svReturn = from || gearBtn;
             $("svNote").hidden = store.ok;
             disarmReset(); fillForm();
             sv.hidden = false; svScroll.scrollTop = 0; $("svClose").focus();
+            step("set your clock dials", drawSetDials, Date.now());
           } catch (e) { report("settings open", e); }
         }
         function closeSv() {
@@ -2048,6 +2253,9 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         section("settings page", function () {
           sv = $("sv"); svScroll = $("svScroll"); svBody = $("svBody"); gearBtn = $("gearBtn");
           gearBtn.addEventListener("click", function () { openSv(gearBtn); });
+          // main-page shortcut: Settings opens at its first section, Set your clock
+          var scb = $("setClockBtn");
+          if (scb) scb.addEventListener("click", function () { openSv(scb); });
           $("svClose").addEventListener("click", closeSv);
           $("svCancel").addEventListener("click", closeSv);
           $("svSave").addEventListener("click", svSave);
@@ -2074,6 +2282,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           svBody.addEventListener("change", function (e) {
             try {
               var t = e.target;
+              if (t && t.getAttribute("data-k") === "clockMovement") { drawSetDials(Date.now()); return; }
               if (!t || t.getAttribute("data-f") !== "type") return;
               var tr = t.closest("tr"), band = t.value === "band";
               tr.querySelector('[data-f="h"]').hidden = band;
