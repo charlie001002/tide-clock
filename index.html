@@ -332,7 +332,6 @@
             <p><b>Sun hand:</b> <span id="sunOff">HW 3 h 00 m after the mean Sun crosses the meridian here (03:11 and 15:11 GMT)</span></p>
             <p><b>Moon hand:</b> HW 1 h 42 m after the mean Moon crosses the meridian here.</p>
             <p><b>Moon hand next up: <span id="moonUp">–</span></b></p>
-            <p class="x-src" id="secSrc">Leith constants (TICON-4), with Fidra secondary-port differences applied (<span id="secTxt">HW −1 min, high-water heights −0.2 m</span>).</p>
           </div>
         </div>
         <div class="x-panel">
@@ -884,14 +883,19 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           }
           findTurns(now);
           // retime the springs and neaps waves so their highs and lows fall at the predicted ones: half a cosine between each turn
+          // this year's M2 size (18.6-year nodal factor), as the Moon hand uses
+          var fM2 = 1;
+          for (var q = 0; q < TIDE.CON.length; q++) if (TIDE.CON[q][0] === "M2") fM2 = tideNodal(TIDE.CON[q][5], tideAstro(now)[5])[0];
           for (var j = 0, k = 0; j < NS; j++) {
             var tj = wave.t0 + j * STEP;
             while (k < turnN - 2 && turnT[k + 1] <= tj) k++;
             if (turnN < 2 || tj < turnT[0] || tj > turnT[turnN - 1]) continue;
             var f = (tj - turnT[k]) / (turnT[k + 1] - turnT[k]), c = Math.cos(Math.PI * f) * (turnHW[k] ? 1 : -1);
-            WS[j] = TIDE.Z0 + (1.7978 + 0.6138) * c;
-            WN[j] = TIDE.Z0 + (1.7978 - 0.6138) * c;
+            WS[j] = TIDE.Z0 + (fM2 * 1.7978 + 0.6138) * c;
+            WN[j] = TIDE.Z0 + (fM2 * 1.7978 - 0.6138) * c;
           }
+          // the same secondary-port adjustment as the prediction (Fidra on Leith)
+          for (j = 0; j < NS; j++) { WS[j] = secondaryHeight(WS[j]); WN[j] = secondaryHeight(WN[j]); }
           var n1 = -1, n2 = -1;
           for (var j = 0; j < turnN; j++) {
             turnLab[j] = (turnA[j] + pr).toFixed(1) + " m · " + hm(turnT[j]);
@@ -1317,14 +1321,6 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
               ctx.stroke();
             }
             ctx.setLineDash([]);
-            // labels at the left edge, on each curve
-            ctx.font = F12; ctx.textAlign = "left"; ctx.fillStyle = C.tx2;
-            var i0 = Math.max(0, Math.round((-WIN * HOUR - (wave.t0 - now)) / STEP));
-            for (si = 0; si < 2; si++) {
-              var v = SN[si][0][i0], up = v > TIDE.Z0;
-              ctx.textBaseline = up ? "bottom" : "top";
-              ctx.fillText(SN[si][1], L + 4, B - v * sy + (up ? -4 : 4));
-            }
           }
           // full prediction: wash then line
           ctx.beginPath();
