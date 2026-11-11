@@ -55,7 +55,7 @@
       .x-dialbox canvas { position: absolute; left: 0; top: 0; }
       .x-key { position: absolute; left: 4px; top: 4px; z-index: 1; list-style: none; margin: 0; padding: 0; font-size: 13px; color: var(--tx-2); line-height: 1.7; }
       .x-key li { display: flex; align-items: center; gap: 6px; }
-      .x-sw { display: inline-block; height: 4px; border-radius: 2px; box-shadow: 0 0 0 1px #3b2a1a; }
+      .x-sw { display: inline-block; height: 4px; border-radius: 2px; box-shadow: 0 0 0 2px #120c06; }
       .x-sw-m { width: 22px; background: #ffffff; }
       .x-sw-s { width: 12px; height: 6px; border-radius: 3px; background: #f2c230; }
       .x-phase { text-align: center; font-size: 13px; color: var(--tx-2); }
@@ -367,7 +367,7 @@
           </div>
         </div>
         <div class="x-panel x-wave">
-          <p class="x-cap" id="waveCap">Metres above chart datum · solid: full prediction · faint: spring–neap envelope of the two hands · dashed: mean springs and neaps</p>
+          <p class="x-cap" id="waveCap">Metres above chart datum · solid: full prediction · solid: full prediction · dashed: mean spring tide (outer) and mean neap tide (inner)</p>
           <div class="x-wavebox" id="waveBox"><canvas id="wave" role="img" aria-label="Predicted tide height over the six hours either side of now"></canvas></div>
         </div>
         <div class="x-foot">
@@ -753,7 +753,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
 
         /* Precomputed wave: fixed 3-minute grid, refilled once a minute or on location / pressure change */
         var STEP = 3 * MIN, SPAN = 7.5 * HOUR, NS = Math.ceil((2 * SPAN) / STEP) + 2;
-        var WA = new Float64Array(NS), WH = new Float64Array(NS), W1 = new Float64Array(NS), WE = new Float64Array(NS);
+        var WA = new Float64Array(NS), WH = new Float64Array(NS), W1 = new Float64Array(NS), WE = new Float64Array(NS), WS = new Float64Array(NS), WN = new Float64Array(NS);
         var wave = { t0: 0, n: 0, top: 6, pr: 0 };
         var TMAX = 16, turnT = new Float64Array(TMAX), turnA = new Float64Array(TMAX), turnHW = new Uint8Array(TMAX), turnN = 0;
         var turnLab = [], turnW = new Float64Array(TMAX), yLab = [];
@@ -870,6 +870,11 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
             W1[i] = TIDE.Z0 + 1.7978 * Math.cos(ang1 * TD2R);
             var dd = (d0 + (30 - M2_RATE) * (t - now) / HOUR) * TD2R;
             WE[i] = Math.sqrt(1.7978 * 1.7978 + 0.6138 * 0.6138 + 2 * 1.7978 * 0.6138 * Math.cos(dd));
+            // springs and neaps waves: amplitude M2+S2 and M2−S2; timed to the two hands' combined wave here, then retimed below to the predicted highs and lows
+            var dhh = (t - now) / HOUR, mA = (h0.m2 + M2_RATE * dhh) * TD2R, sA = (h0.s2 + 30 * dhh) * TD2R;
+            var ph2 = Math.atan2(1.7978 * Math.sin(mA) + 0.6138 * Math.sin(sA), 1.7978 * Math.cos(mA) + 0.6138 * Math.cos(sA));
+            WS[i] = TIDE.Z0 + (1.7978 + 0.6138) * Math.cos(ph2);
+            WN[i] = TIDE.Z0 + (1.7978 - 0.6138) * Math.cos(ph2);
             if (Math.abs(t - now) <= WIN * HOUR && WA[i] > peak) peak = WA[i];
           }
           var top = Math.max(6, Math.ceil(peak + 0.4));
@@ -878,6 +883,15 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
             for (var y = 0; y <= top; y++) yLab.push(y + " m");
           }
           findTurns(now);
+          // retime the springs and neaps waves so their highs and lows fall at the predicted ones: half a cosine between each turn
+          for (var j = 0, k = 0; j < NS; j++) {
+            var tj = wave.t0 + j * STEP;
+            while (k < turnN - 2 && turnT[k + 1] <= tj) k++;
+            if (turnN < 2 || tj < turnT[0] || tj > turnT[turnN - 1]) continue;
+            var f = (tj - turnT[k]) / (turnT[k + 1] - turnT[k]), c = Math.cos(Math.PI * f) * (turnHW[k] ? 1 : -1);
+            WS[j] = TIDE.Z0 + (1.7978 + 0.6138) * c;
+            WN[j] = TIDE.Z0 + (1.7978 - 0.6138) * c;
+          }
           var n1 = -1, n2 = -1;
           for (var j = 0; j < turnN; j++) {
             turnLab[j] = (turnA[j] + pr).toFixed(1) + " m · " + hm(turnT[j]);
@@ -1006,9 +1020,9 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         // Hand colours on Charlie's clock (inferred: Moon white, Sun yellow). Change them here.
         var MOON_HAND_COLOUR = "#ffffff";
         var SUN_HAND_COLOUR = "#f2c230";
-        var HAND_EDGE = "rgba(28,20,10,0.85)", HUB_COL = "#2b2b2b";
+        var HAND_EDGE = "#120c06", HUB_COL = "#2b2b2b";
         // hand lengths on the 220 mm face, in the ratio of the Leith amplitudes (about 3:1); widths in mm
-        var MOON_LEN_MM = 84, SUN_LEN_MM = 28, MOON_W_MM = 2.4, SUN_W_MM = 3.8, EDGE_MM = 1.1;
+        var MOON_LEN_MM = 84, SUN_LEN_MM = 28, MOON_W_MM = 2.8, SUN_W_MM = 4.2, EDGE_MM = 1.8;
         function faceKey(loc) { return loc === "nb" ? "nb" : "gullane"; }
         var facePaths = {}, faceImgs = {}, faceImgN = 0;
         // Path2D per face, built on first use; null where Path2D or SVG path strings are unsupported
@@ -1066,10 +1080,11 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           var mm = R / 112, img = faceImg(key, Math.max(1, Math.round(2 * R * dpr)));
           if (img) ctx.drawImage(img, cx - R, cy - R, 2 * R, 2 * R);
           if (mirror) { thS = -thS; thM = -thM; }
-          var edge = Math.max(0.75, EDGE_MM * mm);
+          var edge = Math.max(1.5, EDGE_MM * mm);
           ctx.lineCap = "round";
-          hand(ctx, cx, cy, thS, SUN_LEN_MM * mm, Math.max(2.5, SUN_W_MM * mm), edge, SUN_HAND_COLOUR);
-          hand(ctx, cx, cy, thM, MOON_LEN_MM * mm, Math.max(1.5, MOON_W_MM * mm), edge, MOON_HAND_COLOUR);
+          // Moon hand first, so the Sun hand sits in front of it
+          hand(ctx, cx, cy, thM, MOON_LEN_MM * mm, Math.max(2, MOON_W_MM * mm), edge, MOON_HAND_COLOUR);
+          hand(ctx, cx, cy, thS, SUN_LEN_MM * mm, Math.max(3, SUN_W_MM * mm), edge, SUN_HAND_COLOUR);
           ctx.beginPath(); ctx.arc(cx, cy, Math.max(2.5, 4 * mm), 0, 2 * Math.PI);
           ctx.fillStyle = HUB_COL; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = HAND_EDGE; ctx.stroke();
           return { s: SUN_LEN_MM * mm, m: MOON_LEN_MM * mm, thS: thS, thM: thM };
@@ -1226,7 +1241,8 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
         /* Wave: past on the left, future on the right, drifting left past the central Now line */
         function drawWave(now) {
           if (!wctx || !yLab.length) return;
-          var ctx = wctx, w = wz.w, h = wz.h, L = 44, R = w - 10, T = 22, B = h - 28, pw = R - L, ph = B - T, top = wave.top, i, x, y;
+          var ctx = wctx, w = wz.w, h = wz.h;
+          var L = 44, R = w - 10, T = 22, B = h - 28, pw = R - L, ph = B - T, top = wave.top, i, x, y;
           ctx.clearRect(0, 0, w, h);
           if (pw < 40 || ph < 40) return;
           var sx = pw / (2 * WIN), sy = ph / top, x0 = L + pw / 2;
@@ -1291,22 +1307,23 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
             for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - WH[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
             ctx.lineWidth = 1; ctx.strokeStyle = C.two; ctx.stroke();
           } else {
-            setText("waveCap", "Metres above chart datum · solid: full prediction · faint: spring–neap envelope of the two hands · dashed: mean springs and neaps");
-            // mean springs (M2+S2) and mean neaps (M2−S2), dashed
-            var ref = [[1.7978 + 0.6138, "Springs"], [1.7978 - 0.6138, "Neaps"]];
-            ctx.setLineDash([5, 4]); ctx.lineWidth = 1; ctx.strokeStyle = "#7f8c99"; ctx.globalAlpha = 0.8;
-            ctx.font = F12; ctx.textAlign = "right"; ctx.textBaseline = "bottom"; ctx.fillStyle = C.tx2;
-            for (var ri = 0; ri < 2; ri++) for (var sg = -1; sg <= 1; sg += 2) {
-              y = Math.round(B - (TIDE.Z0 + sg * ref[ri][0]) * sy) + 0.5;
-              ctx.beginPath(); ctx.moveTo(L, y); ctx.lineTo(R, y); ctx.stroke();
-              ctx.fillText(ref[ri][1], R - 4, y - 2);
-            }
-            ctx.setLineDash([]); ctx.globalAlpha = 1;
-            // envelope of the two hands: mean level ± R
-            for (sg = -1; sg <= 1; sg += 2) {
+            setText("waveCap", "Metres above chart datum · solid: full prediction · dashed: mean spring tide (outer) and mean neap tide (inner)");
+            var SN = [[WS, "Springs"], [WN, "Neaps"]];
+            ctx.setLineDash([6, 4]); ctx.lineWidth = 1.5; ctx.strokeStyle = "#8d9aa8";
+            for (var si = 0; si < 2; si++) {
+              var A = SN[si][0];
               ctx.beginPath();
-              for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - (TIDE.Z0 + sg * WE[i]) * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
-              ctx.lineWidth = 1.5; ctx.strokeStyle = C.two; ctx.stroke();
+              for (i = 0; i < n; i++) { x = x0 + (xs + i * STEP / HOUR) * sx; y = B - A[i] * sy; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+              ctx.stroke();
+            }
+            ctx.setLineDash([]);
+            // labels at the left edge, on each curve
+            ctx.font = F12; ctx.textAlign = "left"; ctx.fillStyle = C.tx2;
+            var i0 = Math.max(0, Math.round((-WIN * HOUR - (wave.t0 - now)) / STEP));
+            for (si = 0; si < 2; si++) {
+              var v = SN[si][0][i0], up = v > TIDE.Z0;
+              ctx.textBaseline = up ? "bottom" : "top";
+              ctx.fillText(SN[si][1], L + 4, B - v * sy + (up ? -4 : 4));
             }
           }
           // full prediction: wash then line
@@ -2090,7 +2107,7 @@ function tideAt(ms) { var r = tideLeith(ms - SEC.dtMin * 60000); return secondar
           });
           h += sec("Locations", lc);
           h += sec("Clock and data", grid(
-            sel("graphMode", "Tide graph shows", [["envelope", "Spring–neap envelope"], ["hands", "One hand and two hands"]]) +
+            sel("graphMode", "Tide graph shows", [["envelope", "Spring and neap tides"], ["hands", "One hand and two hands"]]) +
             fld("sunHandShiftMin", "Sun hand shift (min)", "num", -720, 720) +
             fld("pressureFallbackHpa", "Pressure fallback (hPa)", "num", 870, 1090) +
             fld("pressureRefreshMin", "Pressure refresh (min)", "num", 1, 1440) +
